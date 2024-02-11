@@ -2,9 +2,11 @@
 #include <thread>
 #include <vector>
 #include <mutex>
-/*
-    #include <sndfile.h>
-*/
+extern "C"
+{
+#include <libavformat/avformat.h>
+#include <libavcodec/avcodec.h>
+}
 
 using namespace std;
 
