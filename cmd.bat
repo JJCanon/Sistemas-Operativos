@@ -1,1 +1,0 @@
-g++ -o dmc dmc.cpp -lsndfile
