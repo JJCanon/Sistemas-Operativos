@@ -67,11 +67,11 @@ if __name__=="__main__":
     except ValueError:
         esCarpeta=True
     
-    #transformar audio
+    
     
     """aiff_mp3(nameFile,extension)
     aiff_wav(nameFile,extension)"""
-    transformarAudio(nameFile,extension) 
+     
             
     if extension is not None and  esCarpeta : 
         print("archivo: ",nameFile,"es una carpeta. pasar a ",extension)
@@ -85,7 +85,9 @@ if __name__=="__main__":
     elif(extension is not None and not esCarpeta):
         print("no es una carpeta. pasar a ",extension)
         #funcion pasar archivo a tipo extensión
-    #
+        #transformar audio
+        transformarAudio(nameFile,extension)
+    #    
     elif(extension is None and not esCarpeta):
         print("no es carpeta, se debe pasar a mp3,ogg,wav")
         #pasar archivo a los tres tipos de archivos mp3,ogg,wav
@@ -113,8 +115,7 @@ if __name__=="__main__":
     librerias:
         a. manejo de archivos:
             1.pydub
-            2.pyaifc
-            3.OS
+            2.OS
             4.Wave
             5.argparse
         b.paralelismo:
