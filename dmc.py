@@ -1,6 +1,14 @@
-from pydub import AudioSegment as AS
-import argparse as arg
+from pydub import AudioSegment as AS #Manejos de Audio
+import argparse as arg #Manejo de parametro desde terminal
+import os # Manejo de Archivos
 
+#funcion para ver los archivos de una carpeta
+def archivosCarpeta(nameFolder):
+    
+    # Listar todos los archivos en el directorio (la carpeta debe estar en la misma ruta del programa)
+    archivos = os.listdir(nameFolder)
+
+    return archivos
 
 if __name__=="__main__":
     
@@ -20,6 +28,7 @@ if __name__=="__main__":
     extension=args.e
     nameFile=args.nombreFile
     
+    #verificar si el archivo es o no es una carpeta
     esCarpeta=False
     try:
         posicion=nameFile.index('.')
@@ -27,8 +36,14 @@ if __name__=="__main__":
     except ValueError:
         esCarpeta=True
             
-    if extension is not None and  esCarpeta :
+            
+    if extension is not None and  esCarpeta : 
         print("archivo: ",nameFile,"es una carpeta. pasar a ",extension)
+        #buscar archivos de la carpeta
+        archivos=archivosCarpeta(nameFile)
+        # Mostrar los nombres de los archivos
+        for archivo in archivos:
+            print(archivo)
         #funcion tranformar archivos de la carpeta en extensión
     elif(extension is not None and not esCarpeta):
         print("no es una carpeta. pasar a ",extension)
@@ -43,8 +58,8 @@ if __name__=="__main__":
     #audio_input=AS.from_file("nombreFile")
     
     
-    
-    print(extension,nameFile)
+
+
 
     """
     parametros: -e=wav LaProcesiondelosBorrachos.mp3
