@@ -21,6 +21,9 @@ def archivosCarpeta(nameFolder):
 def transformarAudio(nameFile,extension=None):
     # separar nombre y formato del archivo de entrada
     name_extension=nameFile.split('.')
+    #la libreria solo reconoce los archivos aif como aiff, por tanto se debe cambiar el nombre del la extension
+    if (name_extension[1]=="aif"):
+        name_extension[1]="aiff"
     # Cargar archivo
     audio=AS.from_file(nameFile,format=name_extension[1])
     if(extension!=None):
@@ -30,11 +33,11 @@ def transformarAudio(nameFile,extension=None):
         threadsForOneFile(nameFile,name_extension[1])
     
 # Funcion para procesar multiples conversiones en hilos separados
-def thread(files,extension):
+def thread(files,extension,fileName):
     # Lista de Hilos
     threads=[]
     for file in files:
-        thread=threading.Thread(target=transformarAudio,args=(file,extension))
+        thread=threading.Thread(target=transformarAudio,args=(fileName+"/"+file,extension))
         threads.append(thread)
         thread.start()  
     # Esperar a que todos los hilos terminen    
@@ -89,21 +92,20 @@ if __name__=="__main__":
     if extension is not None and  esCarpeta : 
         #buscar archivos de la carpeta
         archivos=archivosCarpeta(nameFile)
-        # Mostrar los nombres de los archivos
-        for archivo in archivos:
-            print(archivo)
         #funcion tranformar archivos de la carpeta en extensión   
-        thread(archivos,extension)
+        thread(archivos,extension,nameFile)
+        print(0)
     #se especifica la extension y no es carpeta, se debe pasar el archivo al formato especificado
     elif(extension is not None and not esCarpeta):
         #transformar audio a la extension especifica
         transformarAudio(nameFile,extension)
+        print(0)
     # No se especifica la extension y no es una carpeta,
     # se debe transformar el archivo en los formatos posibles  
     elif(extension is None and not esCarpeta):
-        print("no es carpeta, se debe pasar a mp3,ogg,wav")
         #pasar archivo a los tres tipos de archivos mp3,ogg,wav
         transformarAudio(nameFile)
+        print(0)
     # No se especifica la extension y el archivo es una carpeta
     # se debe retornar error
     elif(extension is None and esCarpeta):
