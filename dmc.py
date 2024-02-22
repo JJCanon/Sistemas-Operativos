@@ -36,7 +36,7 @@ def transformarAudio(nameFile,extension=None):
     
 # Funcion para procesar multiples conversiones en hilos separados
 def thread(files,extension,fileName):
-    inicio=time.time()
+    
     # Lista de Hilos
     threads=[]
     for file in files:
@@ -46,8 +46,7 @@ def thread(files,extension,fileName):
     # Esperar a que todos los hilos terminen    
     for thread in threads:
         thread.join()
-    final=time.time()    
-    print("el tiempo de procesar en paralelismo es",final-inicio," segundos")  
+     
 
 # Funcion para procesar un mismo archivo en varios formatos (mp3,ogg,wav)
 def threadsForOneFile(file,extensionFile=None):
@@ -105,8 +104,11 @@ if __name__=="__main__":
     if extension is not None and  esCarpeta : 
         #buscar archivos de la carpeta
         archivos=archivosCarpeta(nameFile)
+        inicio=time.time()
         #funcion tranformar archivos de la carpeta en extensión   
         thread(archivos,extension,nameFile)
+        final=time.time()    
+        print("el tiempo de procesar en paralelismo es",final-inicio," segundos") 
         print(0)
     # la extension puede o no ser especificada pero si o si no es carpeta, se debe pasar el archivo al formato especificado
     elif(not esCarpeta):
