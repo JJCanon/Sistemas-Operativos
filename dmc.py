@@ -2,10 +2,9 @@
 from pydub import AudioSegment as AS #Manejos de Audio
 import argparse as arg #Manejo de parametro desde terminal
 import os # Manejo de Archivos
-import threading  #manejo de Hilos
-import multiprocessing as MP #manejo de procesadores
-from multiprocessing import Pool
+import threading 
 import time
+
 # Variables Globales
 
 #Funciones
@@ -19,54 +18,61 @@ def archivosCarpeta(nameFolder):
     return archivos
 
 # Funcion que transforma los archivos en el formato especificado
-def transformarAudio(nameFile,extensionFile=None):
+def transformarAudio(nameFile,extension=None):
+    # separar nombre y formato del archivo de entrada
+    name_extension=nameFile.split('.')
+    #la libreria solo reconoce los archivos aif como aiff, por tanto se debe cambiar el nombre del la extension
+    if (name_extension[1]=="aif"):
+        name_extension[1]="aiff"
+    # Cargar archivo
+    audio=AS.from_file(nameFile,format=name_extension[1])
+    if(extension!=None):
+        # exportar archivo en formato especificado
+        audio.export((name_extension[0]+"1."+extension),format=extension)
+        tamaño=os.path.getsize(name_extension[0]+"1."+extension)
+        print("el archivo ",name_extension[0]+"1."+extension," tiene un tamaño de: ",tamaño/(1024*1024)," MB")
+    else:
+        threadsForOneFile(nameFile,name_extension[1])
+    
+# Funcion para procesar multiples conversiones en hilos separados
+def thread(files,extension,fileName):
+    inicio=time.time()
+    # Lista de Hilos
+    threads=[]
+    for file in files:
+        thread=threading.Thread(target=transformarAudio,args=(fileName+"/"+file,extension))
+        threads.append(thread)
+        thread.start()  
+    # Esperar a que todos los hilos terminen    
+    for thread in threads:
+        thread.join()
+    final=time.time()    
+    print("el tiempo de procesar en paralelismo es",final-inicio," segundos")  
+
+# Funcion para procesar un mismo archivo en varios formatos (mp3,ogg,wav)
+def threadsForOneFile(file,extensionFile=None):
+    
     # Lista de Hilos
     threads=[]
     #Lista de Formatos
     extensiones=["mp3","ogg","wav"]
     for extension in extensiones:
-        if extension!=extensionFile:
-            threadFile=threading.Thread(target=changeFormatFile,args=(nameFile,extension))
+            threadFile=threading.Thread(target=transformarAudio,args=(file,extension))
             threads.append(threadFile)
             threadFile.start()
     # Esperar a que todos los hilos terminen
     for thread in threads:
-        thread.join()
+        thread.join()     
+    if extensionFile!=None:
+        name_extension=file.split(".")
+        for extension in extensiones:
+            if extension!=extensionFile:
+                os.remove(name_extension[0]+"1."+extension)
     
     
-
-
-# Funcion transformar con hilos
-def changeFormatFile(nameFile,extension):
-    # separar nombre y formato del archivo de entrada
-    #print(nameFile)
-    name_extension=nameFile.split('.')
-    #lista de extensiones
-    if (name_extension[1]=="aif"):
-        name_extension[1]="aiff"
-    audio=AS.from_file(nameFile,format=name_extension[1])
-    # exportar archivo en formato especificado
-    audio.export((name_extension[0]+"1."+extension),format=extension)
-    """imprimir tamaño del archivo"""
-
-
-# Funcion para crear argumetos
-def agruparArgumentos(nameFolder,nameFiles,extension=None):
-    argumentos=[]
-    for nameFile in nameFiles:
-         argumento=(nameFolder+"/"+nameFile,extension)
-         argumentos.append(argumento)
-    return argumentos
-     
-     
-def changeFormatFolder(archivos,extension,nameFolder):
-    processesnum=MP.cpu_count()
-    argumentos=agruparArgumentos(nameFolder,archivos,extension)
-    # Crear grupo de procesos
-    with Pool(processes=processesnum) as pool:
-        # Ejecutar la funsion en paralelo para una lista de números
-        resultados=pool.starmap(changeFormatFile,argumentos)
+      
     
+        
 #Main
 if __name__=="__main__":
     inicio=time.time()
@@ -92,26 +98,32 @@ if __name__=="__main__":
         esCarpeta=False
     except ValueError:
         esCarpeta=True
-    
+     
     ##condicional
     # Se especifica la extension y el archivo es una carpeta, 
     # se debe pasar los archivos de la carpeta a al formato especificado       
     if extension is not None and  esCarpeta : 
         #buscar archivos de la carpeta
         archivos=archivosCarpeta(nameFile)
-        changeFormatFolder(archivos,extension,nameFile)
-        #funcion tranformar archivos de la carpeta en extensión
+        #funcion tranformar archivos de la carpeta en extensión   
+        thread(archivos,extension,nameFile)
         print(0)
     #se especifica la extension y no es carpeta, se debe pasar el archivo al formato especificado
     elif(extension is not None and not esCarpeta):
         #transformar audio a la extension especifica
-        #transformarAudio(nameFile,extension)
+        inicio=time.time()
+        threadsForOneFile(nameFile,extension)
+        final=time.time()
+        print("el tiempo de paralelismo para un solo archivo es de: ",final-inicio," segundos")
         print(0)
     # No se especifica la extension y no es una carpeta,
     # se debe transformar el archivo en los formatos posibles  
     elif(extension is None and not esCarpeta):
+        inicio=time.time()
         #pasar archivo a los tres tipos de archivos mp3,ogg,wav
-        #transformarAudio(nameFile)
+        threadsForOneFile(nameFile,extension)
+        final=time.time()
+        print("el tiempo de paralelismo para un solo archivo es de: ",final-inicio," segundos")
         print(0)
     # No se especifica la extension y el archivo es una carpeta
     # se debe retornar error
@@ -119,6 +131,5 @@ if __name__=="__main__":
         #es una carpeta pero no se especifica la extensión, marcar error
         print(1)
     final=time.time()
-    
-    print(final-inicio," segundos")
+    print("el tiempo total de ejecucion fueron ",final-inicio," segundos")
     
