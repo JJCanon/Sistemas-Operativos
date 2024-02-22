@@ -2,8 +2,8 @@
 from pydub import AudioSegment as AS #Manejos de Audio
 import argparse as arg #Manejo de parametro desde terminal
 import os # Manejo de Archivos
-import threading 
-import time
+import threading # Manejo de Hilos
+import time # manejo de tiempo
 
 # Variables Globales
 
@@ -108,8 +108,8 @@ if __name__=="__main__":
         #funcion tranformar archivos de la carpeta en extensión   
         thread(archivos,extension,nameFile)
         print(0)
-    #se especifica la extension y no es carpeta, se debe pasar el archivo al formato especificado
-    elif(extension is not None and not esCarpeta):
+    # la extension puede o no ser especificada pero si o si no es carpeta, se debe pasar el archivo al formato especificado
+    elif(not esCarpeta):
         #transformar audio a la extension especifica
         inicio=time.time()
         threadsForOneFile(nameFile,extension)
@@ -117,14 +117,6 @@ if __name__=="__main__":
         print("el tiempo de paralelismo para un solo archivo es de: ",final-inicio," segundos")
         print(0)
     # No se especifica la extension y no es una carpeta,
-    # se debe transformar el archivo en los formatos posibles  
-    elif(extension is None and not esCarpeta):
-        inicio=time.time()
-        #pasar archivo a los tres tipos de archivos mp3,ogg,wav
-        threadsForOneFile(nameFile,extension)
-        final=time.time()
-        print("el tiempo de paralelismo para un solo archivo es de: ",final-inicio," segundos")
-        print(0)
     # No se especifica la extension y el archivo es una carpeta
     # se debe retornar error
     elif(extension is None and esCarpeta):
