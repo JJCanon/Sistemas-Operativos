@@ -74,7 +74,7 @@ def threadsForOneFile(file,extensionFile=None):
         
 #Main
 if __name__=="__main__":
-    inicio=time.time()
+    inicial=time.time()
     #crear argumenparser para los parametros
     parser=arg.ArgumentParser(description="argumentos para la transformación")
     
@@ -124,6 +124,6 @@ if __name__=="__main__":
     elif(extension is None and esCarpeta):
         #es una carpeta pero no se especifica la extensión, marcar error
         print(1)
-    final=time.time()
-    print("el tiempo total de ejecucion fueron ",final-inicio," segundos")
+    finalT=time.time()
+    print("el tiempo total de ejecucion fueron ",finalT-inicial," segundos")
     
