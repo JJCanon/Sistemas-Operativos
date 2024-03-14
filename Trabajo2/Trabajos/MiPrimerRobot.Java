@@ -8,6 +8,10 @@ public class MiPrimerRobot implements Directions
 {
     public static void main(String [] args)
     {
+        // Usamos el archivo que creamos del mundo
+        World.readWorld("MinaKarel.kwld");
+        World.setVisible(true);
+
         //Argumentos a recibir
         int cantidadTrenes = 2, cantidadExtractores = 2;
         //Variables de color, mínimos y máximos por robos
