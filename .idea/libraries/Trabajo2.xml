@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Trabajo2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Trabajo2/KJRdocs.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Trabajo2/KarelJRobot.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Trabajo2/worldFilesDOS.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

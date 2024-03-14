@@ -1,3 +1,3 @@
-java -cp ".;KarelJRobot.jar" MiPrimerRobot
+java -cp ".;KarelJRobot.jar" Trabajos/MiPrimerRobot
 pause
 exit
