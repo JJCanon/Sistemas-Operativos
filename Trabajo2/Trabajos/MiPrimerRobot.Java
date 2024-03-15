@@ -94,7 +94,7 @@ class Minero extends Robot{
         this.matriz=matriz;
         try {
             MiPrimerRobot.semaforoMatriz.acquire();
-            matriz[Street][Avenue] = true;
+            matriz[Street-1][Avenue-1] = true;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -121,7 +121,7 @@ class Tren extends Robot{
         this.matriz=matriz;
         try {
             MiPrimerRobot.semaforoMatriz.acquire();
-            matriz[Street][Avenue] = true;
+            matriz[Street-1][Avenue-1] = true;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
@@ -148,7 +148,7 @@ class Extractor extends Robot{
         this.matriz=matriz;
         try {
             MiPrimerRobot.semaforoMatriz.acquire();
-            matriz[Street][Avenue] = true;
+            matriz[Street-1][Avenue-1] = true;
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
