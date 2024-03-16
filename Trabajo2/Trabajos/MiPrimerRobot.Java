@@ -71,7 +71,8 @@ public class MiPrimerRobot implements Directions
         //Creacion de Robots Extractores
         for(int i = 0; i < cantidadExtractores; i++){
             extractores[i] = new Extractor(posStreet, posAvenue,South, 0, colorExtractor,matriz);
-            extractores[i].run();
+            Thread HiloExtractor = new Thread(extractores[i]);
+            HiloExtractor.start();
             if (posAvenue > 1) {
                 posAvenue--;
             }
@@ -80,6 +81,8 @@ public class MiPrimerRobot implements Directions
                 if(posStreet>1)
                 {
                     posStreet--;
+                }else{
+                    posStreet=20;
                 }
             }
         }
@@ -252,7 +255,7 @@ class Tren extends Robot{
     }
 }
 //Clase para implementar Extractores
-class Extractor extends Robot{
+class Extractor extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
     private int street,avenue;
     private Direction direction;
@@ -281,8 +284,10 @@ class Extractor extends Robot{
     private void moverAEntrada()
     {
         //Street=Y Avenue=X
-        int streetEntry = 7;
+        int streetEntry = 1;
         int avenueEntry = 8;
+        out.println(street-streetEntry);
+        out.println(avenue-avenueEntry);
         while(street!=streetEntry) {
             if(streetEntry<street) {
                 girar(West);
@@ -398,6 +403,8 @@ class Extractor extends Robot{
             }
         }
     }
+
+    @Override
     public void run()
     {
         moverAEntrada();
