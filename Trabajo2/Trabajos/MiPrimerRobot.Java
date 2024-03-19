@@ -606,7 +606,6 @@ class Extractor extends Robot implements Runnable{
     private void Extraer(){
         try{
             semaforoExtractor.acquire();
-            semaforoCruce.acquire();
             buscarBeepers();
             extraerBeepers();
 
@@ -614,7 +613,6 @@ class Extractor extends Robot implements Runnable{
             e.printStackTrace();
         }finally {
             semaforoExtractor.release();
-            semaforoCruce.release();
         }
         almacenarBeepers();
     }
@@ -629,16 +627,23 @@ class Extractor extends Robot implements Runnable{
         for(int movements = 0;movements < 6;movements++)
             mover();
         girar(East);
-        mover();
-        girar(West);
+
     }
     private void extraerBeepers(){
-        while(nextToABeeper() && beepersInBag<maxBeepers)
-        {
+        try{
+            semaforoCruce.acquire();
+            mover();
+            girar(West);
+            while(nextToABeeper() && beepersInBag<maxBeepers) {
             pickBeeper();
             beepersInBag++;
+            }
+            mover();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            semaforoCruce.release();
         }
-        mover();
         girar(North);
         for (int movements = 0; movements < 6; movements++)
             mover();
@@ -660,8 +665,12 @@ class Extractor extends Robot implements Runnable{
         for (int movements = 0; movements < 8; movements++)
             mover();
         descargarBeepers();
+        girar(West);
+        for (int movements = 0; movements < street-1; movements++)
+            mover();
         girar(South);
-        moverAEntrada(8,1);
+        for (int movements = 0; movements < 12; movements++)
+            mover();
     }
     private void descargarBeepers(){
         for (int beepers = 0; beepers < beepersInBag; beepers++) {
