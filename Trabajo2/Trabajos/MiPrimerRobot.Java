@@ -412,8 +412,11 @@ class Tren extends Robot implements Runnable{
         girar(South);
         for (int movements = 0; movements < 5; movements++)
             mover();
+        girar(West);
+        mover();
         girar(East);
         descargarBeepers();
+        mover();
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
@@ -532,8 +535,8 @@ class Extractor extends Robot implements Runnable{
     //Matriz Compartida
     boolean[][] matriz;
     //Capacidad máxima de beepers que puede almacenar
-    private int max = 50;
-    int Beepers;
+    private int maxBeepers = 50;
+    private int beepersInBag;
     public Extractor (int Street, int Avenue, Direction direction, int beepers, Color color,boolean[][] matriz){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
@@ -541,7 +544,7 @@ class Extractor extends Robot implements Runnable{
         this.avenue=Avenue;
         this.direction=direction;
         this.matriz=matriz;
-        Beepers=0;
+        beepersInBag=0;
         try {
             semaforoMatriz.acquire();
             matriz[Street-1][Avenue-1] = true;
@@ -613,11 +616,14 @@ class Extractor extends Robot implements Runnable{
             mover();
         girar(East);
         mover();
-        mover();
         girar(West);
     }
     private void extraerBeepers(){
-        mover();
+        while(nextToABeeper() && beepersInBag<maxBeepers)
+        {
+            pickBeeper();
+            beepersInBag++;
+        }
         mover();
         girar(North);
         for (int movements = 0; movements < 6; movements++)
@@ -639,13 +645,14 @@ class Extractor extends Robot implements Runnable{
         girar(North);
         for (int movements = 0; movements < 8; movements++)
             mover();
-        girar(West);
-        for (int movements = 0; movements < 19; movements++)
-            mover();
+        descargarBeepers();
         girar(South);
-        for (int movements = 0; movements < 12; movements++)
-            mover();
-
+        moverAEntrada(8,1);
+    }
+    private void descargarBeepers(){
+        for (int beepers = 0; beepers < beepersInBag; beepers++) {
+            putBeeper();
+        }
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
