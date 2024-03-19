@@ -1,99 +1,141 @@
 
-˜	java:S117/"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âœÄÎıÿÿÿÿ8ÿ€¸å1J$d12073ff-7b29-4af4-af57-02658632e09c
-˜	java:S117@"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÓñµüÿÿÿÿ8ÿ€¸å1J$dfd23389-254b-48ac-85c1-f5cd150b3006
-“	java:S117P"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰øã8ÿ€¸å1J$56d9267d-dcfe-4d92-a106-020b5daab618
-“	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¬×Û8ÿ€¸å1J$23118e62-33c9-4ec0-9bf4-24ab07599740
-“	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¬×Û8ÿ€¸å1J$2d45617c-cc26-44db-b591-4610f350bb61
-™	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8ÿ€¸å1J$ccd25408-f750-444d-bfd1-580b46bc9304
-™	java:S117‹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8ÿ€¸å1J$ee77728d-e158-4386-9a7b-12c22646b5b5
-™	java:S117­"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8€‚€¸å1J$dd228ba0-dc23-4c07-badf-7e160f7f3e14
-™	java:S117­"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8€‚€¸å1J$4a2f5981-6a86-4055-8259-7ae5089c7c82
-›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üŠ¨8ƒ‚€¸å1J$dbfd42c5-739e-4c1e-9753-e885d4b24c58
-r	java:S106"+Replace this use of System.out by a logger.(“×·ôşÿÿÿÿ8Ø„€¸å1J$52b98870-9633-400e-8525-db872eb0b3bf
+˜	java:S117."QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âœÄÎıÿÿÿÿ8ñéü½å1J$ac075cce-c616-4141-bbd1-a28a4d63b6b0
+˜	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÓñµüÿÿÿÿ8òéü½å1J$dc37af83-20b4-48aa-ba7b-8e20fa3b1623
+“	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰øã8òéü½å1J$383da89a-6d51-4c00-950c-4b8028a6fdfd
+“	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¬×Û8òéü½å1J$d3064b80-3a20-45a5-b391-739c906ca5ed
+“	java:S117k"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¬×Û8òéü½å1J$ae44e4ad-eb48-487f-afac-5968a4ae20ae
+™	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8òéü½å1J$8b0885b5-03c2-4937-9809-43cd0db04b43
+™	java:S117 "QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8òéü½å1J$9f2ce8de-ba54-437b-96ba-a6413d88cb0b
+™	java:S117ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8×Éı½å1J$f34c4d0d-39c6-4c10-9b45-be382b6c33ab
+™	java:S117ê"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8×Éı½å1J$3762f50f-cb8c-4d15-a61c-99f37511fb29
+›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üŠ¨8öéü½å1J$08a22881-b9e0-4481-825e-b9debb678ec8
+e
+java:S2189µ""Add an end condition to this loop.(¤èÄ78„§€¾å1J$2315be7c-a917-4191-b788-ebbfdae8c6de
 •
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ÛÛ¯ø8Ü„€¸å1J$a0fa2dbc-2b48-4660-b513-1b852e8f39c4
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 22 to the 15 allowed.(ÛÛ¯ø8äìü½å1J$dfa2c12f-5bb5-4d8e-8e75-7a1e7f3c18de
 ƒ
-java:S1854#"@Remove this useless assignment to local variable "minExtractor".(—ãÄ8İ„€¸å1J$900f934f-53fc-4a0f-96d6-a5d309b39402
+java:S1854""@Remove this useless assignment to local variable "minExtractor".(—ãÄ8æìü½å1J$807c48b6-1161-4027-ac83-5824d0af0030
 ƒ
-java:S1854#"@Remove this useless assignment to local variable "maxExtractor".(—ãÄ8İ„€¸å1J$a6b6be36-a376-4edf-ab07-a504f4b472e2
+java:S1854""@Remove this useless assignment to local variable "maxExtractor".(—ãÄ8æìü½å1J$8cf646c4-c122-47d9-93d6-cf6a505cbd36
 ~
-java:S1854!";Remove this useless assignment to local variable "minTren".(¨ú§å8İ„€¸å1J$f1d5882e-8ba0-4cbb-ab23-8f373e9cec6f
+java:S1854 ";Remove this useless assignment to local variable "minTren".(¨ú§å8æìü½å1J$81b6f0de-c34e-463e-98e4-6b191d196469
 ~
-java:S1854!";Remove this useless assignment to local variable "maxTren".(¨ú§å8İ„€¸å1J$d8fcd84e-63d4-48c5-821f-237a360b9fbe
+java:S1854 ";Remove this useless assignment to local variable "maxTren".(¨ú§å8æìü½å1J$188985a2-6cfd-4b08-b028-4acbe896f2bd
 g
-java:S1659"Declare "t" on a separate line.(åÎ“†ûÿÿÿÿ8Ş„€¸å1J$309dc830-65c8-4df3-9094-e0545bcc2a07
+java:S1659"Declare "t" on a separate line.(åÎ“†ûÿÿÿÿ8éìü½å1J$a5d5085c-aa82-4f39-9b7f-c33d8a775b1f
 y
-java:S1659"1Declare "cantidadExtractores" on a separate line.(óâéñøÿÿÿÿ8Ş„€¸å1J$f07a0b1d-6783-41cb-9c94-e5006db5f504
+java:S1659"1Declare "cantidadExtractores" on a separate line.(óâéñøÿÿÿÿ8éìü½å1J$626523d3-aa90-415a-a2df-b36ef84dac34
 h
-java:S1659!"%Declare "minTren" on a separate line.(¨ú§å8Ş„€¸å1J$313cdfca-8f23-414f-b163-fb7e581ebf6c
+java:S1659 "%Declare "minTren" on a separate line.(¨ú§å8éìü½å1J$f97790b3-a643-4134-ab46-6f8e91c7587a
 m
-java:S1659#"*Declare "minExtractor" on a separate line.(—ãÄ8Ş„€¸å1J$3574761a-7712-4a35-83a6-10025579f2e6
+java:S1659""*Declare "minExtractor" on a separate line.(—ãÄ8éìü½å1J$c52b2dff-f64b-45aa-893c-950463bc96df
 n
-java:S1481"&Remove this unused "m" local variable.(åÎ“†ûÿÿÿÿ8ß„€¸å1J$c7e53eeb-ba58-40d4-87ed-efc5842be99e
+java:S1481"&Remove this unused "m" local variable.(åÎ“†ûÿÿÿÿ8éìü½å1J$d7528d5a-6a07-4818-b98c-144ba8f384bf
 n
-java:S1481"&Remove this unused "t" local variable.(åÎ“†ûÿÿÿÿ8ß„€¸å1J$2f7b1c57-96d0-4d06-bdfc-9f0a05fee727
+java:S1481"&Remove this unused "t" local variable.(åÎ“†ûÿÿÿÿ8êìü½å1J$4cc5b090-d5a5-4a23-9d5a-433d26598d60
 o
-java:S1481!",Remove this unused "maxTren" local variable.(¨ú§å8à„€¸å1J$042ba53e-29b9-4885-ba94-23a7cd321ca7
+java:S1481 ",Remove this unused "maxTren" local variable.(¨ú§å8êìü½å1J$0be149a5-041d-4b6e-99b5-da7f85cc4534
 o
-java:S1481!",Remove this unused "minTren" local variable.(¨ú§å8à„€¸å1J$54d3d722-7115-45e2-a304-67de07279e6a
+java:S1481 ",Remove this unused "minTren" local variable.(¨ú§å8êìü½å1J$0d120c32-4942-447f-ab30-b0fbcab382fc
 t
-java:S1481#"1Remove this unused "maxExtractor" local variable.(—ãÄ8à„€¸å1J$aee3a688-9fea-49d3-ac61-ed75890ee165
+java:S1481""1Remove this unused "maxExtractor" local variable.(—ãÄ8êìü½å1J$ff73326d-89a3-4301-8672-29c10597ce0a
 t
-java:S1481#"1Remove this unused "minExtractor" local variable.(—ãÄ8à„€¸å1J$14bf7ae1-0b44-4b77-8d2d-895a96b284fb
+java:S1481""1Remove this unused "minExtractor" local variable.(—ãÄ8êìü½å1J$e4e8562e-b6e2-4807-9bef-9b7d132bbaeb
 i
-java:S1170e"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8ä„€¸å1J$d5973df8-9cd7-4d6f-b5e5-e313ea202859
+java:S1170d"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8îìü½å1J$f9a3b3b7-f0ce-4307-a6da-ad317dfc17af
+d
+java:S1170e"!Make this final field static too.(ëËÂ÷8îìü½å1J$eba915a8-b21e-4bc3-b920-af25ed1eaa24
 f
-java:S1659f"$Declare "avenue" on a separate line.(…ãÄ;8ä„€¸å1J$74c38a18-556e-47fb-812d-41b3fb56f620
+java:S1659f"$Declare "avenue" on a separate line.(…ãÄ;8îìü½å1J$662ef783-f884-4054-af13-a94ffb65ced9
 ¡
-java:S2142u"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8æ„€¸å1J$18018177-325e-4b8a-a956-d684fb4d09a6
-h
-java:S1659"%Declare "avenueD" on a separate line.(ô °Ú8ç„€¸å1J$4ab91171-0ec8-4f32-bf31-2163103a3b0e
+java:S2142u"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ğìü½å1J$62317586-b77f-45ca-9241-fa4e0506ce9c
+i
+java:S1659ƒ"%Declare "avenueD" on a separate line.(ô °Ú8òìü½å1J$af2d1001-e1ff-4d02-8809-6522d4011ca4
 j
-java:S1659€"&Declare "vertical" on a separate line.(ÁÂØ8ç„€¸å1J$aa7daae6-1a88-4a9f-bdb4-9968712f60fc
+java:S1659„"&Declare "vertical" on a separate line.(ÁÂØ8òìü½å1J$61ab229a-2e73-4717-b3a7-5a4297ae0c2b
+Š
+java:S1854¸"ARemove this useless assignment to local variable "currentAvenue".(¦ÏÁüÿÿÿÿ8ôìü½å1J$6c0fd00b-db08-429b-83f8-555c63cb9673
+Š
+java:S1854¸"ARemove this useless assignment to local variable "currentStreet".(¦ÏÁüÿÿÿÿ8ôìü½å1J$377bbeab-7948-4bfe-b1aa-08906265de59
 t
-java:S1659"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8ê„€¸å1J$35d1de74-7310-4dd4-be1e-571b8e790bd2
-¢
-java:S2142¹"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ë„€¸å1J$6aea2e3b-92a6-4612-8b62-d069fcddf2f4
+java:S1659¸"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8õìü½å1J$63712294-363a-4476-9b4a-10d47ac25a85
+{
+java:S1481¸"2Remove this unused "currentStreet" local variable.(¦ÏÁüÿÿÿÿ8õìü½å1J$3323ada5-f69f-4665-b6b5-85793faf39b0
+{
+java:S1481¸"2Remove this unused "currentAvenue" local variable.(¦ÏÁüÿÿÿÿ8õìü½å1J$cd334314-9ab1-4a9d-a6bf-e33b5226c7cf
+„	java:S125º"<This block of commented-out lines of code should be removed.(î¢Éåúÿÿÿÿ8õìü½å1J$9b7ad94a-048b-488d-ba5a-50f6043ecf7d
 ›
-java:S3776¿"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‘Ğ‡şÿÿÿÿ8ë„€¸å1J$b88aa1ad-90fc-4a6c-a843-31e38071bba9
+java:S3776¼"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8öìü½å1J$92f18f9f-d5da-47b2-a672-c752f53c02d4
+¢
+java:S2142…"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8úìü½å1J$8b7a9db7-b250-41aa-b09b-1a5709f5bbc2
 j
-java:S1170„"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8ï„€¸å1J$3a40e21e-7f05-4782-a75d-d93f0594b87e
+java:S1170™"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8úìü½å1J$c36f786e-d838-42b2-9809-1991794b4890
 g
-java:S1659…"$Declare "avenue" on a separate line.(…ãÄ;8ï„€¸å1J$14bd1b95-c063-460a-ab21-b48955ab1706
+java:S1659š"$Declare "avenue" on a separate line.(…ãÄ;8ûìü½å1J$6492d71a-a15e-41b8-a533-f45c0f8508af
 ¢
-java:S2142•"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ğ„€¸å1J$299395de-99f3-4804-81f3-7285c32c67e3
+java:S2142ª"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8üìü½å1J$13178e46-e087-4af9-b4e5-80743e0e6f4b
 i
-java:S1659Ÿ"%Declare "avenueD" on a separate line.(ô °Ú8èÎ¸å1J$9488abc9-06ce-4706-b4ef-6617ef45b87c
+java:S1659º"%Declare "avenueD" on a separate line.(ô °Ú8ıìü½å1J$8e226d04-52e5-4ba7-898c-a672998c0c0b
 j
-java:S1659 "&Declare "vertical" on a separate line.(ÁÂØ8èÎ¸å1J$e393ba9a-32ef-4f9a-972a-b97a3059cf3f
+java:S1659»"&Declare "vertical" on a separate line.(ÁÂØ8ıìü½å1J$c45ffc6c-8844-42ff-b1ac-84b99909e8b5
+Š
+java:S1854€"ARemove this useless assignment to local variable "currentAvenue".(¦ÏÁüÿÿÿÿ8ÔÌı½å1J$4e4955ee-82fb-4615-8cff-5ba9d93451bd
+Š
+java:S1854€"ARemove this useless assignment to local variable "currentStreet".(¦ÏÁüÿÿÿÿ8ÔÌı½å1J$997da239-4128-4c7d-aa30-957d927671e7
 t
-java:S1659¾"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8ò„€¸å1J$d34b8bfa-dbf6-402d-87a9-310810fd3301
-¢
-java:S2142Ù"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ó„€¸å1J$89cfd89b-6dc7-47a1-b155-3c9d3f98f6da
+java:S1659€"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8ÔÌı½å1J$8e4848b2-a139-4c76-a25a-5779b617a43a
+{
+java:S1481€"2Remove this unused "currentStreet" local variable.(¦ÏÁüÿÿÿÿ8ÕÌı½å1J$16cfbb2e-05a8-430e-a747-d40886cba78f
+{
+java:S1481€"2Remove this unused "currentAvenue" local variable.(¦ÏÁüÿÿÿÿ8ÕÌı½å1J$4014f8f3-ea4b-4e22-b5f8-2209f99b6a18
+„	java:S125‚"<This block of commented-out lines of code should be removed.(î¢Éåúÿÿÿÿ8ÕÌı½å1J$72a4c248-0d98-43de-869e-43dd82728cfe
 ›
-java:S3776ß"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‘Ğ‡şÿÿÿÿ8ó„€¸å1J$2bc44592-9691-44df-98bb-4b6525cf72d4
-š	java:S116¬"RRename this field "Beepers" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü¨™øÿÿÿÿ8÷„€¸å1J$0e0c6947-3fdb-4f6c-8edd-4017b6fc047a
+java:S3776„"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8ÕÌı½å1J$9ea93166-0153-42c1-9d33-e40336c0b738
+¢
+java:S2142Í"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ØÌı½å1J$282bdbed-7c6b-4133-a989-ee937dc1efcf
+š	java:S116é"RRename this field "Beepers" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü¨™øÿÿÿÿ8ÚÌı½å1J$171f8024-25bd-4d88-bb0d-cf064f099bed
 j
-java:S1170¥"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8÷„€¸å1J$ac6ee693-1e1e-4a0d-8150-713a1756c41d
+java:S1170á"!Make this final field static too.(ğÿÎÓüÿÿÿÿ8ÚÌı½å1J$8dcd4537-db63-4d80-bc76-fe1c48235845
+e
+java:S1170â"!Make this final field static too.(Íß•8ÚÌı½å1J$c955cc15-f499-477b-a93f-79e809a8e088
 m
-java:S1659¦"$Declare "avenue" on a separate line.(‡¸îæûÿÿÿÿ8ø„€¸å1J$52a22f46-34bd-46ad-8ddc-1568b5fffc18
+java:S1659ã"$Declare "avenue" on a separate line.(‡¸îæûÿÿÿÿ8ÛÌı½å1J$d0fd06b3-428e-4c6f-a3c2-b00237673746
 ¢
-java:S2142¸"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ù„€¸å1J$3a663601-a812-40fe-8004-779acde4376c
+java:S2142õ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8İÌı½å1J$a983a932-219c-485c-b799-22617d3d73a9
 i
-java:S1659Á"%Declare "avenueD" on a separate line.(ô °Ú8œÁ¸å1J$b5f24734-1cdf-4274-9637-b00093fa701b
+java:S1659‚"%Declare "avenueD" on a separate line.(ô °Ú8ŞÌı½å1J$896902f2-cb65-4e53-a482-354ec7eb18a9
 j
-java:S1659Â"&Declare "vertical" on a separate line.(ÁÂØ8œÁ¸å1J$ceafef9d-380e-46ef-a321-876b88e67bd6
+java:S1659ƒ"&Declare "vertical" on a separate line.(ÁÂØ8ŞÌı½å1J$289dbc64-922d-4bdb-8d94-8b57b52d6507
+Š
+java:S1854 "ARemove this useless assignment to local variable "currentAvenue".(¦ÏÁüÿÿÿÿ8áÌı½å1J$f747d01b-6995-433d-b913-5fee33861bd2
+Š
+java:S1854 "ARemove this useless assignment to local variable "currentStreet".(¦ÏÁüÿÿÿÿ8áÌı½å1J$724b7578-23b9-474c-9f6e-4a7e1b696d7f
 t
-java:S1659á"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8ı„€¸å1J$e2a2625a-a1ab-4248-989b-2b187cc27166
-¢
-java:S2142ü"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ş„€¸å1J$e7361d17-79eb-4205-8f5e-80685d0e3484
+java:S1659 "+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8âÌı½å1J$15525471-2843-4dd7-a0ea-82790fddd578
+{
+java:S1481 "2Remove this unused "currentStreet" local variable.(¦ÏÁüÿÿÿÿ8âÌı½å1J$2c50d61b-f26a-4d5a-b46f-082f2060d2fc
+{
+java:S1481 "2Remove this unused "currentAvenue" local variable.(¦ÏÁüÿÿÿÿ8âÌı½å1J$c1cdb766-faa0-434c-91fa-6883c402773c
+„	java:S125¢"<This block of commented-out lines of code should be removed.(î¢Éåúÿÿÿÿ8âÌı½å1J$a72e16e1-5f51-4bc3-b518-cbc9b6353cb2
 ›
-java:S3776‚"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‘Ğ‡şÿÿÿÿ8ÿ„€¸å1J$ff609320-4819-4f3f-918f-f50f3538a0ce
-y
-java:S1128"7Remove this unused import 'java.nio.file.WatchService'.(ßåß(8„…€¸å1J$593be491-9f9f-45a1-9e77-e8e8e320e289
+java:S3776¤"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8ãÌı½å1J$01dd181d-1e4f-465e-85d8-0d30b5725e21
+¢
+java:S2142í"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8æÌı½å1J$e2781d7f-da6a-4f1e-b10f-c7daac8400ba
 q
-java:S1068j".Remove this unused "maxBeepers" private field.(Õ½ßî8……€¸å1J$cfb7e344-b214-4a8c-ab39-0d60c7f86bd1
+java:S1068j".Remove this unused "maxBeepers" private field.(Õ½ßî8“íü½å1J$0a3b08a3-829a-4f41-90a1-fd5fc4129bc2
 p
-java:S1068Š"'Remove this unused "max" private field.(““‡ùÿÿÿÿ8……€¸å1J$42f2d9b1-d647-4d5c-acd8-799b6e46a9ab
+java:S1068Ÿ"'Remove this unused "max" private field.(““‡ùÿÿÿÿ8“íü½å1J$9dfdc691-72dd-45c1-97a6-49fbaee54e1d
 k
-java:S1068«"'Remove this unused "max" private field.(“£Ç¡8……€¸å1J$cbf1ccd1-95a6-4812-a032-1447b4360026
+java:S1068è"'Remove this unused "max" private field.(“£Ç¡8çÌı½å1J$406c3e5a-fa05-4a31-8906-1926e9c8bf44
+x
+java:S1144ø"/Remove this unused private "actualizar" method.(ãß¹Äıÿÿÿÿ8”íü½å1J$f8e89939-db28-475d-a70d-3e9e3ba4ffa3
+w
+java:S1144‹".Remove this unused private "verificar" method.(œ“€—üÿÿÿÿ8”íü½å1J$0c082c2f-412b-4c2a-ad36-fd7e9a111088
+x
+java:S1144À"/Remove this unused private "actualizar" method.(ãß¹Äıÿÿÿÿ8èÌı½å1J$7973a72b-dc3f-446f-992e-a04367251614
+w
+java:S1144Ó".Remove this unused private "verificar" method.(œ“€—üÿÿÿÿ8èÌı½å1J$2baeee44-bb7e-4e06-af0c-5b59b9dcef44
+x
+java:S1144à"/Remove this unused private "actualizar" method.(ãß¹Äıÿÿÿÿ8èÌı½å1J$f6c18fe6-5f28-4578-9d5c-7c9ca086e88b
+w
+java:S1144ó".Remove this unused private "verificar" method.(œ“€—üÿÿÿÿ8èÌı½å1J$5a062083-f5e9-4481-b90f-cc0fed2600e9
