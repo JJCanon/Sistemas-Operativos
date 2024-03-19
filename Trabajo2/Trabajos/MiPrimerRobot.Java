@@ -40,6 +40,7 @@ public class MiPrimerRobot implements Directions {
         Extractor[] extractores = new Extractor[cantidadExtractores];
         int posStreet=20;
         int posAvenue=20;
+
         //Creacion de Robot Mineros
         for(int i = 0; i < cantidadMineros; i++) {
             mineros[i] = new Minero(posStreet, posAvenue, South, 0, colorMinero, matriz);
@@ -72,6 +73,7 @@ public class MiPrimerRobot implements Directions {
                 }
             }
         }
+
         //Creacion de Robots Extractores
         for(int i = 0; i < cantidadExtractores; i++){
             extractores[i] = new Extractor(posStreet, posAvenue,South, 0, colorExtractor,matriz);
@@ -90,7 +92,6 @@ public class MiPrimerRobot implements Directions {
                 }
             }
         }
-
     }
 }
 
@@ -220,6 +221,7 @@ class Minero extends Robot implements Runnable{
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
+        //verificar(direction);
         move();
         //actualizar(currentStreet, currentAvenue);
     }
@@ -431,8 +433,9 @@ class Tren extends Robot implements Runnable{
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
+       // verificar(direction);
         move();
-        //actualizar(currentStreet, currentAvenue);
+       // actualizar(currentStreet, currentAvenue);
     }
     private void recogerBeepers(){
         while (nextToABeeper() &&(beepersInBag < maxBeepers)){
@@ -679,8 +682,9 @@ class Extractor extends Robot implements Runnable{
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
+        //verificar(direction);
         move();
-        //actualizar(currentStreet, currentAvenue);
+        actualizar(currentStreet, currentAvenue);
     }
     private void girar(Direction direction) {
         if(direction==North) {
@@ -752,13 +756,13 @@ class Extractor extends Robot implements Runnable{
         else if (direction==West)
             street--;
         try {
-            MiPrimerRobot.semaforoMatriz.acquire();
+            semaforoMatriz.acquire();
             matriz[oldStreet - 1][oldAvenue - 1] = false;
             matriz[street - 1][avenue - 1] = true;
         }catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            MiPrimerRobot.semaforoMatriz.release();
+            semaforoMatriz.release();
         }
     }
     private boolean verificar(Direction direction) {
