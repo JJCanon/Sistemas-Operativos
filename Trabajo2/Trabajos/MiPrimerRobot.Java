@@ -4,8 +4,7 @@ import kareltherobot.*;
 import java.awt.Color;
 import java.util.concurrent.Semaphore;
 
-public class MiPrimerRobot implements Directions
-{
+public class MiPrimerRobot implements Directions {
     //Semaforos
     static Semaphore semaforoMatriz=new Semaphore(1);
     static Semaphore semaforoMinero=new Semaphore(1);
@@ -56,7 +55,6 @@ public class MiPrimerRobot implements Directions
                 }
             }
         }
-
         //Creacion de Robots Trenes
         for(int i = 0; i < cantidadTrenes; i++){
             trenes[i] = new Tren(posStreet, posAvenue,South, 0, colorTren,matriz);
@@ -96,7 +94,7 @@ public class MiPrimerRobot implements Directions
 }
 
 //Clase para implementar Mineros
-class Minero extends Robot{
+class Minero extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
     final Semaphore semaforoMinero = MiPrimerRobot.semaforoMinero;
     int street,avenue;
@@ -104,6 +102,7 @@ class Minero extends Robot{
     boolean[][] matriz;
     //Capacidad máxima de beepers que puede almacenar
     private int maxBeepers = 50;
+    private int beepersInBag;
     public Minero (int Street, int Avenue, Direction direction, int beepers, Color color,boolean[][] matriz){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
@@ -119,12 +118,14 @@ class Minero extends Robot{
         } finally {
             semaforoMatriz.release();
         }
+        beepersInBag=0;
     }
     @Override
-    public void run()
-    {
+    public void run() {
         moverAEntrada(8,1);
         moverAMina();
+        while(true)
+            minar();
     }
     private void moverAEntrada( int streetE,int avenueE) {
         //Street=Y Avenue=X
@@ -179,6 +180,42 @@ class Minero extends Robot{
         girar(South);
         mover();
         girar(North);
+    }
+    private void minar(){
+        try{
+            semaforoMinero.acquire();
+            excavar();
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            semaforoMinero.release();
+        }
+        for (int descargarMinas = 0; descargarMinas < beepersInBag; descargarMinas++) {
+            putBeeper();
+        }
+        beepersInBag=0;
+        girar(South);
+        mover();
+        girar(East);
+        mover();
+        girar(North);
+    }
+    private void excavar(){
+        mover();
+        girar(East);
+        for (int movements = 0; movements < 5; movements++)
+            mover();
+        girar(West);
+        buscarMinas();
+    }
+    private void buscarMinas(){
+        for (int movements = 0; movements < 6; movements++) {
+            while (nextToABeeper() &&(beepersInBag < maxBeepers)){
+                    pickBeeper();
+                    beepersInBag++;
+            }
+            mover();
+        }
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
@@ -272,19 +309,21 @@ class Minero extends Robot{
         else if (direction==East)
             return matriz[street-1][avenue];
         else if (direction==West)
-            return matriz[street-1][avenue];
+            return matriz[street-1][avenue-2];
         else return false;
     }
 }
 //Clase para implementar Trenes
-class Tren extends Robot{
+class Tren extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
     int street,avenue;
     Direction direction;
+    //Capacidad máxima de beepers que puede almacenar
+    private int maxBeepers=120;
+    //cantidad de beepers en maleta
+    private int beepersInBag;
     //Matriz Compartida
     boolean[][] matriz;
-    //Capacidad máxima de beepers que puede almacenar
-    private int max = 120;
     public Tren (int Street, int Avenue, Direction direction, int beepers, Color color,boolean[][] matriz){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
@@ -300,10 +339,10 @@ class Tren extends Robot{
         } finally {
             semaforoMatriz.release();
         }
+        beepersInBag=0;
     }
     @Override
-    public void run()
-    {
+    public void run() {
         moverAEntrada(8,1);
         moverAIniciotren();
         while(true)
@@ -363,9 +402,7 @@ class Tren extends Robot{
         girar(East);
         for (int movements = 0; movements < 5; movements++)
             mover();
-        /*
-       Aqui se debe esperar a que hayan beepers
-         */
+        recogerBeepers();
         girar(South);
         for (int movements = 0; movements < 5; movements++)
             mover();
@@ -376,14 +413,24 @@ class Tren extends Robot{
         for (int movements = 0; movements < 5; movements++)
             mover();
         girar(East);
-        /*
-        Aqui se deben descargar los beepers
-         */
+        descargarBeepers();
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
         move();
         //actualizar(currentStreet, currentAvenue);
+    }
+    private void recogerBeepers(){
+        while (nextToABeeper() &&(beepersInBag < maxBeepers)){
+            pickBeeper();
+            beepersInBag++;
+        }
+    }
+    private void descargarBeepers(){
+        for (int descargarMinas = 0; descargarMinas < beepersInBag; descargarMinas++) {
+            putBeeper();
+        }
+        beepersInBag=0;
     }
     private void girar(Direction direction) {
         if(direction==North) {
@@ -505,9 +552,10 @@ class Extractor extends Robot implements Runnable{
         }
     }
     @Override
-    public void run()
-    {
+    public void run() {
         moverAEntrada(8,1);
+        while(true)
+            Extraer();
     }
     private void moverAEntrada( int streetE,int avenueE) {
         //Street=Y Avenue=X
@@ -539,6 +587,65 @@ class Extractor extends Robot implements Runnable{
             mover();
             vertical--;
         }
+    }
+    private void Extraer(){
+        try{
+            semaforoExtractor.acquire();
+            buscarBeepers();
+            extraerBeepers();
+
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            semaforoExtractor.release();
+        }
+        almacenarBeepers();
+    }
+    private void buscarBeepers(){
+        girar(East);
+        mover();
+        girar(South);
+        mover();
+        girar(West);
+        move();
+        girar(South);
+        for(int movements = 0;movements < 6;movements++)
+            mover();
+        girar(East);
+        mover();
+        mover();
+        girar(West);
+    }
+    private void extraerBeepers(){
+        mover();
+        mover();
+        girar(North);
+        for (int movements = 0; movements < 6; movements++)
+            mover();
+        girar(East);
+        mover();
+        girar(North);
+        mover();
+        girar(East);
+        mover();
+        girar(North);
+    }
+    private void almacenarBeepers(){
+        for (int movements = 0; movements < 4; movements++)
+            mover();
+        girar(East);
+        for (int movements = 0; movements < 17; movements++)
+            mover();
+        girar(North);
+        for (int movements = 0; movements < 8; movements++)
+            mover();
+        girar(West);
+        for (int movements = 0; movements < 19; movements++)
+            mover();
+        girar(South);
+        for (int movements = 0; movements < 12; movements++)
+            mover();
+
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
