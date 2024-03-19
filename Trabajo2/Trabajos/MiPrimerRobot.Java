@@ -2,6 +2,7 @@ package Trabajos;
 
 import kareltherobot.*;
 import java.awt.Color;
+import java.nio.file.WatchService;
 import java.util.concurrent.Semaphore;
 
 import static java.lang.System.out;
@@ -21,6 +22,7 @@ public class MiPrimerRobot implements Directions
         // Usamos el archivo que creamos del mundo
         World.readWorld("MinaKarel.kwld");
         World.setVisible(true);
+        World.setDelay(20);
 
         //Argumentos a recibir
         int cantidadTrenes = 2, cantidadExtractores = 2;
@@ -40,8 +42,10 @@ public class MiPrimerRobot implements Directions
         int posStreet=20;
         int posAvenue=20;
         //Creacion de Robot Mineros
-        /*for(int i = 0; i < cantidadMineros; i++) {
+        for(int i = 0; i < cantidadMineros; i++) {
             mineros[i] = new Minero(posStreet, posAvenue, South, 0, colorMinero, matriz);
+            Thread HiloMinero=new Thread((mineros[i]));
+            HiloMinero.start();
             if (posAvenue > 1) {
                 posAvenue--;
             }
@@ -57,6 +61,8 @@ public class MiPrimerRobot implements Directions
         //Creacion de Robots Trenes
         for(int i = 0; i < cantidadTrenes; i++){
             trenes[i] = new Tren(posStreet, posAvenue,South, 0, colorTren,matriz);
+            Thread HiloTrenes = new Thread(trenes[i]);
+            HiloTrenes.start();
             if (posAvenue > 1) {
                 posAvenue--;
             }
@@ -67,7 +73,7 @@ public class MiPrimerRobot implements Directions
                     posStreet--;
                 }
             }
-        }*/
+        }
         //Creacion de Robots Extractores
         for(int i = 0; i < cantidadExtractores; i++){
             extractores[i] = new Extractor(posStreet, posAvenue,South, 0, colorExtractor,matriz);
@@ -115,24 +121,37 @@ class Minero extends Robot{
         }
     }
 
-    private void moverAEntrada()
+    private void moverAEntrada( int streetE,int avenueE)
     {
-        int streetEntry = 7;
-        int avenueEntry = 1;
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
+        //Street=Y Avenue=X
+        Direction streetD,avenueD;
+        int horizontal,vertical;
+        if (streetE<this.street) {
+            vertical = this.street - streetE;
+            streetD = South;
+        }
+        else {
+            vertical = streetE - this.street;
+            streetD = North;
+        }
+        if (avenueE<this.avenue) {
+            horizontal = this.avenue - avenueE;
+            avenueD = West;
+        }
+        else {
+            horizontal = avenueE - this.avenue;
+            avenueD = East;
+        }
+        girar(avenueD);
+        while(horizontal!=0){
+            mover();
+            horizontal--;
+        }
+        girar(streetD);
+        while(vertical!=0){
+            mover();
+            vertical--;
+        }
     }
     private void mover()
     {
@@ -140,25 +159,24 @@ class Minero extends Robot{
         move();
         if (direction==North)
         {
-            street++;
+            avenue++;
 
         }
         else if (direction==South)
         {
-            street--;
+            avenue--;
         }else if (direction==East)
         {
-            avenue++;
+            street++;
         }
         else if (direction==West)
         {
-            avenue--;
+            street--;
         }
         actualizar(currentStreet,currentAvenue);
     }
     private void actualizar(int oldStreet,int oldAvenue)
     {
-
         try
         {
             semaforoMatriz.acquire();
@@ -169,6 +187,72 @@ class Minero extends Robot{
         }finally {
             semaforoMatriz.release();
         }
+    }
+    private void girar(Direction direction)
+    {
+        if(direction==North) {
+            if(this.direction==South) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                this.direction=direction;
+            }
+
+        } else if (direction==South) {
+            if(this.direction==North) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        } else if (direction==West) {
+            if(this.direction==North) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==South) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        } else if (direction==East) {
+            if(this.direction==North) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==South) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        }
+    }
+    @Override
+    public void run()
+    {
+        moverAEntrada(8,1);
     }
 }
 //Clase para implementar Trenes
@@ -197,25 +281,37 @@ class Tren extends Robot{
         }
     }
 
-    private void moverAEntrada()
+    private void moverAEntrada( int streetE,int avenueE)
     {
-        int streetEntry = 7;
-        int avenueEntry = 1;
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-        mover();
-        out.println(street);
-        out.println(avenue);
-
+        //Street=Y Avenue=X
+        Direction streetD,avenueD;
+        int horizontal,vertical;
+        if (streetE<this.street) {
+            vertical = this.street - streetE;
+            streetD = South;
+        }
+        else {
+            vertical = streetE - this.street;
+            streetD = North;
+        }
+        if (avenueE<this.avenue) {
+            horizontal = this.avenue - avenueE;
+            avenueD = West;
+        }
+        else {
+            horizontal = avenueE - this.avenue;
+            avenueD = East;
+        }
+        girar(avenueD);
+        while(horizontal!=0){
+            mover();
+            horizontal--;
+        }
+        girar(streetD);
+        while(vertical!=0){
+            mover();
+            vertical--;
+        }
     }
     private void mover()
     {
@@ -223,25 +319,24 @@ class Tren extends Robot{
         move();
         if (direction==North)
         {
-            street++;
+            avenue++;
 
         }
         else if (direction==South)
         {
-            street--;
+            avenue--;
         }else if (direction==East)
         {
-            avenue++;
+            street++;
         }
         else if (direction==West)
         {
-            avenue--;
+            street--;
         }
         actualizar(currentStreet,currentAvenue);
     }
     private void actualizar(int oldStreet,int oldAvenue)
     {
-
         try
         {
             semaforoMatriz.acquire();
@@ -253,7 +348,74 @@ class Tren extends Robot{
             semaforoMatriz.release();
         }
     }
+    private void girar(Direction direction)
+    {
+        if(direction==North) {
+            if(this.direction==South) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                this.direction=direction;
+            }
+
+        } else if (direction==South) {
+            if(this.direction==North) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        } else if (direction==West) {
+            if(this.direction==North) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==South) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==East) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        } else if (direction==East) {
+            if(this.direction==North) {
+                turnLeft();
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==South) {
+                turnLeft();
+                this.direction=direction;
+            } else if (this.direction==West) {
+                turnLeft();
+                turnLeft();
+                this.direction=direction;
+            }
+        }
+    }
+    @Override
+    public void run()
+    {
+        moverAEntrada(8,1);
+    }
 }
+
 //Clase para implementar Extractores
 class Extractor extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
@@ -281,29 +443,36 @@ class Extractor extends Robot implements Runnable{
             MiPrimerRobot.semaforoMatriz.release();
         }
     }
-    private void moverAEntrada()
+    private void moverAEntrada( int streetE,int avenueE)
     {
         //Street=Y Avenue=X
-        int streetEntry = 1;
-        int avenueEntry = 8;
-        out.println(street-streetEntry);
-        out.println(avenue-avenueEntry);
-        while(street!=streetEntry) {
-            if(streetEntry<street) {
-                girar(West);
-                mover();
-            }else if(streetEntry>street) {
-                girar(East);
-                mover();
-            }}
-        while(avenue!=avenueEntry){
-            if (avenueEntry>avenue) {
-                girar(North);
-                mover();
-            } else if (avenueEntry<avenue) {
-                girar(South);
-                mover();
-            }
+        Direction streetD,avenueD;
+        int horizontal,vertical;
+        if (streetE<this.street) {
+            vertical = this.street - streetE;
+            streetD = South;
+        }
+        else {
+            vertical = streetE - this.street;
+            streetD = North;
+        }
+        if (avenueE<this.avenue) {
+            horizontal = this.avenue - avenueE;
+            avenueD = West;
+        }
+        else {
+            horizontal = avenueE - this.avenue;
+            avenueD = East;
+        }
+        girar(avenueD);
+        while(horizontal!=0){
+            mover();
+            horizontal--;
+        }
+        girar(streetD);
+        while(vertical!=0){
+            mover();
+            vertical--;
         }
     }
 
@@ -403,10 +572,9 @@ class Extractor extends Robot implements Runnable{
             }
         }
     }
-
     @Override
     public void run()
     {
-        moverAEntrada();
+        moverAEntrada(8,1);
     }
 }
