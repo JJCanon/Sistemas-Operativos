@@ -9,6 +9,7 @@ public class MiPrimerRobot implements Directions {
     static Semaphore semaforoMatriz=new Semaphore(1);
     static Semaphore semaforoMinero=new Semaphore(1);
     static Semaphore semaforoExtractor=new Semaphore(1);
+    static Semaphore semaforoCruce = new Semaphore(1);
     //Matriz que comparte las pocisiones de los robots
     private static boolean[][] matriz = new boolean[20][20];
 
@@ -316,6 +317,7 @@ class Minero extends Robot implements Runnable{
 //Clase para implementar Trenes
 class Tren extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
+    final Semaphore semaforoCruce = MiPrimerRobot.semaforoCruce;
     int street,avenue;
     Direction direction;
     //Capacidad máxima de beepers que puede almacenar
@@ -412,8 +414,20 @@ class Tren extends Robot implements Runnable{
         girar(South);
         for (int movements = 0; movements < 5; movements++)
             mover();
-        girar(East);
-        descargarBeepers();
+        
+        try{
+            semaforoCruce.acquire();
+            girar(West);
+            mover();
+            descargarBeepers();
+            girar(East);
+            mover();
+            mover();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        } finally {
+            semaforoCruce.release();
+        }
     }
     private void mover() {
         int currentStreet=street,currentAvenue=avenue;
@@ -527,6 +541,7 @@ class Tren extends Robot implements Runnable{
 class Extractor extends Robot implements Runnable{
     final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
     final Semaphore semaforoExtractor=MiPrimerRobot.semaforoExtractor;
+    final Semaphore semaforoCruce = MiPrimerRobot.semaforoCruce;
     private int street,avenue;
     private Direction direction;
     //Matriz Compartida
@@ -591,6 +606,7 @@ class Extractor extends Robot implements Runnable{
     private void Extraer(){
         try{
             semaforoExtractor.acquire();
+            semaforoCruce.acquire();
             buscarBeepers();
             extraerBeepers();
 
@@ -598,6 +614,7 @@ class Extractor extends Robot implements Runnable{
             e.printStackTrace();
         }finally {
             semaforoExtractor.release();
+            semaforoCruce.release();
         }
         almacenarBeepers();
     }
@@ -612,7 +629,6 @@ class Extractor extends Robot implements Runnable{
         for(int movements = 0;movements < 6;movements++)
             mover();
         girar(East);
-        mover();
         mover();
         girar(West);
     }
