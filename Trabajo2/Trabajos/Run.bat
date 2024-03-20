@@ -1,3 +1,3 @@
-java -cp ".;KarelJRobot.jar" Trabajos/MiPrimerRobot
+java -cp ".;KarelJRobot.jar" Trabajos/Minero %*
 pause
 exit

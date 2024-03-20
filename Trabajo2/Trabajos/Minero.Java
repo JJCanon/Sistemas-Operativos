@@ -4,7 +4,7 @@ import kareltherobot.*;
 import java.awt.Color;
 import java.util.concurrent.Semaphore;
 
-public class MiPrimerRobot implements Directions {
+public class Minero implements Directions {
     //Semaforos
     static Semaphore semaforoMatriz=new Semaphore(1);
     static Semaphore semaforoMinero=new Semaphore(1);
@@ -13,29 +13,41 @@ public class MiPrimerRobot implements Directions {
     //Matriz que comparte las pocisiones de los robots
     private static boolean[][] matriz = new boolean[20][20];
 
-    public static void main(String [] args)
-    {
-        // m = cantidad de mineros, t = cantidad de Trenes || omitimos los estractores ya que por limitaciones del mundo y descripcion del enunciado, solo pueden haber 2 mineros.
-        int m,t;
-
+    public static void main(String[] args) throws InterruptedException {
+        // m = cantidad de mineroRobots, t = cantidad de Trenes || omitimos los estractores ya que por limitaciones del mundo y descripcion del enunciado, solo pueden haber 2 mineroRobots.
+        int numMineros=0,numTrenes=0,numExtractores=0;
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-m")) {
+                numMineros = Integer.parseInt(args[i + 1]);
+            } else if (args[i].equals("-t")) {
+                numTrenes = Integer.parseInt(args[i + 1]);
+            } else if (args[i].equals("-e")) {
+                numExtractores = Integer.parseInt(args[i + 1]);
+            }
+        }
         // Usamos el archivo que creamos del mundo
         World.readWorld("MinaKarel.kwld");
         World.setVisible(true);
-        World.setDelay(20);
-
+        World.setDelay(25);
         //Argumentos a recibir
-        int cantidadTrenes = 2, cantidadExtractores = 2;
+
         //Variables de color, mínimos y máximos por robos
         Color colorTren = Color.blue;
         Color colorMinero = Color.black;
         Color colorExtractor = Color.red;
-        int maxTren = 37, minTren = 2;
-        int cantidadMineros = 2; //Por limitaciones del mundo y descripción del enunciado, sólo pueden haber 2 mineros
-        int maxExtractor = 5, minExtractor = 2;
+        int maxTren = 36, minTren = 2;
+        int cantidadMineros = 2; //Por limitaciones del mundo y descripción del enunciado, sólo pueden haber 2 mineroRobots
+        int maxExtractor = 10, minExtractor = 2;
+        int cantidadTrenes = 2, cantidadExtractores = 2;
+
+        if(numTrenes>minTren && numTrenes<maxTren)
+            cantidadTrenes=numTrenes;
+        if(numExtractores>minExtractor && numExtractores<maxExtractor)
+            cantidadExtractores=numExtractores;
 
 
         //Arreglos donde se almacenan los robots que crearemos
-        Minero[] mineros = new Minero[cantidadMineros];
+        MineroRobot[] mineroRobots = new MineroRobot[cantidadMineros];
         Tren[] trenes = new Tren[cantidadTrenes];
         Extractor[] extractores = new Extractor[cantidadExtractores];
         int posStreet=20;
@@ -43,8 +55,8 @@ public class MiPrimerRobot implements Directions {
 
         //Creacion de Robot Mineros
         for(int i = 0; i < cantidadMineros; i++) {
-            mineros[i] = new Minero(posStreet, posAvenue, South, 0, colorMinero, matriz);
-            Thread HiloMinero=new Thread((mineros[i]));
+            mineroRobots[i] = new MineroRobot(posStreet, posAvenue, South, 0, colorMinero, matriz);
+            Thread HiloMinero=new Thread((mineroRobots[i]));
             HiloMinero.start();
             if (posAvenue > 1) {
                 posAvenue--;
@@ -56,6 +68,7 @@ public class MiPrimerRobot implements Directions {
                     posStreet--;
                 }
             }
+            Thread.sleep(1000);
         }
         //Creacion de Robots Trenes
         for(int i = 0; i < cantidadTrenes; i++){
@@ -72,6 +85,7 @@ public class MiPrimerRobot implements Directions {
                     posStreet--;
                 }
             }
+            Thread.sleep(1000);
         }
 
         //Creacion de Robots Extractores
@@ -91,21 +105,22 @@ public class MiPrimerRobot implements Directions {
                     posStreet=20;
                 }
             }
+            Thread.sleep(1000);
         }
     }
 }
 
 //Clase para implementar Mineros
-class Minero extends Robot implements Runnable{
-    final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
-    final Semaphore semaforoMinero = MiPrimerRobot.semaforoMinero;
+class MineroRobot extends Robot implements Runnable{
+    final Semaphore semaforoMatriz = Minero.semaforoMatriz;
+    final Semaphore semaforoMinero = Minero.semaforoMinero;
     int street,avenue;
     Direction direction;
     boolean[][] matriz;
     //Capacidad máxima de beepers que puede almacenar
     private int maxBeepers = 50;
     private int beepersInBag;
-    public Minero (int Street, int Avenue, Direction direction, int beepers, Color color,boolean[][] matriz){
+    public MineroRobot(int Street, int Avenue, Direction direction, int beepers, Color color, boolean[][] matriz){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
         this.street=Street;
@@ -220,10 +235,15 @@ class Minero extends Robot implements Runnable{
         }
     }
     private void mover() {
-        int currentStreet=street,currentAvenue=avenue;
-        //verificar(direction);
+        if (direction==North)
+            avenue++;
+        else if (direction==South)
+            avenue--;
+        else if (direction==East)
+            street++;
+        else if (direction==West)
+            street--;
         move();
-        //actualizar(currentStreet, currentAvenue);
     }
     private void girar(Direction direction) {
         if(direction==North) {
@@ -286,14 +306,6 @@ class Minero extends Robot implements Runnable{
         }
     }
     private void actualizar(int oldStreet,int oldAvenue) {
-            if (direction==North)
-                avenue++;
-            else if (direction==South)
-                avenue--;
-            else if (direction==East)
-                street++;
-            else if (direction==West)
-                street--;
             try {
                 semaforoMatriz.acquire();
                 matriz[oldStreet - 1][oldAvenue - 1] = false;
@@ -318,8 +330,8 @@ class Minero extends Robot implements Runnable{
 }
 //Clase para implementar Trenes
 class Tren extends Robot implements Runnable{
-    final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
-    final Semaphore semaforoCruce = MiPrimerRobot.semaforoCruce;
+    final Semaphore semaforoMatriz = Minero.semaforoMatriz;
+    final Semaphore semaforoCruce = Minero.semaforoCruce;
     int street,avenue;
     Direction direction;
     //Capacidad máxima de beepers que puede almacenar
@@ -416,7 +428,6 @@ class Tren extends Robot implements Runnable{
         girar(South);
         for (int movements = 0; movements < 4; movements++)
             mover();
-        
         try{
             semaforoCruce.acquire();
             move();
@@ -432,10 +443,15 @@ class Tren extends Robot implements Runnable{
         }
     }
     private void mover() {
-        int currentStreet=street,currentAvenue=avenue;
-       // verificar(direction);
+        if (direction==North)
+            avenue++;
+        else if (direction==South)
+            avenue--;
+        else if (direction==East)
+            street++;
+        else if (direction==West)
+            street--;
         move();
-       // actualizar(currentStreet, currentAvenue);
     }
     private void recogerBeepers(){
         while (nextToABeeper() &&(beepersInBag < maxBeepers)){
@@ -510,14 +526,6 @@ class Tren extends Robot implements Runnable{
         }
     }
     private void actualizar(int oldStreet,int oldAvenue) {
-        if (direction==North)
-            avenue++;
-        else if (direction==South)
-            avenue--;
-        else if (direction==East)
-            street++;
-        else if (direction==West)
-            street--;
         try {
             semaforoMatriz.acquire();
             matriz[oldStreet - 1][oldAvenue - 1] = false;
@@ -542,9 +550,9 @@ class Tren extends Robot implements Runnable{
 }
 //Clase para implementar Extractores
 class Extractor extends Robot implements Runnable{
-    final Semaphore semaforoMatriz = MiPrimerRobot.semaforoMatriz;
-    final Semaphore semaforoExtractor=MiPrimerRobot.semaforoExtractor;
-    final Semaphore semaforoCruce = MiPrimerRobot.semaforoCruce;
+    final Semaphore semaforoMatriz = Minero.semaforoMatriz;
+    final Semaphore semaforoExtractor=Minero.semaforoExtractor;
+    final Semaphore semaforoCruce = Minero.semaforoCruce;
     private int street,avenue;
     private Direction direction;
     //Matriz Compartida
@@ -681,10 +689,15 @@ class Extractor extends Robot implements Runnable{
         }
     }
     private void mover() {
-        int currentStreet=street,currentAvenue=avenue;
-        //verificar(direction);
+        if (direction==North)
+            avenue++;
+        else if (direction==South)
+            avenue--;
+        else if (direction==East)
+            street++;
+        else if (direction==West)
+            street--;
         move();
-        actualizar(currentStreet, currentAvenue);
     }
     private void girar(Direction direction) {
         if(direction==North) {
@@ -747,14 +760,6 @@ class Extractor extends Robot implements Runnable{
         }
     }
     private void actualizar(int oldStreet,int oldAvenue) {
-        if (direction==North)
-            avenue++;
-        else if (direction==South)
-            avenue--;
-        else if (direction==East)
-            street++;
-        else if (direction==West)
-            street--;
         try {
             semaforoMatriz.acquire();
             matriz[oldStreet - 1][oldAvenue - 1] = false;
