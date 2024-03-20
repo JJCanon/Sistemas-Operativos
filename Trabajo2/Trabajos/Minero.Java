@@ -7,12 +7,14 @@ import java.util.concurrent.Semaphore;
 public class Minero implements Directions {
     //Semaforos
     static Semaphore semaforoMatriz=new Semaphore(1);
+    static Semaphore SemaforoMatriz2=new Semaphore(1);
     static Semaphore semaforoMinero=new Semaphore(1);
     static Semaphore semaforoExtractor=new Semaphore(1);
     static Semaphore semaforoCruceET = new Semaphore(1);
     static Semaphore semaforoCruceTM = new Semaphore(1);
     //Matriz que comparte las pocisiones de los robots
     private static boolean[][] matriz = new boolean[20][20];
+    private static boolean[][] matriz2=new boolean[20][20];
 
     public static void main(String[] args) throws InterruptedException {
         // m = cantidad de mineroRobots, t = cantidad de Trenes || omitimos los estractores ya que por limitaciones del mundo y descripcion del enunciado, solo pueden haber 2 mineroRobots.
@@ -90,21 +92,9 @@ public class Minero implements Directions {
 
         //Creacion de Robots Extractores
         for(int i = 0; i < cantidadExtractores; i++){
-            extractores[i] = new Extractor(posStreet, posAvenue,South, 0, colorExtractor,matriz);
+            extractores[i] = new Extractor(20, 20,South, 0, colorExtractor,matriz2);
             Thread HiloExtractor = new Thread(extractores[i]);
             HiloExtractor.start();
-            if (posAvenue > 1) {
-                posAvenue--;
-            }
-            else {
-                posAvenue=20;
-                if(posStreet>1)
-                {
-                    posStreet--;
-                }else{
-                    posStreet=20;
-                }
-            }
             Thread.sleep(1000);
         }
     }
@@ -128,14 +118,6 @@ class MineroRobot extends Robot implements Runnable{
         this.avenue=Avenue;
         this.direction=direction;
         this.matriz=matriz;
-        try {
-            semaforoMatriz.acquire();
-            matriz[Street-1][Avenue-1] = true;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            semaforoMatriz.release();
-        }
         beepersInBag=0;
     }
     @Override
@@ -364,14 +346,6 @@ class Tren extends Robot implements Runnable{
         this.avenue=Avenue;
         this.direction=direction;
         this.matriz=matriz;
-        try {
-            semaforoMatriz.acquire();
-            matriz[Street-1][Avenue-1] = true;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            semaforoMatriz.release();
-        }
         beepersInBag=0;
     }
     @Override
@@ -428,36 +402,36 @@ class Tren extends Robot implements Runnable{
     }
     private void realizarRecorrido() {
         for (int movements = 0; movements < 5; movements++)
-            mover();
+            mover2();
         girar(North);
         for (int movements = 0; movements < 10; movements++)
-            mover();
+            mover2();
         girar(East);
         for (int movements = 0; movements < 4; movements++)
-            mover();
+            mover2();
         try {
             semaforoCruceTM.acquire();
-            mover();
+            mover2();
             recogerBeepers();
             girar(South);
-            mover();
-            mover();
+            mover2();
+            mover2();
         } catch (InterruptedException e){
             e.printStackTrace();
         }finally {
             semaforoCruceTM.release();
         }
         for (int movements = 0; movements < 3; movements++)
-            mover();
+            mover2();
         girar(West);
         for (int movements = 0; movements < 10; movements++)
-            mover();
+            mover2();
         girar(South);
         for (int movements = 0; movements < 4; movements++)
-            mover();
+            mover2();
         try{
             semaforoCruceET.acquire();
-            mover();
+            mover2();
             girar(West);
             mover();
             descargarBeepers();
@@ -553,15 +527,8 @@ class Tren extends Robot implements Runnable{
         }
     }
     private void actualizar(int oldStreet,int oldAvenue) {
-        try {
-            semaforoMatriz.acquire();
             matriz[oldStreet - 1][oldAvenue - 1] = false;
             matriz[street - 1][avenue - 1] = true;
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            semaforoMatriz.release();
-        }
     }
     private boolean verificar(Direction direction) {
         if (direction==North)
@@ -574,10 +541,29 @@ class Tren extends Robot implements Runnable{
             return matriz[street-1][avenue];
         else return false;
     }
+    private void mover2(){
+        boolean movido=false;
+        while(!movido)
+        {
+            try {
+                semaforoMatriz.acquire();
+                if (!verificar(this.direction)){
+                    int currentStreet=street,currentAvenue=avenue;
+                    mover();
+                    movido=true;
+                    actualizar(currentStreet,currentAvenue);
+                }
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }finally {
+                semaforoMatriz.release();
+            }
+        }
+    }
 }
 //Clase para implementar Extractores
 class Extractor extends Robot implements Runnable{
-    final Semaphore semaforoMatriz = Minero.semaforoMatriz;
+    final Semaphore semaforoMatriz2 = Minero.SemaforoMatriz2;
     final Semaphore semaforoExtractor=Minero.semaforoExtractor;
     final Semaphore semaforoCruceET = Minero.semaforoCruceET;
     private int street,avenue;
@@ -595,14 +581,7 @@ class Extractor extends Robot implements Runnable{
         this.direction=direction;
         this.matriz=matriz;
         beepersInBag=0;
-        try {
-            semaforoMatriz.acquire();
-            matriz[Street-1][Avenue-1] = true;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            semaforoMatriz.release();
-        }
+
     }
     @Override
     public void run() {
@@ -632,12 +611,12 @@ class Extractor extends Robot implements Runnable{
         }
         girar(avenueD);
         while(horizontal!=0){
-            mover();
+            mover2();
             horizontal--;
         }
         girar(streetD);
         while(vertical!=0){
-            mover();
+            mover2();
             vertical--;
         }
     }
@@ -656,7 +635,8 @@ class Extractor extends Robot implements Runnable{
     }
     private void buscarBeepers(){
         girar(East);
-        mover();
+        mover2();
+        matriz[street-1][avenue-1]=false;
         girar(South);
         mover();
         girar(West);
@@ -695,16 +675,17 @@ class Extractor extends Robot implements Runnable{
     }
     private void almacenarBeepers(){
         for (int movements = 0; movements < 4; movements++)
-            mover();
+            mover2();
         girar(East);
         for (int movements = 0; movements < 17; movements++)
-            mover();
+            mover2();
         girar(North);
         for (int movements = 0; movements < 8; movements++)
-            mover();
-        descargarBeepers();
+            mover2();
+        if (beepersInBag!=0)
+            descargarBeepers();
         girar(West);
-        moverAEntrada(8,1);
+        moverAEntrada2(8,1);
     }
     private void descargarBeepers(){
         for (int beepers = 0; beepers < beepersInBag; beepers++) {
@@ -783,15 +764,8 @@ class Extractor extends Robot implements Runnable{
         }
     }
     private void actualizar(int oldStreet,int oldAvenue) {
-        try {
-            semaforoMatriz.acquire();
-            matriz[oldStreet - 1][oldAvenue - 1] = false;
-            matriz[street - 1][avenue - 1] = true;
-        }catch (InterruptedException e) {
-            e.printStackTrace();
-        }finally {
-            semaforoMatriz.release();
-        }
+        matriz[oldStreet - 1][oldAvenue - 1] = false;
+        matriz[street - 1][avenue - 1] = true;
     }
     private boolean verificar(Direction direction) {
         if (direction==North)
@@ -801,7 +775,62 @@ class Extractor extends Robot implements Runnable{
         else if (direction==East)
             return matriz[street-1][avenue];
         else if (direction==West)
-            return matriz[street-1][avenue];
+            return matriz[street-1][avenue-2];
         else return false;
+    }
+    private void mover2(){
+        boolean movido=false;
+        while(!movido)
+        {
+            try {
+                semaforoMatriz2.acquire();
+                if (!verificar(this.direction)){
+                    int currentStreet=street,currentAvenue=avenue;
+                    mover();
+                    movido=true;
+                    actualizar(currentStreet,currentAvenue);
+                }
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }finally {
+                semaforoMatriz2.release();
+            }
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void moverAEntrada2( int streetE,int avenueE) {
+        //Street=Y Avenue=X
+        Direction streetD,avenueD;
+        int horizontal,vertical;
+        if (streetE<this.street) {
+            vertical = this.street - streetE;
+            streetD = South;
+        }
+        else {
+            vertical = streetE - this.street;
+            streetD = North;
+        }
+        if (avenueE<this.avenue) {
+            horizontal = this.avenue - avenueE;
+            avenueD = West;
+        }
+        else {
+            horizontal = avenueE - this.avenue;
+            avenueD = East;
+        }
+        girar(avenueD);
+        while(horizontal!=0){
+            mover2();
+            horizontal--;
+        }
+        girar(streetD);
+        while(vertical!=0){
+            mover2();
+            vertical--;
+        }
     }
 }
