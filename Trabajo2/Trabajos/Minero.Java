@@ -9,7 +9,8 @@ public class Minero implements Directions {
     static Semaphore semaforoMatriz=new Semaphore(1);
     static Semaphore semaforoMinero=new Semaphore(1);
     static Semaphore semaforoExtractor=new Semaphore(1);
-    static Semaphore semaforoCruce = new Semaphore(1);
+    static Semaphore semaforoCruceET = new Semaphore(1);
+    static Semaphore semaforoCruceTM = new Semaphore(1);
     //Matriz que comparte las pocisiones de los robots
     private static boolean[][] matriz = new boolean[20][20];
 
@@ -52,7 +53,6 @@ public class Minero implements Directions {
         Extractor[] extractores = new Extractor[cantidadExtractores];
         int posStreet=20;
         int posAvenue=20;
-
         //Creacion de Robot Mineros
         for(int i = 0; i < cantidadMineros; i++) {
             mineroRobots[i] = new MineroRobot(posStreet, posAvenue, South, 0, colorMinero, matriz);
@@ -114,6 +114,7 @@ public class Minero implements Directions {
 class MineroRobot extends Robot implements Runnable{
     final Semaphore semaforoMatriz = Minero.semaforoMatriz;
     final Semaphore semaforoMinero = Minero.semaforoMinero;
+    final Semaphore semaforoCruceTM=Minero.semaforoCruceTM;
     int street,avenue;
     Direction direction;
     boolean[][] matriz;
@@ -181,7 +182,7 @@ class MineroRobot extends Robot implements Runnable{
         girar(South);
         mover();
         girar(West);
-        move();
+        mover();
         girar(South);
         for(int movements = 0;movements < 6;movements++)
             mover();
@@ -192,9 +193,11 @@ class MineroRobot extends Robot implements Runnable{
         for (int movements = 0; movements < 10; movements++)
             mover();
         girar(East);
-        for (int movements = 0; movements < 6; movements++)
+        for (int movements = 0; movements < 5; movements++)
             mover();
         girar(South);
+        mover();
+        girar(East);
         mover();
         girar(North);
     }
@@ -205,15 +208,23 @@ class MineroRobot extends Robot implements Runnable{
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
-            semaforoMinero.release();
+            try{
+                semaforoCruceTM.acquire();
+                mover();
+                for (int descargarMinas = 0; descargarMinas < beepersInBag; descargarMinas++) {
+                    putBeeper();
+                }
+                beepersInBag=0;
+                girar(South);
+                mover();
+                girar(East);
+            }catch (InterruptedException e){
+                e.printStackTrace();
+            }finally {
+                semaforoMinero.release();
+                semaforoCruceTM.release();
+            }
         }
-        for (int descargarMinas = 0; descargarMinas < beepersInBag; descargarMinas++) {
-            putBeeper();
-        }
-        beepersInBag=0;
-        girar(South);
-        mover();
-        girar(East);
         mover();
         girar(North);
     }
@@ -226,82 +237,87 @@ class MineroRobot extends Robot implements Runnable{
         buscarMinas();
     }
     private void buscarMinas(){
-        for (int movements = 0; movements < 6; movements++) {
+        for (int movements = 0; movements < 5; movements++) {
             while (nextToABeeper() &&(beepersInBag < maxBeepers)){
                     pickBeeper();
                     beepersInBag++;
             }
             mover();
         }
+        while (nextToABeeper() && beepersInBag <maxBeepers)
+        {
+            pickBeeper();
+            beepersInBag++;
+        }
     }
     private void mover() {
-        if (direction==North)
-            avenue++;
-        else if (direction==South)
-            avenue--;
-        else if (direction==East)
-            street++;
-        else if (direction==West)
-            street--;
         move();
+        if (direction==North)
+            this.street++;
+        else if (direction==South)
+            this.street--;
+        else if (direction==East)
+            this.avenue++;
+        else if (direction==West)
+            this.avenue--;
     }
     private void girar(Direction direction) {
         if(direction==North) {
             if(this.direction==South) {
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=North;
             } else if (this.direction==West) {
                 turnLeft();
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=North;
             } else if (this.direction==East) {
                 turnLeft();
-                this.direction=direction;
+                this.direction=North;
             }
 
         } else if (direction==South) {
             if(this.direction==North) {
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=South;
             } else if (this.direction==West) {
                 turnLeft();
-                this.direction=direction;
+                this.direction=South;
             } else if (this.direction==East) {
                 turnLeft();
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=South;
             }
         } else if (direction==West) {
             if(this.direction==North) {
                 turnLeft();
-                this.direction=direction;
+                this.direction=West;
             } else if (this.direction==South) {
                 turnLeft();
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=West;
             } else if (this.direction==East) {
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=West;
             }
         } else if (direction==East) {
             if(this.direction==North) {
                 turnLeft();
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=East;
             } else if (this.direction==South) {
                 turnLeft();
-                this.direction=direction;
+                this.direction=East;
             } else if (this.direction==West) {
                 turnLeft();
                 turnLeft();
-                this.direction=direction;
+                this.direction=East;
             }
         }
     }
@@ -331,7 +347,8 @@ class MineroRobot extends Robot implements Runnable{
 //Clase para implementar Trenes
 class Tren extends Robot implements Runnable{
     final Semaphore semaforoMatriz = Minero.semaforoMatriz;
-    final Semaphore semaforoCruce = Minero.semaforoCruce;
+    final Semaphore semaforoCruceET = Minero.semaforoCruceET;
+    final Semaphore semaforoCruceTM=Minero.semaforoCruceTM;
     int street,avenue;
     Direction direction;
     //Capacidad máxima de beepers que puede almacenar
@@ -401,7 +418,7 @@ class Tren extends Robot implements Runnable{
         girar(South);
         mover();
         girar(West);
-        move();
+        mover();
         girar(South);
         for(int movements = 0;movements < 6;movements++)
             mover();
@@ -416,11 +433,21 @@ class Tren extends Robot implements Runnable{
         for (int movements = 0; movements < 10; movements++)
             mover();
         girar(East);
-        for (int movements = 0; movements < 5; movements++)
+        for (int movements = 0; movements < 4; movements++)
             mover();
-        recogerBeepers();
-        girar(South);
-        for (int movements = 0; movements < 5; movements++)
+        try {
+            semaforoCruceTM.acquire();
+            mover();
+            recogerBeepers();
+            girar(South);
+            mover();
+            mover();
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }finally {
+            semaforoCruceTM.release();
+        }
+        for (int movements = 0; movements < 3; movements++)
             mover();
         girar(West);
         for (int movements = 0; movements < 10; movements++)
@@ -429,8 +456,8 @@ class Tren extends Robot implements Runnable{
         for (int movements = 0; movements < 4; movements++)
             mover();
         try{
-            semaforoCruce.acquire();
-            move();
+            semaforoCruceET.acquire();
+            mover();
             girar(West);
             mover();
             descargarBeepers();
@@ -439,19 +466,19 @@ class Tren extends Robot implements Runnable{
         } catch (InterruptedException e){
             e.printStackTrace();
         } finally {
-            semaforoCruce.release();
+            semaforoCruceET.release();
         }
     }
     private void mover() {
-        if (direction==North)
-            avenue++;
-        else if (direction==South)
-            avenue--;
-        else if (direction==East)
-            street++;
-        else if (direction==West)
-            street--;
         move();
+        if (direction==North)
+            this.street++;
+        else if (direction==South)
+            this.street--;
+        else if (direction==East)
+            this.avenue++;
+        else if (direction==West)
+            this.avenue--;
     }
     private void recogerBeepers(){
         while (nextToABeeper() &&(beepersInBag < maxBeepers)){
@@ -552,7 +579,7 @@ class Tren extends Robot implements Runnable{
 class Extractor extends Robot implements Runnable{
     final Semaphore semaforoMatriz = Minero.semaforoMatriz;
     final Semaphore semaforoExtractor=Minero.semaforoExtractor;
-    final Semaphore semaforoCruce = Minero.semaforoCruce;
+    final Semaphore semaforoCruceET = Minero.semaforoCruceET;
     private int street,avenue;
     private Direction direction;
     //Matriz Compartida
@@ -633,7 +660,7 @@ class Extractor extends Robot implements Runnable{
         girar(South);
         mover();
         girar(West);
-        move();
+        mover();
         girar(South);
         for(int movements = 0;movements < 6;movements++)
             mover();
@@ -642,7 +669,7 @@ class Extractor extends Robot implements Runnable{
     }
     private void extraerBeepers(){
         try{
-            semaforoCruce.acquire();
+            semaforoCruceET.acquire();
             mover();
             girar(West);
             while(nextToABeeper() && beepersInBag<maxBeepers) {
@@ -653,7 +680,7 @@ class Extractor extends Robot implements Runnable{
         }catch (InterruptedException e){
             e.printStackTrace();
         }finally {
-            semaforoCruce.release();
+            semaforoCruceET.release();
         }
         girar(North);
         for (int movements = 0; movements < 6; movements++)
@@ -677,11 +704,7 @@ class Extractor extends Robot implements Runnable{
             mover();
         descargarBeepers();
         girar(West);
-        for (int movements = 0; movements < street-1; movements++)
-            mover();
-        girar(South);
-        for (int movements = 0; movements < 12; movements++)
-            mover();
+        moverAEntrada(8,1);
     }
     private void descargarBeepers(){
         for (int beepers = 0; beepers < beepersInBag; beepers++) {
@@ -689,15 +712,15 @@ class Extractor extends Robot implements Runnable{
         }
     }
     private void mover() {
-        if (direction==North)
-            avenue++;
-        else if (direction==South)
-            avenue--;
-        else if (direction==East)
-            street++;
-        else if (direction==West)
-            street--;
         move();
+        if (direction==North)
+            this.street++;
+        else if (direction==South)
+            this.street--;
+        else if (direction==East)
+            this.avenue++;
+        else if (direction==West)
+            this.avenue--;
     }
     private void girar(Direction direction) {
         if(direction==North) {
