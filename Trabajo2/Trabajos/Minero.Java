@@ -120,7 +120,7 @@ class MineroRobot extends Robot implements Runnable{
     //Capacidad máxima de beepers que puede almacenar
     private int maxBeepers = 50;
     private int beepersInBag;
-    public MineroRobot(int Street, int Avenue, Direction direction, int beepers, Color color, boolean[][]){
+    public MineroRobot(int Street, int Avenue, Direction direction, int beepers, Color color){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
         this.street=Street;

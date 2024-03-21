@@ -1,0 +1,104 @@
+
+h	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‚ğŠõå1
+r	java:S117="QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(®øú—üÿÿÿÿ8ğŠõå1
+r	java:S117N"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ğÓñµüÿÿÿÿ8ğŠõå1
+m	java:S117`"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰øã8ğŠõå1
+r	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ‰£Şûÿÿÿÿ8‘ğŠõå1
+r	java:S117{"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆ‰£Şûÿÿÿÿ8‘ğŠõå1
+s	java:S117È"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8‘ğŠõå1
+s	java:S117È"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Çœ—×úÿÿÿÿ8‘ğŠõå1
+s	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8’ğŠõå1
+s	java:S117²"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÛÍ‰‰şÿÿÿÿ8’ğŠõå1
+u	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üŠ¨8¡ğŠõå1
+?
+java:S2189‡""Add an end condition to this loop.(¤èÄ78ÿŠõå1
+?
+java:S2189Õ""Add an end condition to this loop.(¤èÄ78‘ÿŠõå1
+?
+java:S2189¿""Add an end condition to this loop.(¤èÄ78‘ÿŠõå1
+|
+java:S3008
+"ZRename this field "SemaforoMatriz2" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÜèúÿÿÿÿ8ÿŠõå1
+n
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 30 to the 15 allowed.(º™Ú78«ÿŠõå1
+[
+java:S1854">Remove this useless assignment to local variable "numMineros".(ãùà8­ÿŠõå1
+h
+java:S1659"FDeclare "numTrenes" and all following declarations on a separate line.(²åü¥ûÿÿÿÿ8²ÿŠõå1
+G
+java:S1659)"%Declare "minTren" on a separate line.(œ•·úÿÿÿÿ8²ÿŠõå1
+L
+java:S1659+"*Declare "minExtractor" on a separate line.(¸øØìúÿÿÿÿ8²ÿŠõå1
+S
+java:S1659,"1Declare "cantidadExtractores" on a separate line.(óâéñøÿÿÿÿ8³ÿŠõå1
+Q
+java:S1481"/Remove this unused "numMineros" local variable.(²åü¥ûÿÿÿÿ8´ÿŠõå1
+C
+java:S1170s"!Make this final field static too.(·©îöùÿÿÿÿ8ÆÿŠõå1
+>
+java:S1170t"!Make this final field static too.(Œô‡Ã8ÆÿŠõå1
+@
+java:S1659u"$Declare "avenue" on a separate line.(…ãÄ;8ÈÿŠõå1
+C
+java:S1659Œ"%Declare "avenueD" on a separate line.(ô °Ú8ÎÿŠõå1
+D
+java:S1659"&Declare "vertical" on a separate line.(ÁÂØ8ÎÿŠõå1
+|
+java:S2142Æ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8İÿŠõå1
+|
+java:S2142Ó"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8àÿŠõå1
+u
+java:S3776ş"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8øÿŠõå1
+D
+java:S1170½"!Make this final field static too.(¿”à¼üÿÿÿÿ8ÿÿŠõå1
+D
+java:S1170¾"!Make this final field static too.(èò¹¢ıÿÿÿÿ8ÿÿŠõå1
+?
+java:S1170¿"!Make this final field static too.(Œô‡Ã8ÿÿŠõå1
+A
+java:S1659À"$Declare "avenue" on a separate line.(…ãÄ;8€€‹õå1
+C
+java:S1659Ú"%Declare "avenueD" on a separate line.(ô °Ú8†€‹õå1
+D
+java:S1659Û"&Declare "vertical" on a separate line.(ÁÂØ8‡€‹õå1
+|
+java:S2142•"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8€‹õå1
+|
+java:S2142ª"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8’€‹õå1
+u
+java:S3776Ç"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8–€‹õå1
+|
+java:S2142"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8€‹õå1
+N
+java:S1659™"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8Ÿ€‹õå1
+?
+java:S1170¨"!Make this final field static too.(‘×Õò8 €‹õå1
+D
+java:S1170©"!Make this final field static too.(Éó¬ıúÿÿÿÿ8¡€‹õå1
+D
+java:S1170ª"!Make this final field static too.(èò¹¢ıÿÿÿÿ8¡€‹õå1
+G
+java:S1659«"$Declare "avenue" on a separate line.(‡¸îæûÿÿÿÿ8¢€‹õå1
+C
+java:S1659Ä"%Declare "avenueD" on a separate line.(ô °Ú8¦€‹õå1
+D
+java:S1659Å"&Declare "vertical" on a separate line.(ÁÂØ8¦€‹õå1
+k	java:S100á"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ş•Ç8¨€‹õå1
+|
+java:S2142ç"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8©€‹õå1
+|
+java:S2142†"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8­€‹õå1
+u
+java:S3776´"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(ìÒ”‚ùÿÿÿÿ8³€‹õå1
+|
+java:S2142‹"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8»€‹õå1
+N
+java:S1659†"+Declare "currentAvenue" on a separate line.(¦ÏÁüÿÿÿÿ8¼€‹õå1
+|
+java:S2142“"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8½€‹õå1
+C
+java:S1659™"%Declare "avenueD" on a separate line.(ô °Ú8À€‹õå1
+D
+java:S1659š"&Declare "vertical" on a separate line.(ÁÂØ8Á€‹õå1
+â
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 79 to 64, Complexity from 18 to 14, Nesting Level from 3 to 2, Number of Variables from 26 to 6.(º™Ú78Ã€‹õå1
