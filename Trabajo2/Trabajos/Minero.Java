@@ -57,7 +57,7 @@ public class Minero implements Directions {
         int posAvenue=20;
         //Creacion de Robot Mineros
         for(int i = 0; i < cantidadMineros; i++) {
-            mineroRobots[i] = new MineroRobot(posStreet, posAvenue, South, 0, colorMinero, matriz);
+            mineroRobots[i] = new MineroRobot(posStreet, posAvenue, South, 0, colorMinero);
             Thread HiloMinero=new Thread((mineroRobots[i]));
             HiloMinero.start();
             if (posAvenue > 1) {
@@ -112,7 +112,6 @@ public class Minero implements Directions {
 
 //Clase para implementar Mineros
 class MineroRobot extends Robot implements Runnable{
-    final Semaphore semaforoMatriz = Minero.semaforoMatriz;
     final Semaphore semaforoMinero = Minero.semaforoMinero;
     final Semaphore semaforoCruceTM=Minero.semaforoCruceTM;
     int street,avenue;
@@ -121,13 +120,12 @@ class MineroRobot extends Robot implements Runnable{
     //Capacidad máxima de beepers que puede almacenar
     private int maxBeepers = 50;
     private int beepersInBag;
-    public MineroRobot(int Street, int Avenue, Direction direction, int beepers, Color color, boolean[][] matriz){
+    public MineroRobot(int Street, int Avenue, Direction direction, int beepers, Color color, boolean[][]){
         super(Street, Avenue, direction, beepers, color);
         World.setupThread(this);
         this.street=Street;
         this.avenue=Avenue;
         this.direction=direction;
-        this.matriz=matriz;
         beepersInBag=0;
     }
     @Override
@@ -312,28 +310,6 @@ class MineroRobot extends Robot implements Runnable{
                 this.direction=East;
             }
         }
-    }
-    private void actualizar(int oldStreet,int oldAvenue) {
-            try {
-                semaforoMatriz.acquire();
-                matriz[oldStreet - 1][oldAvenue - 1] = false;
-                matriz[street - 1][avenue - 1] = true;
-            }catch (InterruptedException e) {
-                e.printStackTrace();
-            }finally {
-                semaforoMatriz.release();
-            }
-    }
-    private boolean verificar(Direction direction) {
-        if (direction==North)
-            return matriz[street][avenue-1];
-        else if (direction==South)
-            return matriz[street-2][avenue-1];
-        else if (direction==East)
-            return matriz[street-1][avenue];
-        else if (direction==West)
-            return matriz[street-1][avenue-2];
-        else return false;
     }
 }
 //Clase para implementar Trenes
