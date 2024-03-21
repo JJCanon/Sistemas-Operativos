@@ -92,9 +92,19 @@ public class Minero implements Directions {
 
         //Creacion de Robots Extractores
         for(int i = 0; i < cantidadExtractores; i++){
-            extractores[i] = new Extractor(20, 20,South, 0, colorExtractor,matriz2);
+            extractores[i] = new Extractor(posStreet, posAvenue,South, 0, colorExtractor,matriz2);
             Thread HiloExtractor = new Thread(extractores[i]);
             HiloExtractor.start();
+            if (posAvenue > 1) {
+                posAvenue--;
+            }
+            else {
+                posAvenue=20;
+                if(posStreet>1)
+                {
+                    posStreet--;
+                }
+            }
             Thread.sleep(1000);
         }
     }
@@ -611,12 +621,12 @@ class Extractor extends Robot implements Runnable{
         }
         girar(avenueD);
         while(horizontal!=0){
-            mover2();
+            mover();
             horizontal--;
         }
         girar(streetD);
         while(vertical!=0){
-            mover2();
+            mover();
             vertical--;
         }
     }
