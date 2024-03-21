@@ -31,7 +31,7 @@ public class Minero implements Directions {
         // Usamos el archivo que creamos del mundo
         World.readWorld("MinaKarel.kwld");
         World.setVisible(true);
-        World.setDelay(25);
+        World.setDelay(15);
         //Argumentos a recibir
 
         //Variables de color, mínimos y máximos por robos
@@ -64,7 +64,7 @@ public class Minero implements Directions {
                 posAvenue--;
             }
             else {
-                posAvenue=20;
+                posAvenue=19;
                 if(posStreet>1)
                 {
                     posStreet--;
