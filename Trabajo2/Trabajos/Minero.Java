@@ -97,6 +97,9 @@ public class Minero implements Directions {
             HiloExtractor.start();
             if (posAvenue > 1) {
                 posAvenue= posAvenue-3;
+                if(posAvenue <= 0){
+                    posAvenue = 20;
+                }
             }
             else {
                 posAvenue=20;
