@@ -597,12 +597,12 @@ class Extractor extends Robot implements Runnable{
         }
         girar(avenueD);
         while(horizontal!=0){
-            mover();
+            mover2();
             horizontal--;
         }
         girar(streetD);
         while(vertical!=0){
-            mover();
+            mover2();
             vertical--;
         }
     }
