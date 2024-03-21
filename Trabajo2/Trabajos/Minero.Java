@@ -96,7 +96,7 @@ public class Minero implements Directions {
             Thread HiloExtractor = new Thread(extractores[i]);
             HiloExtractor.start();
             if (posAvenue > 1) {
-                posAvenue--;
+                posAvenue= posAvenue-3;
             }
             else {
                 posAvenue=20;
@@ -105,7 +105,7 @@ public class Minero implements Directions {
                     posStreet--;
                 }
             }
-            Thread.sleep(1000);
+            Thread.sleep(1500);
         }
     }
 }
