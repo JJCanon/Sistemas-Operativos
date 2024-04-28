@@ -1,0 +1,14 @@
+
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(äìé™ùÿÿÿÿ8¨ß×‘ò1
+7
+java:S1220""Move this file to a named package.8ûé«ò1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(äìé™ùÿÿÿÿ8Üà×‘ò1
+8
+java:S3626"Remove this redundant jump.(ûÁİ…8ÿé«ò1
+8
+java:S3626"Remove this redundant jump.(ûÁİ…8ğà×‘ò1
+c
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(ƒñîèúÿÿÿÿ8õà×‘ò1
+G	java:S106"+Replace this use of System.out by a logger.(ŸİÊµ8—á×‘ò1
+F	java:S106"+Replace this use of System.out by a logger.(­ÉÂ8˜á×‘ò1
