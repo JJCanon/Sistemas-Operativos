@@ -7,6 +7,7 @@
 
 //Librerías
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 //Class
@@ -16,14 +17,15 @@ public class logs {
         String pathFile = "Database/logs.txt";
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
-            System.out.println("El archivo ya existe");
+            System.out.println("El archivo logs.txt ya existe");
             return;
         } else {
             try {
                 boolean creado = robotsFile.createNewFile();
-                if (creado)
+                if (creado) {
+                    writeHeader(pathFile);
                     return;
-                else
+                } else
                     System.out.println("No se pudo crear el archivo");
             } catch (IOException e) {
                 System.out.println("Ocurrió un error: " + e.getMessage());
@@ -35,6 +37,18 @@ public class logs {
     private static int buscarArchivo(File robotsFile) {
         if (robotsFile.exists()) {
             return 1;
+        }
+        return 0;
+    }
+
+    private static int writeHeader(String pathFile) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile);
+            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
         }
         return 0;
     }

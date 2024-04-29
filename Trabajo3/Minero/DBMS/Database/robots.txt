@@ -1,0 +1,1 @@
+Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual

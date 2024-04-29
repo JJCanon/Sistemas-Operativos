@@ -8,6 +8,7 @@
  */
 //Librerías
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 //Class
@@ -17,14 +18,15 @@ public class staticVariables {
         String pathFile = "Database/staticVariables.txt";
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
-            System.out.println("El archivo ya existe");
+            System.out.println("El archivo staticVariables.txt ya existe");
             return;
         } else {
             try {
                 boolean creado = robotsFile.createNewFile();
-                if (creado)
+                if (creado) {
+                    writeHeader(pathFile);
                     return;
-                else
+                } else
                     System.out.println("No se pudo crear el archivo");
             } catch (IOException e) {
                 System.out.println("Ocurrió un error: " + e.getMessage());
@@ -36,6 +38,27 @@ public class staticVariables {
     private static int buscarArchivo(File robotsFile) {
         if (robotsFile.exists()) {
             return 1;
+        }
+        return 0;
+    }
+
+    private static int writeHeader(String pathFile) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile);
+            fileWriter.write("Time_Stamp,Avenida_Espera_Ext,Avenida_Espera_Tren,Avenida_Inicial," +
+                    "Calle_Extractor,Calle_Minero,Calle_Tren,Calle_Espera_Ext,Beepers_Por_Bodega," +
+                    "Beepers_Extractor,Beepers_Minero,Beepers_Tren,Default_Robots,Numero_Bodegas," +
+                    "Tipo_Extractor,Tipo_Minero,Tipo_Tren,Veta_Avenida,Veta_Calle,Veta_Espera_Avenida" +
+                    "Veta_Espera_Calle\n"); // añadir
+                                            // headers
+                                            // de
+                                            // las
+                                            // variables
+            // estaticas
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
         }
         return 0;
     }
