@@ -2,8 +2,8 @@
 //Librerias
 import java.lang.Thread;
 
-public class DBMS {
-    
+public class DBMS implements API {
+
     // atributos
     DBMSThread robot;
     DBMSThread logs;
@@ -17,7 +17,7 @@ public class DBMS {
         // crear los hilos
         @SuppressWarnings("unused")
         DBMS dbms = new DBMS();
-        
+
     }
     
     // Constructor
@@ -135,7 +135,7 @@ class DBMSThread extends Thread {
                 staticVariables.ReadFile();
             default:
                 return null;
-        
+
         }
     }
 
