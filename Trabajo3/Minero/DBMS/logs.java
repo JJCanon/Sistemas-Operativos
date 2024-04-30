@@ -52,4 +52,12 @@ public class logs {
         }
         return 0;
     }
+
+    public static void ReceiveMessage(String Datos) {
+
+    }
+
+    public static String searchData(String query) {
+        return null;
+    }
 }

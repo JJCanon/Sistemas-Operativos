@@ -872,6 +872,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		crearRobots(TIPO_MINERO);
 		crearRobots(TIPO_TREN);
 		crearRobots(TIPO_EXTRACTOR);
+		// Create instance of BDMS??
 
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
