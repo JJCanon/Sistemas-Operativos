@@ -3,13 +3,13 @@
 import java.lang.Thread;
 
 public class DBMS {
-
+    
     // atributos
     DBMSThread robot;
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
-
+    
     // metodos
     // main
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class DBMS {
         DBMS dbms = new DBMS();
         
     }
-
+    
     // Constructor
     public DBMS() {
         robot = new DBMSThread(1);
@@ -31,12 +31,16 @@ public class DBMS {
         logs.start();
         estadoPrograma.start();
         variablesEstaticas.start();
+        robot.ReadFile();
+        logs.ReadFile();
+        estadoPrograma.ReadFile();
+        variablesEstaticas.ReadFile();
     }
-
+    
     public void EnviarInformacion(int typeInformation, String information) {
-
+        
     }
-
+    
     public String recibirInformacion(int typeInformation, String information) {
         procesarInformacion(typeInformation, information);
         return null;
@@ -75,7 +79,6 @@ class DBMSThread extends Thread {
 
     public void run() {
         crearArchivos(this.valor);
-        ReadFile();
     }
 
     public int crearArchivos(int valor) {

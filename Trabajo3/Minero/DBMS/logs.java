@@ -61,6 +61,7 @@ public class logs {
 
     public static void ReadFile(){
         try{
+            System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
             int lineExist = fileReader.read();
             while(lineExist!=-1){

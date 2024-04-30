@@ -70,6 +70,7 @@ public class staticVariables {
 
      public static void ReadFile(){
         try{
+            System.out.println("Empieza lectura de staticVariables");
             FileReader fileReader = new FileReader(pathFile);
             int valor= fileReader.read();
             while(valor!=-1){
