@@ -9,12 +9,14 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
 
 //Class
 public class logs {
+    // atributos 
+    static String pathFile = "Database/logs.txt";
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
-        String pathFile = "Database/logs.txt";
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
             System.out.println("El archivo logs.txt ya existe");
@@ -23,7 +25,7 @@ public class logs {
             try {
                 boolean creado = robotsFile.createNewFile();
                 if (creado) {
-                    writeHeader(pathFile);
+                    writeHeader();
                     return;
                 } else
                     System.out.println("No se pudo crear el archivo");
@@ -41,7 +43,7 @@ public class logs {
         return 0;
     }
 
-    private static int writeHeader(String pathFile) {
+    private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
             fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
@@ -54,7 +56,21 @@ public class logs {
     }
 
     public static void ReceiveMessage(String Datos) {
+        
+    }
 
+    public static void ReadFile(){
+        try{
+            FileReader fileReader = new FileReader(pathFile);
+            int lineExist = fileReader.read();
+            while(lineExist!=-1){
+                System.out.print((char)lineExist);
+                lineExist = fileReader.read();
+            }
+            fileReader.close();
+            }catch(IOException e){
+            System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
+        }
     }
 
     public static String searchData(String query) {

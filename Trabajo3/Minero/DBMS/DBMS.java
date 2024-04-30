@@ -2,7 +2,7 @@
 //Librerias
 import java.lang.Thread;
 
-public class DBMS implements API {
+public class DBMS {
 
     // atributos
     DBMSThread robot;
@@ -17,6 +17,7 @@ public class DBMS implements API {
         // crear los hilos
         @SuppressWarnings("unused")
         DBMS dbms = new DBMS();
+        
     }
 
     // Constructor
@@ -74,6 +75,7 @@ class DBMSThread extends Thread {
 
     public void run() {
         crearArchivos(this.valor);
+        ReadFile();
     }
 
     public int crearArchivos(int valor) {
@@ -116,6 +118,22 @@ class DBMSThread extends Thread {
                 return 1;
         }
         return 0;
+    }
+
+    public String ReadFile() {
+        switch (valor) {
+            case 1:
+                robots.ReadFile();
+            case 2:
+                logs.ReadFile();
+            case 3:
+                programState.ReadFile();
+            case 4:
+                staticVariables.ReadFile();
+            default:
+                return null;
+        
+        }
     }
 
     public String searchData(String query) {

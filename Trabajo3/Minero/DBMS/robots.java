@@ -8,14 +8,16 @@
 
 //Librerías
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
 //Class
 public class robots {
+    // atributos
+    static String pathFile = "Database/robots.txt";
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
-        String pathFile = "Database/robots.txt";
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
             System.out.println("El archivo robots.txt ya existe");
@@ -24,7 +26,7 @@ public class robots {
             try {
                 boolean creado = robotsFile.createNewFile();
                 if (creado) {
-                    writeHeader(pathFile);
+                    writeHeader();
                     return;
                 } else
                     System.out.println("No se pudo crear el archivo");
@@ -42,7 +44,7 @@ public class robots {
         return 0;
     }
 
-    private static int writeHeader(String pathFile) {
+    private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
             fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual\n");
@@ -56,6 +58,20 @@ public class robots {
 
     public static void ReceiveMessage(String Datos) {
 
+    }
+
+     public static void ReadFile(){
+        try{
+            FileReader fileReader = new FileReader(pathFile);
+            int valor= fileReader.read();
+            while(valor!=-1){
+                System.out.print((char)valor);
+                valor = fileReader.read();
+            }
+            fileReader.close();
+            }catch(IOException e){
+            System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
+        }
     }
 
     public static String searchData(String query) {
