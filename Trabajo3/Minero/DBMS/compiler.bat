@@ -1,3 +1,3 @@
-javac -d . DBMS.java
+javac *.java
 pause
 exit

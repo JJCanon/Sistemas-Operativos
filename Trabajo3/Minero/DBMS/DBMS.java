@@ -1,3 +1,4 @@
+package DBMS;
 
 //Librerias
 import java.lang.Thread;
@@ -37,10 +38,12 @@ public class DBMS implements API {
         variablesEstaticas.ReadFile();
     }
 
+    @Override
     public void EnviarInformacion(int typeInformation, String information) {
         System.out.println("enviar");
     }
 
+    @Override
     public void recibirDatos(int typeInformation, String information) {
         System.out.println("informacion recibida");
         procesarInformacion(typeInformation, information);

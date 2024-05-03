@@ -1,3 +1,4 @@
+package DBMS;
 /*
  * se debe crear la funcion para crear un nuevo archivo .log en caso de que no exista
  * se debe crear la funcion para escribir en el archivo

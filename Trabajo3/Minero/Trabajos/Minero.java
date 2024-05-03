@@ -1,3 +1,4 @@
+package Trabajos;
 
 import kareltherobot.*;
 import java.awt.Color;
