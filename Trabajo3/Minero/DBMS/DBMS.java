@@ -9,7 +9,7 @@ public class DBMS implements API {
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
-    
+
     // metodos
     // main
     public static void main(String[] args) {
@@ -19,7 +19,7 @@ public class DBMS implements API {
         DBMS dbms = new DBMS();
 
     }
-    
+
     // Constructor
     public DBMS() {
         robot = new DBMSThread(1);
@@ -36,14 +36,15 @@ public class DBMS implements API {
         estadoPrograma.ReadFile();
         variablesEstaticas.ReadFile();
     }
-    
+
     public void EnviarInformacion(int typeInformation, String information) {
-        
+        System.out.println("enviar");
     }
-    
-    public String recibirInformacion(int typeInformation, String information) {
+
+    public void recibirDatos(int typeInformation, String information) {
+        System.out.println("informacion recibida");
         procesarInformacion(typeInformation, information);
-        return null;
+
     }
 
     public void procesarInformacion(int typeInformation, String information) {
@@ -123,20 +124,24 @@ class DBMSThread extends Thread {
         return 0;
     }
 
-    public String ReadFile() {
+    public int ReadFile() {
         switch (valor) {
             case 1:
                 robots.ReadFile();
+                break;
             case 2:
                 logs.ReadFile();
+                break;
             case 3:
                 programState.ReadFile();
+                break;
             case 4:
                 staticVariables.ReadFile();
+                break;
             default:
-                return null;
-
+                return 1;
         }
+        return 0;
     }
 
     public String searchData(String query) {

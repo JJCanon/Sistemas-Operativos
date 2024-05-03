@@ -1,0 +1,14 @@
+
+	java:S117m"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™κªΚωÿÿÿÿ8ε•ρύσ1J$72150651-6c02-4402-b13c-8bd88ff96f32
+΅	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡€ζόÿÿÿÿ8ύζώσ1J$bc030f2b-fcd5-4c7a-82a3-070cc01732b3
+”
+java:S1128"QRemove this unnecessary import: java.lang classes are always implicitly imported.(ΩΜτ8ƒ–ρύσ1J$4184bbf4-eb27-4c3a-9f2e-931f4476516d
+m	java:S106-"+Replace this use of System.out by a logger.(±ΐ΅8«–ρύσ1J$70ce79f4-932f-4919-bc30-905e0ef67b23
+m	java:S1066"+Replace this use of System.out by a logger.( ξσ„8»–ρύσ1J$de8f6b96-e289-4e41-ba0f-c4f779684652
+m	java:S106E"+Replace this use of System.out by a logger.(¤8Ώ–ρύσ1J$326f8e5d-c854-4391-be36-08e32334e3b9
+}
+java:S1161T":Add the "@Override" annotation above this method signature(“–ύώ8µ–ρύσ1J$556580a6-3c12-48c1-928f-3900d54fbb64
+r	java:S106g"+Replace this use of System.out by a logger.(ψχ»ϊÿÿÿÿ8ÒΝϋώσ1J$b2df37c4-9872-493e-b154-167d8c802668
+•	java:S100m"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™κªΚωÿÿÿÿ8»–ρύσ1J$191d2a80-95d9-46aa-aaff-205126785399
+L	java:S106|"+Replace this use of System.out by a logger.(ψχ»ϊÿÿÿÿ8Ξ†ÿσ1
+‘	java:S100‚"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(όε8Ώ–ρύσ1J$87d78c04-6c31-42ca-be63-3500ea07784a

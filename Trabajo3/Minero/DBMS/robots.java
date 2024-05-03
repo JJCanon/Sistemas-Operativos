@@ -16,6 +16,7 @@ import java.io.IOException;
 public class robots {
     // atributos
     static String pathFile = "Database/robots.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
@@ -60,17 +61,17 @@ public class robots {
 
     }
 
-     public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
             System.out.println("Empieza lectura de robots");
             FileReader fileReader = new FileReader(pathFile);
-            int valor= fileReader.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
+            int valor = fileReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
                 valor = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }

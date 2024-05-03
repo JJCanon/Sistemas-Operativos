@@ -13,8 +13,9 @@ import java.io.FileReader;
 
 //Class
 public class logs {
-    // atributos 
+    // atributos
     static String pathFile = "Database/logs.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
@@ -56,20 +57,20 @@ public class logs {
     }
 
     public static void ReceiveMessage(String Datos) {
-        
+
     }
 
-    public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
             System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
             int lineExist = fileReader.read();
-            while(lineExist!=-1){
-                System.out.print((char)lineExist);
+            while (lineExist != -1) {
+                System.out.print((char) lineExist);
                 lineExist = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }

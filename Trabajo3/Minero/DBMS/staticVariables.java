@@ -16,6 +16,7 @@ import java.io.IOException;
 public class staticVariables {
     // atributos
     static String pathFile = "Database/staticVariables.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
@@ -68,17 +69,17 @@ public class staticVariables {
     public static void ReceiveMessage(String Datos) {
     }
 
-     public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
             System.out.println("Empieza lectura de staticVariables");
             FileReader fileReader = new FileReader(pathFile);
-            int valor= fileReader.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
+            int valor = fileReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
                 valor = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }
