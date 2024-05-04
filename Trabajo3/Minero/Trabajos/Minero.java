@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.Hashtable;
+import DBMS.*;
 
 //public class Minero extends Robot implements Directions
 public class Minero extends AugmentedRobot implements Directions {
+
 	// Object attributes
 	private int tipoRobot;
 	private int pasos;
@@ -16,6 +18,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	private int avenidaActual;
 	private int calleActual;
 	private int id;
+
 	// Constants
 	private static final int AVENIDA_ESPERA_EXT = 3;
 	private static final int AVENIDA_ESPERA_TREN = 12;
@@ -877,6 +880,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
 			objThreads.get(i).start();
+		DBMS database = new DBMS();
 	}
 }
 
