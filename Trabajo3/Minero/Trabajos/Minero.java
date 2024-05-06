@@ -7,6 +7,8 @@ import java.util.Hashtable;
 
 //public class Minero extends Robot implements Directions
 public class Minero extends AugmentedRobot implements Directions {
+	// Database
+	private static DBMS database;
 
 	// Object attributes
 	private int tipoRobot;
@@ -869,7 +871,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// Main method
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Iniciando base de datos");
-		DBMS database = new DBMS();
+		database = new DBMS();
 		asignarVariablesEstaticas();
 		validarArgumentos(args);
 		setupWorld("Mina.kwld");
@@ -882,6 +884,10 @@ public class Minero extends AugmentedRobot implements Directions {
 			objThreads.get(i).start();
 
 	}
+
+	/*
+	 * code done for students below
+	 */
 }
 
 class Posiciones {

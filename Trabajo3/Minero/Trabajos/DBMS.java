@@ -1,6 +1,8 @@
 
 //Librerias
 import java.lang.Thread;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class DBMS implements API {
 
@@ -9,19 +11,30 @@ public class DBMS implements API {
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
+    Date fechaHoraActual; // fecha y hora
+    SimpleDateFormat formatoFechaHora; // Formatear fecha
 
     // metodos
     // main
-    public static void main(String[] args) {
-        // crear los archivos en caso de que no existan
-        // crear los hilos
-        @SuppressWarnings("unused")
-        DBMS dbms = new DBMS();
-
-    }
+    /*
+     * public static void main(String[] args) {
+     * // crear los archivos en caso de que no existan
+     * // crear los hilos
+     * 
+     * @SuppressWarnings("unused")
+     * DBMS dbms = new DBMS();
+     * 
+     * }
+     */
 
     // Constructor
     public DBMS() {
+        fechaHoraActual = new Date();
+        formatoFechaHora = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+        // Formatear la fecha y hora actual al formato deseado
+        String fechaHoraFormateada = formatoFechaHora.format(fechaHoraActual);
+        // Imprimir la fecha y hora formateadas
+        System.out.println("Fecha y hora actuales: " + fechaHoraFormateada);
         robot = new DBMSThread(1);
         logs = new DBMSThread(2);
         estadoPrograma = new DBMSThread(3);
