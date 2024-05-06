@@ -1,28 +1,27 @@
-package DBMS;
 
-/* 
- * se debe crear funciones para crear el archivo en caso de que no exista
- * se debe crear funciones para leer el archivo
- * se debe crear funciones para agregar un nuevo registro
- * se debe crear funciones para eliminar un registro
- * se debe crear funciones para modificar un registro
+/*
+ * se debe crear la funcion para crear un nuevo archivo .log en caso de que no exista
+ * se debe crear la funcion para escribir en el archivo
+ * se debe crear la funcion para leer el archivo
+ * se debe crear la funcion para eliminar datos del archivo
  */
+
 //Librerías
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FileReader;
 
 //Class
-public class programState {
+public class logs {
     // atributos
-    static String pathFile = "Database/programState.txt";
+    static String pathFile = "Database/logs.txt";
 
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
-            System.out.println("El archivo programState.txt ya existe");
+            System.out.println("El archivo logs.txt ya existe");
             return;
         } else {
             try {
@@ -32,7 +31,6 @@ public class programState {
                     return;
                 } else
                     System.out.println("No se pudo crear el archivo");
-
             } catch (IOException e) {
                 System.out.println("Ocurrió un error: " + e.getMessage());
             }
@@ -50,7 +48,7 @@ public class programState {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Time_stamp,State\n");
+            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -65,12 +63,12 @@ public class programState {
 
     public static void ReadFile() {
         try {
-            System.out.println("Empieza lectura de programState");
+            System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
-            int valor = fileReader.read();
-            while (valor != -1) {
-                System.out.print((char) valor);
-                valor = fileReader.read();
+            int lineExist = fileReader.read();
+            while (lineExist != -1) {
+                System.out.print((char) lineExist);
+                lineExist = fileReader.read();
             }
             fileReader.close();
         } catch (IOException e) {

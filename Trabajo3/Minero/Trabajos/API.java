@@ -1,4 +1,4 @@
-package DBMS;
+
 
 public interface API {
     void EnviarInformacion(int tipeInformation, String information);

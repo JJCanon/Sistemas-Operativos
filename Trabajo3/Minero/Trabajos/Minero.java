@@ -1,11 +1,9 @@
-package Trabajos;
 
 import kareltherobot.*;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.Hashtable;
-import DBMS.*;
 
 //public class Minero extends Robot implements Directions
 public class Minero extends AugmentedRobot implements Directions {
@@ -870,6 +868,8 @@ public class Minero extends AugmentedRobot implements Directions {
 
 	// Main method
 	public static void main(String[] args) throws InterruptedException {
+		System.out.println("Iniciando base de datos");
+		DBMS database = new DBMS();
 		asignarVariablesEstaticas();
 		validarArgumentos(args);
 		setupWorld("Mina.kwld");
@@ -880,7 +880,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
 			objThreads.get(i).start();
-		DBMS database = new DBMS();
+
 	}
 }
 

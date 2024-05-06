@@ -1,4 +1,3 @@
-package DBMS;
 
 //Librerias
 import java.lang.Thread;
