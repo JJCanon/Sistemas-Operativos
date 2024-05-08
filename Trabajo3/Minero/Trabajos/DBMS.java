@@ -3,16 +3,22 @@
 import java.lang.Thread;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class DBMS implements API {
 
     // atributos
+    // Hilos que manejan los archivos
     DBMSThread robot;
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
     Date fechaHoraActual; // fecha y hora
     SimpleDateFormat formatoFechaHora; // Formatear fecha
+    // cola de datos
+    Queue<String> datosRecibidos;
+    // Semaforo(s)
 
     // metodos
     // main
@@ -29,12 +35,9 @@ public class DBMS implements API {
 
     // Constructor
     public DBMS() {
-        fechaHoraActual = new Date();
+        // crear formato de la fecha
         formatoFechaHora = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
-        // Formatear la fecha y hora actual al formato deseado
-        String fechaHoraFormateada = formatoFechaHora.format(fechaHoraActual);
-        // Imprimir la fecha y hora formateadas
-        System.out.println("Fecha y hora actuales: " + fechaHoraFormateada);
+        datosRecibidos = new LinkedList<String>();
         robot = new DBMSThread(1);
         logs = new DBMSThread(2);
         estadoPrograma = new DBMSThread(3);
@@ -44,21 +47,41 @@ public class DBMS implements API {
         logs.start();
         estadoPrograma.start();
         variablesEstaticas.start();
-        robot.ReadFile();
-        logs.ReadFile();
-        estadoPrograma.ReadFile();
-        variablesEstaticas.ReadFile();
     }
 
     @Override
     public void EnviarInformacion(int typeInformation, String information) {
-        System.out.println("enviar");
+
     }
 
     @Override
     public void recibirDatos(int typeInformation, String information) {
-        System.out.println("informacion recibida");
-        procesarInformacion(typeInformation, information);
+
+        // Obtener la fecha en que se recibió la información:
+        fechaHoraActual = new Date();
+        String fechaHoraFormateada = formatoFechaHora.format(fechaHoraActual);
+        // crear string con la informacion completa
+        String informationComplete = typeInformation + "," + fechaHoraFormateada + "," + information;
+        // guardar informacion en la cola
+        boolean guardado = false;
+        guardado = datosRecibidos.offer(informationComplete);
+        if (guardado)
+            System.out.println("informacion recibida: " + informationComplete);
+        else
+            System.out.println("Hubo algun error");
+
+    }
+
+    public void leerCola() {
+        boolean datoExist = false;
+        if (!datosRecibidos.isEmpty()) {
+            String dato = datosRecibidos.poll();
+            datoExist = true;
+        }
+
+        if (datoExist) {
+            // enviar datos
+        }
 
     }
 
