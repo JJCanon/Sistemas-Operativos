@@ -48,7 +48,7 @@ public class logs {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
+            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers,accion\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {

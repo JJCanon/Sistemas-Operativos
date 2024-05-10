@@ -69,7 +69,6 @@ public class DBMS implements API {
             System.out.println("informacion recibida: " + informationComplete);
         else
             System.out.println("Hubo algun error");
-
     }
 
     public void leerCola() {
