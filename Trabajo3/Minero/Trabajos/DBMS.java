@@ -65,6 +65,7 @@ public class DBMS implements API {
         // guardar informacion en la cola
         boolean guardado = false;
         guardado = datosRecibidos.offer(informationComplete);
+        System.out.println("informacion recibida: " + informationComplete);
         if (guardado)
             System.out.println("informacion recibida: " + informationComplete);
         else
