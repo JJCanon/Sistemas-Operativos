@@ -88,7 +88,7 @@ public class logs {
         }
     }
 
-    public static String searchData(String query) {
+    public static String exportData() {
         return null;
     }
 }

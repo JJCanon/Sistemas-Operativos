@@ -44,12 +44,13 @@ public class DBMS implements API {
         logs = new DBMSThread(2);
         estadoPrograma = new DBMSThread(3);
         variablesEstaticas = new DBMSThread(4);
-        procesador = new Procesador(datosRecibidos);
+        procesador = new Procesador(datosRecibidos, this);
         // iniciar los hilos
         robot.start();
         logs.start();
         estadoPrograma.start();
         variablesEstaticas.start();
+        procesador.start();
     }
 
     @Override
@@ -67,7 +68,14 @@ public class DBMS implements API {
         String informationComplete = typeInformation + "," + fechaHoraFormateada + "," + information;
         // guardar informacion en la cola
         boolean guardado = false;
-        guardado = datosRecibidos.offer(informationComplete);
+        try {
+            semaforoCola.acquire();
+            guardado = datosRecibidos.offer(informationComplete);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaforoCola.release();
+        }
         System.out.println("informacion recibida: " + informationComplete);
         if (guardado)
             System.out.println("informacion recibida: " + informationComplete);
@@ -163,7 +171,6 @@ class DBMSThread extends Thread {
         }
         return 0;
     }
-    
 
     public int ReceiveMessage(String Datos) {
         switch (valor) {
@@ -206,17 +213,16 @@ class DBMSThread extends Thread {
         return 0;
     }
 
-    public String searchData(String query) {
+    public String exportData() {
         switch (valor) {
             case 1:
-                return robots.searchData(query);
-
+                return robots.exportData();
             case 2:
-                return logs.searchData(query);
+                return logs.exportData();
             case 3:
-                return programState.searchData(query);
+                return programState.exportData();
             case 4:
-                return staticVariables.searchData(query);
+                return staticVariables.exportData();
             default:
                 return null;
         }
@@ -226,9 +232,11 @@ class DBMSThread extends Thread {
 class Procesador extends Thread {
     final Semaphore semaforoCola = DBMS.semaforoCola;
     Queue<String> datosRecibidos;
+    private DBMS dbms;
 
-    public Procesador(Queue<String> datosRecibidos) {
+    public Procesador(Queue<String> datosRecibidos, DBMS dbms) {
         this.datosRecibidos = datosRecibidos;
+        this.dbms = dbms;
     }
 
     public void run() {
@@ -238,13 +246,24 @@ class Procesador extends Thread {
     }
 
     private void leerDatos() {
+        String data = null;
+        boolean dato = false;
         try {
             semaforoCola.acquire();
-
+            if (!datosRecibidos.isEmpty()) {
+                data = datosRecibidos.poll();
+                dato = true;
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             semaforoCola.release();
+        }
+        if (dato) {
+            String[] dataSplit = data.split(",", 2);
+            int typeInformation = Integer.parseInt(dataSplit[0]);
+            String information = dataSplit[2];
+            dbms.procesarInformacion(typeInformation, information);
         }
     }
 }
