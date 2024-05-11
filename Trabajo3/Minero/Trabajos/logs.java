@@ -62,7 +62,7 @@ public class logs {
             System.out.println("datos a escribir:  " + info);
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
-            fileWriter.write("\n");
+            fileWriter.write(" \r\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
