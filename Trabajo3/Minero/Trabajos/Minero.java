@@ -897,6 +897,15 @@ public class Minero extends AugmentedRobot implements Directions {
 		Minero.sem_trenes = new Semaphore(0);
 		Minero.sem_trenInicioProceso = new Semaphore(0);
 		Minero.sem_trenSalida = new Semaphore(0);
+		database.recibirDatos(4, Integer.toString(AVENIDA_ESPERA_EXT)
+		+ "," + Integer.toString(AVENIDA_ESPERA_TREN) + "," + Integer.toString(AVENIDA_INICIAL)
+		+ "," + Integer.toString(AVENIDA_INICIAL) + "," + Integer.toString(CALLE_EXTRACTOR) + "," + Integer.toString(CALLE_MINERO)
+		+ "," + Integer.toString(CALLE_TREN) + "," + Integer.toString(CALLE_ESPERA_EXT) + "," + Integer.toString(BEEPERS_POR_BODEGA)
+		+ "," + Integer.toString(BEEPERS_EXTRACTOR) + "," + Integer.toString(BEEPERS_MINERO) + "," + Integer.toString(BEEPERS_TREN)
+		+ "," + Integer.toString(DEFAULT_ROBOTS) + "," + Integer.toString(NUMERO_BODEGAS) + "," + Integer.toString(TIPO_EXTRACTOR)
+		+ "," + Integer.toString(TIPO_MINERO) + "," + Integer.toString(TIPO_TREN) + "," + Integer.toString(VETA_AVENIDA)
+		+ "," + Integer.toString(VETA_AVENIDA) + "," + Integer.toString(VETA_CALLE) + "," + Integer.toString(VETA_ESPERA_AVENIDA)
+		+ "," + Integer.toString(VETA_ESPERA_CALLE));
 	}
 
 	// Setup Karel World

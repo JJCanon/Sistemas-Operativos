@@ -143,6 +143,28 @@ class DBMSThread extends Thread {
         return 0;
     }
 
+    public int escribirArchivo(int valor, String info) {
+        switch (valor) {
+            case 1:
+                robots.writeInformation(info);
+                break;
+            case 2:
+                logs.writeInformation(info);
+                break;
+            case 3:
+                programState.writeInformation(info);
+                break;
+            case 4:
+                staticVariables.writeInformation(info);
+                break;
+            default:
+                System.out.println("valor errado");
+                break;
+        }
+        return 0;
+    }
+    
+
     public int ReceiveMessage(String Datos) {
         switch (valor) {
             case 1:
