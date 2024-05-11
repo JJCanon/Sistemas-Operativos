@@ -60,9 +60,8 @@ public class logs {
     public static int writeInformation(String info) {
         try {
             System.out.println("datos a escribir:  " + info);
-            FileWriter fileWriter = new FileWriter(pathFile, true);
-            fileWriter.write(info);
-            fileWriter.write("\n");
+            FileWriter fileWriter = new FileWriter(pathFile);
+            fileWriter.write("\n" + info);
             fileWriter.close();
             return 1;
         } catch (IOException e) {
