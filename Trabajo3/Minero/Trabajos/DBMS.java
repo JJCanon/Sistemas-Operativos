@@ -60,7 +60,6 @@ public class DBMS implements API {
 
     @Override
     public void recibirDatos(int typeInformation, String information) {
-
         // Obtener la fecha en que se recibió la información:
         fechaHoraActual = new Date();
         String fechaHoraFormateada = formatoFechaHora.format(fechaHoraActual);
@@ -70,13 +69,13 @@ public class DBMS implements API {
         boolean guardado = false;
         try {
             semaforoCola.acquire();
-            guardado = datosRecibidos.offer(informationComplete);
+            guardado = datosRecibidos.add(informationComplete);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             semaforoCola.release();
         }
-        System.out.println("informacion recibida: " + informationComplete);
+        // System.out.println("informacion recibida: " + informationComplete);
         if (guardado)
             System.out.println("informacion recibida: " + informationComplete);
         else
@@ -99,16 +98,16 @@ public class DBMS implements API {
         System.out.println(typeInformation + " " + information);
         switch (typeInformation) {
             case 1:// Enviar a Robots
-                robot.ReceiveMessage(information);
+                robot.escribirArchivo(typeInformation, information);
                 break;
             case 2:
-                logs.ReceiveMessage(information);
+                logs.escribirArchivo(typeInformation, information);
                 break;
             case 3:
-                estadoPrograma.ReceiveMessage(information);
+                estadoPrograma.escribirArchivo(typeInformation, information);
                 break;
             case 4:
-                variablesEstaticas.ReceiveMessage(information);
+                variablesEstaticas.escribirArchivo(typeInformation, information);
                 break;
             default:
                 System.out.println("Value Type unkwon");
@@ -262,7 +261,7 @@ class Procesador extends Thread {
         if (dato) {
             String[] dataSplit = data.split(",", 2);
             int typeInformation = Integer.parseInt(dataSplit[0]);
-            String information = dataSplit[2];
+            String information = dataSplit[1];
             dbms.procesarInformacion(typeInformation, information);
         }
     }

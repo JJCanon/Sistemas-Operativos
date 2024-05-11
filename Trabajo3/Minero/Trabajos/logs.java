@@ -59,6 +59,7 @@ public class logs {
 
     public static int writeInformation(String info) {
         try {
+            System.out.println("datos a escribir:  " + info);
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
             fileWriter.close();
