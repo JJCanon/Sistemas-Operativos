@@ -51,6 +51,20 @@ public class DBMS implements API {
         estadoPrograma.start();
         variablesEstaticas.start();
         procesador.start();
+
+        Thread hiloVerificador = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    verificarHilos();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -112,6 +126,33 @@ public class DBMS implements API {
             default:
                 System.out.println("Value Type unkwon");
                 break;
+        }
+    }
+
+    public void verificarHilos() {
+        // Verificar el hilo Robot
+        if (!robot.isAlive()) {
+            System.out.println("El hilo robot ha fallado. Relanzando...");
+            robot = new DBMSThread(1);
+            robot.start();
+        }
+        // Verificar el hilo Logs
+        if (!logs.isAlive()) {
+            System.out.println("El hilo logs ha fallado. Relanzando...");
+            logs = new DBMSThread(2);
+            logs.start();
+        }
+        // Verificar el hilo Program State
+        if (!estadoPrograma.isAlive()) {
+            System.out.println("El hilo estadoPrograma ha fallado. Relanzando...");
+            estadoPrograma = new DBMSThread(3);
+            estadoPrograma.start();
+        }
+        // Verificar el hilo Static Variables
+        if (!variablesEstaticas.isAlive()) {
+            System.out.println("El hilo variablesEstaticas ha fallado. Relanzando...");
+            variablesEstaticas = new DBMSThread(4);
+            variablesEstaticas.start();
         }
     }
 
