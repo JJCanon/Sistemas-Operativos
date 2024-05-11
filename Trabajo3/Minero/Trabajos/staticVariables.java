@@ -70,6 +70,7 @@ public class staticVariables {
         try {
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
+            fileWriter.write("\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
