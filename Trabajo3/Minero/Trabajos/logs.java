@@ -59,6 +59,7 @@ public class logs {
 
     public static int writeInformation(String info) {
         try {
+            System.out.println("datos a escribir:  " + info);
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
             fileWriter.write("\n");
@@ -89,7 +90,7 @@ public class logs {
         }
     }
 
-    public static String searchData(String query) {
+    public static String exportData() {
         return null;
     }
 }

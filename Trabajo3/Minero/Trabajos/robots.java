@@ -90,7 +90,7 @@ public class robots {
         }
     }
 
-    public static String searchData(String query) {
+    public static String exportData() {
         return null;
     }
 }
