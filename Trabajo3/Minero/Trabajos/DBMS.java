@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.Semaphore;
 
 public class DBMS implements API {
 
@@ -14,12 +15,13 @@ public class DBMS implements API {
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
+    Procesador procesador;
     Date fechaHoraActual; // fecha y hora
     SimpleDateFormat formatoFechaHora; // Formatear fecha
     // cola de datos
-    Queue<String> datosRecibidos;
+    static Queue<String> datosRecibidos;
     // Semaforo(s)
-
+    static Semaphore semaforoCola = new Semaphore(1);
     // metodos
     // main
     /*
@@ -42,6 +44,7 @@ public class DBMS implements API {
         logs = new DBMSThread(2);
         estadoPrograma = new DBMSThread(3);
         variablesEstaticas = new DBMSThread(4);
+        procesador = new Procesador(datosRecibidos);
         // iniciar los hilos
         robot.start();
         logs.start();
@@ -78,7 +81,6 @@ public class DBMS implements API {
             String dato = datosRecibidos.poll();
             datoExist = true;
         }
-
         if (datoExist) {
             // enviar datos
         }
@@ -195,6 +197,32 @@ class DBMSThread extends Thread {
                 return staticVariables.searchData(query);
             default:
                 return null;
+        }
+    }
+}
+
+class Procesador extends Thread {
+    final Semaphore semaforoCola = DBMS.semaforoCola;
+    Queue<String> datosRecibidos;
+
+    public Procesador(Queue<String> datosRecibidos) {
+        this.datosRecibidos = datosRecibidos;
+    }
+
+    public void run() {
+        while (true) {
+            leerDatos();
+        }
+    }
+
+    private void leerDatos() {
+        try {
+            semaforoCola.acquire();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaforoCola.release();
         }
     }
 }
