@@ -1,5 +1,7 @@
+
+
 public interface API {
     void EnviarInformacion(int tipeInformation, String information);
 
-    String recibirInformacion(int tipeInformation, String information);
+    void recibirDatos(int tipeInformation, String information);
 }

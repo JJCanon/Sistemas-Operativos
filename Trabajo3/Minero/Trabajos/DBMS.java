@@ -1,31 +1,50 @@
 
 //Librerias
 import java.lang.Thread;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Semaphore;
 
 public class DBMS implements API {
 
     // atributos
+    // Hilos que manejan los archivos
     DBMSThread robot;
     DBMSThread logs;
     DBMSThread estadoPrograma;
     DBMSThread variablesEstaticas;
-
+    Procesador procesador;
+    Date fechaHoraActual; // fecha y hora
+    SimpleDateFormat formatoFechaHora; // Formatear fecha
+    // cola de datos
+    static Queue<String> datosRecibidos;
+    // Semaforo(s)
+    static Semaphore semaforoCola = new Semaphore(1);
     // metodos
     // main
-    public static void main(String[] args) {
-        // crear los archivos en caso de que no existan
-        // crear los hilos
-        @SuppressWarnings("unused")
-        DBMS dbms = new DBMS();
-
-    }
+    /*
+     * public static void main(String[] args) {
+     * // crear los archivos en caso de que no existan
+     * // crear los hilos
+     * 
+     * @SuppressWarnings("unused")
+     * DBMS dbms = new DBMS();
+     * 
+     * }
+     */
 
     // Constructor
     public DBMS() {
+        // crear formato de la fecha
+        formatoFechaHora = new SimpleDateFormat("yy/MM/dd HH:mm:ss");
+        datosRecibidos = new LinkedList<String>();
         robot = new DBMSThread(1);
         logs = new DBMSThread(2);
         estadoPrograma = new DBMSThread(3);
         variablesEstaticas = new DBMSThread(4);
+        procesador = new Procesador(datosRecibidos);
         // iniciar los hilos
         robot.start();
         logs.start();
@@ -33,13 +52,39 @@ public class DBMS implements API {
         variablesEstaticas.start();
     }
 
+    @Override
     public void EnviarInformacion(int typeInformation, String information) {
 
     }
 
-    public String recibirInformacion(int typeInformation, String information) {
-        procesarInformacion(typeInformation, information);
-        return null;
+    @Override
+    public void recibirDatos(int typeInformation, String information) {
+
+        // Obtener la fecha en que se recibió la información:
+        fechaHoraActual = new Date();
+        String fechaHoraFormateada = formatoFechaHora.format(fechaHoraActual);
+        // crear string con la informacion completa
+        String informationComplete = typeInformation + "," + fechaHoraFormateada + "," + information;
+        // guardar informacion en la cola
+        boolean guardado = false;
+        guardado = datosRecibidos.offer(informationComplete);
+        System.out.println("informacion recibida: " + informationComplete);
+        if (guardado)
+            System.out.println("informacion recibida: " + informationComplete);
+        else
+            System.out.println("Hubo algun error");
+    }
+
+    public void leerCola() {
+        boolean datoExist = false;
+        if (!datosRecibidos.isEmpty()) {
+            String dato = datosRecibidos.poll();
+            datoExist = true;
+        }
+        if (datoExist) {
+            // enviar datos
+        }
+
     }
 
     public void procesarInformacion(int typeInformation, String information) {
@@ -75,7 +120,6 @@ class DBMSThread extends Thread {
 
     public void run() {
         crearArchivos(this.valor);
-        ReadFile();
     }
 
     public int crearArchivos(int valor) {
@@ -99,6 +143,28 @@ class DBMSThread extends Thread {
         return 0;
     }
 
+    public int escribirArchivo(int valor, String info) {
+        switch (valor) {
+            case 1:
+                robots.writeInformation(info);
+                break;
+            case 2:
+                logs.writeInformation(info);
+                break;
+            case 3:
+                programState.writeInformation(info);
+                break;
+            case 4:
+                staticVariables.writeInformation(info);
+                break;
+            default:
+                System.out.println("valor errado");
+                break;
+        }
+        return 0;
+    }
+    
+
     public int ReceiveMessage(String Datos) {
         switch (valor) {
             case 1:
@@ -120,20 +186,24 @@ class DBMSThread extends Thread {
         return 0;
     }
 
-    public String ReadFile() {
+    public int ReadFile() {
         switch (valor) {
             case 1:
                 robots.ReadFile();
+                break;
             case 2:
                 logs.ReadFile();
+                break;
             case 3:
                 programState.ReadFile();
+                break;
             case 4:
                 staticVariables.ReadFile();
+                break;
             default:
-                return null;
-
+                return 1;
         }
+        return 0;
     }
 
     public String searchData(String query) {
@@ -149,6 +219,32 @@ class DBMSThread extends Thread {
                 return staticVariables.searchData(query);
             default:
                 return null;
+        }
+    }
+}
+
+class Procesador extends Thread {
+    final Semaphore semaforoCola = DBMS.semaforoCola;
+    Queue<String> datosRecibidos;
+
+    public Procesador(Queue<String> datosRecibidos) {
+        this.datosRecibidos = datosRecibidos;
+    }
+
+    public void run() {
+        while (true) {
+            leerDatos();
+        }
+    }
+
+    private void leerDatos() {
+        try {
+            semaforoCola.acquire();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaforoCola.release();
         }
     }
 }

@@ -1,0 +1,417 @@
+
+œ
+java:S2293Î"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ò¡8Ô•æşó1J$0aa877a5-9102-46be-8bc8-8385986bbf3e
+¢
+java:S2293Ğ"YReplace the type specification in this constructor call with the diamond operator ("<>").(œí•ıÿÿÿÿ8Ô•æşó1J$486bd640-1706-4aea-b11e-bf6af18e0443
+Œ
+java:S6208—"CMerge the previous cases into this one using comma-separated label.(úâúÿÿÿÿ8Ô•æşó1J$678ff8e9-fae2-4855-8b3c-5f4f364965f3
+›	java:S127À"XRefactor the code in order to not assign to this loop counter from within the loop body.(Ì‚ˆÌ8Ô•æşó1J$d7e60c4e-ed9a-4546-90a5-61cdec1ae5fb
+r
+java:S1066µ"/Merge this if statement with the enclosing one.(œÓ³8Ş•æşó1J$66941887-664d-492b-b90a-35e20c52cb51
+s
+java:S1066¹"/Merge this if statement with the enclosing one.(š—ûŸ8Ş•æşó1J$ce8c4650-8912-44bc-b19a-f6f1d96b02b0
+x
+java:S1066½"/Merge this if statement with the enclosing one.(˜ÖÌ¾ùÿÿÿÿ8Ş•æşó1J$f2e82707-9a60-4fc3-b34b-65e22ba67bcc
+]
+java:S1700û"Rename field "posiciones"(Ÿ„½¿8è•æşó1J$31e61851-4c6f-437d-92a6-46b8de0f256b
+›	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üŠ¨8ê•æşó1J$ab9c3202-d4a5-403d-9a66-45920539a9b0
+™
+java:S3008;"VRename this field "arr_bodegas" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰ô›8àšæşó1J$3b563235-4966-4b33-b9c1-bc548dea65c4
+›
+java:S3008D"YRename this field "sem_extIngreso" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(±â§-8àšæşó1J$4fbbf0f8-95f2-42bb-8335-3fcfae183c70
+¡
+java:S3008E"YRename this field "sem_extraccion" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ï¾â‚ûÿÿÿÿ8àšæşó1J$573d92b9-e216-4bb1-ac87-701be579db56
+›
+java:S3008F"XRename this field "sem_extractor" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(åç¶8àšæşó1J$3504c60a-e11d-4afc-a89c-a1acca5b9f02
+
+java:S3008G"VRename this field "sem_mineros" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆû˜ßûÿÿÿÿ8àšæşó1J$8c67955f-e8bc-450b-aa9d-adbb6690de8b
+›
+java:S3008H"SRename this field "sem_move" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆÄ’àüÿÿÿÿ8àšæşó1J$3077e376-c11a-4d2d-b24d-2c72f92018fa
+
+java:S3008I"URename this field "sem_salida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó°…íøÿÿÿÿ8àšæşó1J$c6503e6a-b784-488f-b9a8-2fc89a8100fe
+
+java:S3008J"URename this field "sem_trenes" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ã´àøøÿÿÿÿ8àšæşó1J$af2d42b8-9a2c-47da-b766-873f28da3cae
+¨
+java:S3008K"`Rename this field "sem_trenInicioProceso" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø¦éåÿÿÿÿÿ8àšæşó1J$2fd973fc-d89b-4b19-a5f6-b3994ae2911b
+œ
+java:S3008L"YRename this field "sem_trenSalida" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„Öç°8àšæşó1J$c14373f1-a027-4f5c-9773-74a7d92aa76e
+r	java:S106|"+Replace this use of System.out by a logger.(ÏÜ¦ßùÿÿÿÿ8üšæşó1J$49dfa1df-951a-4f01-98bf-c05e54b1c319
+z
+java:S2696‰"6Make the enclosing method "static" or remove this set.(“„²ã8›æşó1J$6896d803-fd9e-4229-9627-56161286f761
+k
+java:S1125‰"'Remove the unnecessary boolean literal.(“„²ã8›æşó1J$911e1311-3b09-4019-9dc6-62283b377dc0
+z
+java:S2696‹"6Make the enclosing method "static" or remove this set.(Ïïµé8†›æşó1J$675b0205-ed99-4b15-9216-b3aa9afd3fcf
+k
+java:S1125‹"'Remove the unnecessary boolean literal.(Ïïµé8†›æşó1J$0058706f-23d3-4bdc-b7b8-1a89a881bcba
+¢
+java:S2142—"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8†›æşó1J$f7d9619d-4ed7-451a-aa02-14eb27eb8df3
+
+java:S2696"6Make the enclosing method "static" or remove this set.(„ğÕúÿÿÿÿ8†›æşó1J$05e22be0-1421-4173-9241-8cdb1c7ec1e4
+p
+java:S1125"'Remove the unnecessary boolean literal.(„ğÕúÿÿÿÿ8Š›æşó1J$7dff11ec-f54e-408e-861f-8cd3f015a99a
+
+java:S2696“"6Make the enclosing method "static" or remove this set.(ª±®øÿÿÿÿ8Š›æşó1J$7bbef588-88e0-4dd4-a739-0545972e3b9d
+p
+java:S1125“"'Remove the unnecessary boolean literal.(ª±®øÿÿÿÿ8Š›æşó1J$ce813860-84bc-47f8-966b-58c7c05ed26a
+n	java:S106˜"+Replace this use of System.out by a logger.(›ç¨É8Š›æşó1J$cf5b16e8-f131-4f85-a086-3a860eda917e
+z
+java:S2696œ"6Make the enclosing method "static" or remove this set.(¦Ğ«ı8Š›æşó1J$205c488e-405c-42c7-8ba5-e933149ec262
+k
+java:S1125œ"'Remove the unnecessary boolean literal.(¦Ğ«ı8Š›æşó1J$9e427890-e312-49be-978c-7abfd3c3a220
+
+java:S2696¥"6Make the enclosing method "static" or remove this set.(„×Ëûÿÿÿÿ8›æşó1J$59025072-a758-48a1-a163-3cf779fe771d
+p
+java:S1125¥"'Remove the unnecessary boolean literal.(„×Ëûÿÿÿÿ8›æşó1J$ad142762-e627-4ac3-8a5e-ca332e380f08
+j	java:S131°""Add a default case to this switch.(ãÕù„üÿÿÿÿ8›æşó1J$b2666f5c-2333-4aed-8d50-49cf51f642b6
+¢
+java:S2142Ã"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8›æşó1J$b51adb54-3731-4701-8d18-c9342bb9cb84
+
+java:S2696Á"6Make the enclosing method "static" or remove this set.(‡–şıÿÿÿÿ8›æşó1J$a76c77ca-6ad1-45e3-b988-9d86f0ff8d59
+p
+java:S1125Á"'Remove the unnecessary boolean literal.(‡–şıÿÿÿÿ8›æşó1J$84abf7fe-a2c2-4e01-942a-b8d345e9581b
+n	java:S106Ä"+Replace this use of System.out by a logger.(›ç¨É8›æşó1J$10825802-dfb2-4719-ab73-d40da30cf1c3
+–
+java:S3776Ö"RRefactor this method to reduce its Cognitive Complexity from 47 to the 15 allowed.(­–óö8ª›æşó1J$489a68bd-ea72-4540-b0f1-4540d72e0324
+¢
+java:S2142Ü"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8­›æşó1J$a3d88a2f-cc4e-4184-a383-b9309d19fab8
+
+java:S2696Ú"6Make the enclosing method "static" or remove this set.(ôËúşÿÿÿÿ8­›æşó1J$1937070a-c557-4f90-a957-f2c73ba82d27
+p
+java:S1125Ú"'Remove the unnecessary boolean literal.(ôËúşÿÿÿÿ8­›æşó1J$c1e0b6c5-6c44-4bf4-ac38-db239b0724c2
+n	java:S106İ"+Replace this use of System.out by a logger.(›ç¨É8®›æşó1J$366dcda5-227a-4df4-86ce-dcb7488ee5a4
+¢
+java:S2142ä"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8®›æşó1J$d4c090a1-beab-4455-922e-a001aeabacc9
+z
+java:S2696â"6Make the enclosing method "static" or remove this set.(İè¨æ8¯›æşó1J$452f7e00-bab0-4078-8cee-c55399ebfa5e
+k
+java:S1125â"'Remove the unnecessary boolean literal.(İè¨æ8¯›æşó1J$025dc802-155a-4cad-8d95-047fca3f4d0f
+n	java:S106å"+Replace this use of System.out by a logger.(›ç¨É8°›æşó1J$a98c2cf8-74cf-44b6-acc7-761a8900dcb3
+y
+java:S2696è"6Make the enclosing method "static" or remove this set.(–¼g8°›æşó1J$597c85f5-ed69-4167-8a06-e1c68f9f650b
+j
+java:S1125è"'Remove the unnecessary boolean literal.(–¼g8°›æşó1J$a1baccbf-cd1c-4f00-9bfd-6cbaf5248e51
+z
+java:S2696ï"6Make the enclosing method "static" or remove this set.(í÷®ú8±›æşó1J$8275cc60-1544-49db-86a0-07b6e278b993
+¢
+java:S2142õ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8±›æşó1J$2dd9035c-ef82-4de7-bf89-dc6f35d2c4ee
+z
+java:S2696ò"6Make the enclosing method "static" or remove this set.(Æ›îÄ8²›æşó1J$140b2c8c-1167-4d1c-bf58-cd6f27546257
+p
+java:S1125ó"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8²›æşó1J$7b31a339-1e8f-4d20-b5b7-81a25fb81d2a
+n	java:S106ö"+Replace this use of System.out by a logger.(›ç¨É8³›æşó1J$7dc4e4a0-1dd0-486a-a1de-30c5df246f0b
+y
+java:S2696€"6Make the enclosing method "static" or remove this set.(†È´8³›æşó1J$df433174-0806-468a-b8e4-a66eb11dd973
+¢
+java:S2142†"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8³›æşó1J$cde9a433-e710-458a-ae82-127a48c70023
+z
+java:S2696ƒ"6Make the enclosing method "static" or remove this set.(§É¼§8³›æşó1J$acc93dba-1da9-4ccd-800f-024a0016be26
+p
+java:S1125„"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8³›æşó1J$39e84ff5-5960-46ed-8759-af38602a0b48
+n	java:S106‡"+Replace this use of System.out by a logger.(›ç¨É8³›æşó1J$39ccfbcd-1bcc-4dc8-abd7-39f679710aba
+¢
+java:S2142•"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8³›æşó1J$6830768b-52ce-47b1-83ee-2174942c3663
+z
+java:S2696“"6Make the enclosing method "static" or remove this set.(¬öû–8³›æşó1J$79223434-17b1-4e5b-989a-768d75e72cf1
+k
+java:S1125“"'Remove the unnecessary boolean literal.(¬öû–8³›æşó1J$cd382c09-2193-4f94-9736-c7901531c0b2
+n	java:S106–"+Replace this use of System.out by a logger.(›ç¨É8¸›æşó1J$bf7971f4-7303-468a-9095-d7e2e6d94250
+z
+java:S2696"6Make the enclosing method "static" or remove this set.(ŸÎ£‘8¸›æşó1J$35bbeda1-71f7-453d-b5f1-e58aa690a90e
+k
+java:S1125"'Remove the unnecessary boolean literal.(ŸÎ£‘8¸›æşó1J$06e49f3f-b03e-4e4e-baa2-5d1c5e39e895
+
+java:S2696¥"6Make the enclosing method "static" or remove this set.(Ôôë£ûÿÿÿÿ8¸›æşó1J$58e2afa5-a530-4316-b06d-fa095026def5
+p
+java:S1125¥"'Remove the unnecessary boolean literal.(Ôôë£ûÿÿÿÿ8¸›æşó1J$591da28c-6440-41ca-a362-3d535c2b875f
+
+java:S2696©"6Make the enclosing method "static" or remove this set.(ËğƒÂøÿÿÿÿ8¸›æşó1J$73207c14-a192-4fca-b46c-e3940db78312
+p
+java:S1125©"'Remove the unnecessary boolean literal.(ËğƒÂøÿÿÿÿ8¸›æşó1J$4652b6d2-cb4e-4bd9-a034-d6937df9698c
+
+java:S2696°"6Make the enclosing method "static" or remove this set.(ÀŒ©‚ıÿÿÿÿ8¸›æşó1J$45ceb559-6766-4129-beb5-7f81b4fcf277
+p
+java:S1125°"'Remove the unnecessary boolean literal.(ÀŒ©‚ıÿÿÿÿ8¸›æşó1J$32b47047-b2a7-49dc-b693-e6a4551718e4
+
+java:S2696±"6Make the enclosing method "static" or remove this set.(öàÁ„úÿÿÿÿ8¸›æşó1J$2d1d21ab-7faa-4534-b06f-8f253fa56193
+¢
+java:S2142Â"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8¸›æşó1J$dc805864-ce38-43cd-aa52-0af4d2e7b8c7
+y
+java:S2696¾"6Make the enclosing method "static" or remove this set.(Î¬Ÿ.8¸›æşó1J$1e5edf60-8103-4743-bbdc-71819b8b090b
+p
+java:S1125À"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8¸›æşó1J$91e13ab0-4a0f-4cbe-909c-17897cec6e69
+n	java:S106Ã"+Replace this use of System.out by a logger.(›ç¨É8Â›æşó1J$ec1d21a3-9b2d-43a2-ae54-d34fda52255f
+
+java:S2696Ì"6Make the enclosing method "static" or remove this set.(¸¯´úÿÿÿÿ8Â›æşó1J$8633208c-91d4-4633-85a8-7bba7f94b03e
+p
+java:S1125Ì"'Remove the unnecessary boolean literal.(¸¯´úÿÿÿÿ8Ä›æşó1J$d7a742e9-7333-4025-87ab-acc7d6c512f1
+
+java:S2696Ù"6Make the enclosing method "static" or remove this set.(óªÂøÿÿÿÿ8Ä›æşó1J$748b8b49-8d52-483c-b19c-4115fec749f5
+p
+java:S1125Ù"'Remove the unnecessary boolean literal.(óªÂøÿÿÿÿ8Ä›æşó1J$57971b58-0f6b-46d6-9800-0b810f35c411
+j	java:S131Ú""Add a default case to this switch.(ãÕù„üÿÿÿÿ8Ä›æşó1J$e6acb828-c33a-4518-9094-fafe7831d643
+z
+java:S2696ì"6Make the enclosing method "static" or remove this set.(İÈ•ß8Ä›æşó1J$f1a42c7f-f10f-4808-a770-a50de1a5e69a
+k
+java:S1125ì"'Remove the unnecessary boolean literal.(İÈ•ß8Ê›æşó1J$0a767cf3-5392-4fe2-a643-97ed9e4ceab6
+›
+java:S3776ğ"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(òüÄ†úÿÿÿÿ8Ê›æşó1J$b6dd2541-5260-4a0f-a4ad-14ee45904dec
+z
+java:S2696ò"6Make the enclosing method "static" or remove this set.(Ä”¼ò8Ê›æşó1J$afa5e195-3e85-4af2-91d6-2b00f0a60176
+k
+java:S1125ò"'Remove the unnecessary boolean literal.(Ä”¼ò8Ê›æşó1J$d81fc008-82d8-4272-a51f-f986c13bfbab
+
+java:S2696ù"6Make the enclosing method "static" or remove this set.(¿Òáıÿÿÿÿ8Í›æşó1J$36ab61d8-c8f5-47d8-b6e0-bade572a78d3
+p
+java:S1125ù"'Remove the unnecessary boolean literal.(¿Òáıÿÿÿÿ8Í›æşó1J$ffd98329-1650-4c9c-b89d-de60b1120327
+z
+java:S2696ƒ"6Make the enclosing method "static" or remove this set.(°”ùğ8Í›æşó1J$8a72ccb5-7fc4-4ef7-9579-f0ab7f208016
+k
+java:S1125ƒ"'Remove the unnecessary boolean literal.(°”ùğ8Í›æşó1J$b8cf69a8-6deb-476d-bd11-9008b5799d5e
+
+java:S2696†"6Make the enclosing method "static" or remove this set.(ª÷ŠÍüÿÿÿÿ8Í›æşó1J$afaaa903-cc8b-4a7b-83de-39c798e77343
+y
+java:S2696ˆ"6Make the enclosing method "static" or remove this set.(¨ÀÁ8Í›æşó1J$61a96265-2448-42bb-b8c2-f77fd4eff020
+
+java:S2696‰"6Make the enclosing method "static" or remove this set.(Ñ–À•ıÿÿÿÿ8Í›æşó1J$eea2bd73-4bcb-4a26-a52d-8642d1dc4554
+p
+java:S1125‰"'Remove the unnecessary boolean literal.(Ñ–À•ıÿÿÿÿ8Í›æşó1J$0a258345-c032-4ce2-8528-345a62160bef
+z
+java:S2696“"6Make the enclosing method "static" or remove this set.(Â÷µş8Í›æşó1J$b75a4b97-f35c-4ee1-8e60-062baea8a89d
+k
+java:S1125“"'Remove the unnecessary boolean literal.(Â÷µş8Í›æşó1J$edaf420a-5d1c-43fc-bee2-dad107b3acba
+¢
+java:S2142–"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8Í›æşó1J$5e3ad3e9-47eb-441a-b227-d9ca7acb14c2
+n	java:S106—"+Replace this use of System.out by a logger.(›ç¨É8Í›æşó1J$cb325956-9d49-4ee8-be4c-15b09e3359e0
+
+java:S2696œ"6Make the enclosing method "static" or remove this set.(€¥‡Šıÿÿÿÿ8Í›æşó1J$3cc2f39a-4f81-4719-9290-f82690234845
+p
+java:S1125œ"'Remove the unnecessary boolean literal.(€¥‡Šıÿÿÿÿ8Í›æşó1J$cf478010-9fa2-446e-ba2c-d8e03675d5a7
+z
+java:S2696·"6Make the enclosing method "static" or remove this set.(€Ñ‹°8Ö›æşó1J$a16bec95-0014-42d8-8a6f-4a404d437766
+k
+java:S1125·"'Remove the unnecessary boolean literal.(€Ñ‹°8Ö›æşó1J$bf598462-5fed-44bd-8931-6b7e6182f6be
+z
+java:S2696¿"6Make the enclosing method "static" or remove this set.(Ã‡Éå8Ù›æşó1J$a5ce975c-f36d-4f24-82a9-441c18e85d3d
+
+java:S2696À"6Make the enclosing method "static" or remove this set.(«ÌœÜüÿÿÿÿ8Ù›æşó1J$adb59411-c90b-43ba-b901-3ea2406251c0
+p
+java:S1125À"'Remove the unnecessary boolean literal.(«ÌœÜüÿÿÿÿ8Ù›æşó1J$71f1c563-5673-4d51-853b-de23321e06ec
+z
+java:S2696Ï"6Make the enclosing method "static" or remove this set.(´çî8Ù›æşó1J$2cb38b47-e92b-4b9b-8277-4f3f83028969
+k
+java:S1125Ï"'Remove the unnecessary boolean literal.(´çî8Ù›æşó1J$e45c7be4-d754-4acc-838b-87e37082237f
+z
+java:S2696Ó"6Make the enclosing method "static" or remove this set.(Âßû8Ù›æşó1J$8dbe3a57-8cc3-4eb8-8a59-7c1d29b92767
+y
+java:S2696Ú"6Make the enclosing method "static" or remove this set.(Î¬Ÿ.8à›æşó1J$7a6d78dc-46cc-49c1-ba5b-6e6546a60324
+p
+java:S1125Ü"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8à›æşó1J$1f324174-b9d5-4d67-b443-6b7faa770952
+
+java:S2696İ"6Make the enclosing method "static" or remove this set.(†‚—©øÿÿÿÿ8à›æşó1J$a05ac6e8-520d-4d74-ba1e-d172806c2c7b
+
+java:S2696á"6Make the enclosing method "static" or remove this set.(²Å“‘üÿÿÿÿ8à›æşó1J$831bb14f-a9a3-448b-874c-90254e9d5e21
+p
+java:S1125á"'Remove the unnecessary boolean literal.(²Å“‘üÿÿÿÿ8à›æşó1J$5478f30e-a227-4648-a876-2e191762c82e
+
+java:S2696æ"6Make the enclosing method "static" or remove this set.(ñİş¶şÿÿÿÿ8à›æşó1J$42497e10-a58f-4b95-b393-9267c2da2b37
+p
+java:S1125æ"'Remove the unnecessary boolean literal.(ñİş¶şÿÿÿÿ8à›æşó1J$a77feb01-0f5b-4961-adc0-84065ef2efa8
+›
+java:S3776í"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ü–±ğÿÿÿÿÿ8à›æşó1J$15fa806f-9007-4840-b6fc-c45bdae9b286
+z
+java:S2696î"6Make the enclosing method "static" or remove this set.(´Øç€8à›æşó1J$b2e28300-c375-4fd8-8c5f-029f3afff243
+k
+java:S1125î"'Remove the unnecessary boolean literal.(´Øç€8à›æşó1J$69dd1bff-197d-4f2b-9a67-cffba9eeae98
+z
+java:S2696û"6Make the enclosing method "static" or remove this set.(ÉÕ‡ë8é›æşó1J$6e74d111-a271-4acc-a96c-ea59cd1534d4
+p
+java:S1125ü"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8ê›æşó1J$2f0f16f8-82c8-449b-a7bf-d9c24d6c1d82
+¢
+java:S2142ÿ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8ë›æşó1J$6c89f266-e403-4ad4-9ede-d43fa66f24fe
+n	java:S106€"+Replace this use of System.out by a logger.(›ç¨É8ë›æşó1J$6c7413e2-d480-4121-b25a-f692bf7bea88
+z
+java:S2696‚"6Make the enclosing method "static" or remove this set.(¨Ø˜«8ë›æşó1J$d2b19576-2934-43b5-bf1c-7536b6ba30ef
+k
+java:S1125‚"'Remove the unnecessary boolean literal.(¨Ø˜«8ë›æşó1J$500ef7cd-cd83-427d-b3e5-ac264746e965
+›
+java:S3776‰"RRefactor this method to reduce its Cognitive Complexity from 89 to the 15 allowed.(†¶‘¢ıÿÿÿÿ8î›æşó1J$de64392d-0386-4db0-acd9-8c43faf62742
+z
+java:S1481Š"6Remove this unused "pasosPuntoEntrega" local variable.(Ö¶ÇÏ8ñ›æşó1J$03c4ddc6-6085-485b-bf86-be96080079ab
+o
+java:S1481‹"&Remove this unused "j" local variable.(„í¥ ûÿÿÿÿ8ñ›æşó1J$8bde95c0-e26b-414b-bf91-a6ad67fd082b
+z
+java:S2696"6Make the enclosing method "static" or remove this set.(êÊ¢¦8ñ›æşó1J$a16e3400-62c7-4f75-b6bc-245492963ee7
+k
+java:S1125"'Remove the unnecessary boolean literal.(êÊ¢¦8ô›æşó1J$38c42ed3-791c-47d4-a603-2d9dbb5e3203
+z
+java:S2696’"6Make the enclosing method "static" or remove this set.(æ¿–8ô›æşó1J$12ef2147-b489-410a-8371-47459bcad55c
+k
+java:S1125’"'Remove the unnecessary boolean literal.(æ¿–8ô›æşó1J$bb85bb9b-b771-4d82-b4a4-ba5ebee0b569
+
+java:S2696–"6Make the enclosing method "static" or remove this set.(ş¥·Ûıÿÿÿÿ8ö›æşó1J$425dbc0c-18da-414a-ba79-9c6c9201ae72
+p
+java:S1125–"'Remove the unnecessary boolean literal.(ş¥·Ûıÿÿÿÿ8ö›æşó1J$ebe0441e-b1be-4283-b146-c4980d32aa31
+z
+java:S2696š"6Make the enclosing method "static" or remove this set.(æ¿–8ö›æşó1J$4776ca1f-9c59-41ac-a8eb-54ae321d275a
+k
+java:S1125š"'Remove the unnecessary boolean literal.(æ¿–8ö›æşó1J$2b4b52c6-4ad6-4c49-baab-5cc1cde2b460
+
+java:S2696"6Make the enclosing method "static" or remove this set.(ôÔÖæûÿÿÿÿ8ö›æşó1J$fec5ee84-ca4a-4968-8ffa-eef2a67ee0dc
+p
+java:S1125"'Remove the unnecessary boolean literal.(ôÔÖæûÿÿÿÿ8ö›æşó1J$730aeb41-163c-491a-b5a3-11cdae8ed055
+
+java:S2696£"6Make the enclosing method "static" or remove this set.(€­ëÒÿÿÿÿÿ8ö›æşó1J$75a4ef68-ad9f-4eaf-a29d-b05eacbd5ff7
+p
+java:S1125£"'Remove the unnecessary boolean literal.(€­ëÒÿÿÿÿÿ8ö›æşó1J$f287770a-9861-49fb-b774-e82f90cd55e4
+z
+java:S2696¦"6Make the enclosing method "static" or remove this set.(æ¿–8ö›æşó1J$a3542511-bafa-4de4-87c9-f48161a8df13
+k
+java:S1125¦"'Remove the unnecessary boolean literal.(æ¿–8ö›æşó1J$ca878c98-4f37-47bc-9cc0-2aef6371da07
+
+java:S2696§"6Make the enclosing method "static" or remove this set.(”ãÎşÿÿÿÿ8ö›æşó1J$890708e6-60d4-4b9b-9639-b5d56fa635c3
+
+java:S2696«"6Make the enclosing method "static" or remove this set.(ä—ëüÿÿÿÿ8ö›æşó1J$564888ab-0c74-4cba-9144-df69d5847214
+p
+java:S1125«"'Remove the unnecessary boolean literal.(ä—ëüÿÿÿÿ8ö›æşó1J$6028a43e-71ec-463c-995a-ce1e174cba27
+
+java:S2696¯"6Make the enclosing method "static" or remove this set.(Š­¾§ûÿÿÿÿ8ö›æşó1J$5f311b21-a1c3-48e4-819a-a3096baf37e5
+p
+java:S1125¯"'Remove the unnecessary boolean literal.(Š­¾§ûÿÿÿÿ8ö›æşó1J$a6d62b46-9be9-4749-a09b-62361c50c7f4
+
+java:S2696³"6Make the enclosing method "static" or remove this set.(Ù£ğ¾øÿÿÿÿ8ö›æşó1J$b0d0d1ed-8ca8-4e25-a419-35092ca8f40a
+p
+java:S1125³"'Remove the unnecessary boolean literal.(Ù£ğ¾øÿÿÿÿ8ö›æşó1J$3b0b6187-552b-46f3-81f1-e88a582b9449
+¢
+java:S2142¶"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8ö›æşó1J$b39f6f2b-6733-49c4-83e7-223e2f0ae9d7
+n	java:S106·"+Replace this use of System.out by a logger.(›ç¨É8ş›æşó1J$3507ca36-4edd-4a14-ad83-bb49f3f84f24
+
+java:S2696¼"6Make the enclosing method "static" or remove this set.(„ğÕúÿÿÿÿ8ş›æşó1J$348db375-9055-4a43-849c-af7329c59736
+p
+java:S1125¼"'Remove the unnecessary boolean literal.(„ğÕúÿÿÿÿ8ÿ›æşó1J$9a60e5e2-6c3e-4f91-b047-a6f626052da3
+
+java:S2696¾"6Make the enclosing method "static" or remove this set.(À¾ˆ’üÿÿÿÿ8ÿ›æşó1J$4284036c-a83e-4ae7-8d05-2b6ea733a1d5
+p
+java:S1125¾"'Remove the unnecessary boolean literal.(À¾ˆ’üÿÿÿÿ8ÿ›æşó1J$45afdd95-96e7-4de7-8a18-e03bdd3667e9
+
+java:S2696À"6Make the enclosing method "static" or remove this set.(±“Ñıÿÿÿÿ8ÿ›æşó1J$db4ae899-38bd-4987-aa5e-3a0f5402f776
+p
+java:S1125À"'Remove the unnecessary boolean literal.(±“Ñıÿÿÿÿ8œæşó1J$b8b06fb6-8c7f-47b8-ba24-1022b0153822
+z
+java:S2696Á"6Make the enclosing method "static" or remove this set.(àÃÔ¡8‚œæşó1J$7e8c49f2-29ee-46b5-9e25-2c763cecb052
+y
+java:S2696Â"6Make the enclosing method "static" or remove this set.(Î¬Ÿ.8‚œæşó1J$8d25efd3-7600-4804-8a3f-f2ff8bb29d13
+p
+java:S1125Ä"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8‚œæşó1J$9a4fbb42-b6d8-49a5-a233-5ada2367411d
+z
+java:S2696É"6Make the enclosing method "static" or remove this set.(¯ôÄ×8ƒœæşó1J$7eaa5eab-a440-4320-a739-2fce796bdbcf
+k
+java:S1125É"'Remove the unnecessary boolean literal.(¯ôÄ×8ƒœæşó1J$9329d2af-1928-4389-9eb0-5c4fc6bd60fb
+z
+java:S2696Ë"6Make the enclosing method "static" or remove this set.(ú¼˜Ë8„œæşó1J$9596b67c-9b36-4f23-b9f3-e71cca562bae
+k
+java:S1125Ë"'Remove the unnecessary boolean literal.(ú¼˜Ë8„œæşó1J$b7d79dd5-d5da-4165-ba17-2d4a501d18e1
+z
+java:S2696Ì"6Make the enclosing method "static" or remove this set.(˜–è£8„œæşó1J$742c50dd-4749-4b3f-97cc-06d0c0ed154f
+z
+java:S2696Î"6Make the enclosing method "static" or remove this set.(øïØ¸8…œæşó1J$d14b89fc-9882-431c-b881-a71c2c579db7
+k
+java:S1125Î"'Remove the unnecessary boolean literal.(øïØ¸8…œæşó1J$1ca5f418-f0ea-4c0b-b611-b1c0d13ce4dd
+y
+java:S2696Ñ"6Make the enclosing method "static" or remove this set.(Î¬Ÿ.8…œæşó1J$0f9c3b7d-1481-4be4-a14e-fcb5054e8205
+p
+java:S1125Ó"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8…œæşó1J$17d234d7-09c1-41c4-897d-1a4f82361779
+z
+java:S2696×"6Make the enclosing method "static" or remove this set.(°Àò8†œæşó1J$915cf501-2091-45bb-9757-d1e82d72dc0f
+k
+java:S1125×"'Remove the unnecessary boolean literal.(°Àò8†œæşó1J$2e921620-d734-4a04-94de-3cb918c6facc
+z
+java:S2696á"6Make the enclosing method "static" or remove this set.(¿¼Ø8ˆœæşó1J$4a17fe80-a973-4564-a06a-b1ce75a15bd5
+k
+java:S1125á"'Remove the unnecessary boolean literal.(¿¼Ø8ˆœæşó1J$fc74c973-2fe9-4571-8220-8decb4e2ca5d
+z
+java:S2696ã"6Make the enclosing method "static" or remove this set.(ÁÔó8ˆœæşó1J$8ace2d88-74d1-48be-ae2e-8ef75c1d7cb7
+k
+java:S1125ã"'Remove the unnecessary boolean literal.(ÁÔó8ˆœæşó1J$7f20bb1c-01c5-46c8-ba5d-c3d33cf33a3d
+¢
+java:S2142è"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8Šœæşó1J$e56da5d4-0165-4ce6-8d7b-410dc017ed5d
+n	java:S106é"+Replace this use of System.out by a logger.(›ç¨É8‹œæşó1J$8adaeeae-5f52-4153-b327-33fbd463c75e
+
+java:S2696î"6Make the enclosing method "static" or remove this set.(óŞ§Çùÿÿÿÿ8‹œæşó1J$676f94b4-5c3a-4f52-811d-98c0384bf623
+p
+java:S1125î"'Remove the unnecessary boolean literal.(óŞ§Çùÿÿÿÿ8‹œæşó1J$6e567a9f-a2ab-4b5f-8fe8-4b4805594110
+z
+java:S2696õ"6Make the enclosing method "static" or remove this set.(Çé­¾8œæşó1J$97a29630-dee5-4a9d-b508-f2e8d09ae12b
+k
+java:S1125õ"'Remove the unnecessary boolean literal.(Çé­¾8œæşó1J$3194d3e2-e24a-444b-a1bd-95a90f482019
+y
+java:S2696…"6Make the enclosing method "static" or remove this set.(ø¾G8œæşó1J$df08d6a1-e02e-4c98-a524-4b1e54dfc410
+j
+java:S1125…"'Remove the unnecessary boolean literal.(ø¾G8œæşó1J$397250f9-ab6d-4d3e-bf33-9203e0773df8
+
+java:S2696ˆ"6Make the enclosing method "static" or remove this set.(•èáÒÿÿÿÿÿ8œæşó1J$a5d66eea-97b1-450c-b0f9-f6023bf47759
+y
+java:S2696Š"6Make the enclosing method "static" or remove this set.(Î¬Ÿ.8œæşó1J$8f766380-9c8c-4685-80f1-eb97122f1a13
+p
+java:S1125"'Remove the unnecessary boolean literal.(³¹ßÈüÿÿÿÿ8’œæşó1J$4c3d8bc0-b8c2-43ad-a0d5-b9820e9b8ab5
+j	java:S131”""Add a default case to this switch.(ãÕù„üÿÿÿÿ8”œæşó1J$7f137958-22aa-477f-93df-017c59615d47
+z
+java:S2696œ"6Make the enclosing method "static" or remove this set.(Ã‡Éå8”œæşó1J$2853912e-b0b6-40a0-9c75-6a81eead1ca0
+
+java:S2696"6Make the enclosing method "static" or remove this set.(¯õúüÿÿÿÿ8”œæşó1J$bbe3f937-6b7c-409d-ac7b-dc76c7a213e1
+p
+java:S1125"'Remove the unnecessary boolean literal.(¯õúüÿÿÿÿ8”œæşó1J$70843100-1afd-4c31-84f4-bec6adb5eca8
+
+java:S2696®"6Make the enclosing method "static" or remove this set.(…¸‘Üÿÿÿÿÿ8™œæşó1J$64e9004a-c37a-4e80-8c35-579117002b19
+p
+java:S1125®"'Remove the unnecessary boolean literal.(…¸‘Üÿÿÿÿÿ8™œæşó1J$05dbf800-fece-4a6e-80c8-c5b828d16075
+z
+java:S2696·"6Make the enclosing method "static" or remove this set.(ç§ĞÑ8œœæşó1J$577304c0-e27b-4eb2-9afb-d5042ade86c7
+k
+java:S1125·"'Remove the unnecessary boolean literal.(ç§ĞÑ8œœæşó1J$b2f952cd-6d5d-4535-af79-957b2b766638
+
+java:S2696Ã"6Make the enclosing method "static" or remove this set.(Èëøáıÿÿÿÿ8œœæşó1J$70adb8ed-45e3-4e3d-a2a6-269adf6c8c50
+p
+java:S1125Ã"'Remove the unnecessary boolean literal.(Èëøáıÿÿÿÿ8œœæşó1J$4720ffa9-e484-475b-a35b-e209a44fb09f
+z
+java:S2696Î"6Make the enclosing method "static" or remove this set.(ºµê‚8 œæşó1J$4fe25a87-f08c-4f30-bdd9-b12ce41a3ef9
+k
+java:S1125Î"'Remove the unnecessary boolean literal.(ºµê‚8 œæşó1J$1e12ed43-6c29-4312-b873-a2326bf4fbaf
+z
+java:S2696Ô"6Make the enclosing method "static" or remove this set.(åÖíû8 œæşó1J$d2ebe974-8f92-40cc-97fc-6e2e4e57108b
+k
+java:S1125Ô"'Remove the unnecessary boolean literal.(åÖíû8 œæşó1J$be61fa73-13a7-4ab5-bb16-db95a2fcfc4e
+z
+java:S2696Ü"6Make the enclosing method "static" or remove this set.(”èÿ8 œæşó1J$7e4b7860-3181-48fc-b336-04949ee69bfb
+k
+java:S1125Ü"'Remove the unnecessary boolean literal.(”èÿ8 œæşó1J$c74e1475-dd34-4a78-b878-f05a83267c31
+z
+java:S2696æ"6Make the enclosing method "static" or remove this set.(¬ÍÂ8 œæşó1J$39d69df3-ee4c-4145-b487-31824831c296
+k
+java:S1125æ"'Remove the unnecessary boolean literal.(¬ÍÂ8¦œæşó1J$61d1e699-2dd8-4c6a-8d6b-42a938e3534a
+j	java:S131ô""Add a default case to this switch.(ãÕù„üÿÿÿÿ8¦œæşó1J$e99a4bb3-3c75-46e4-b736-b156ac20a1bc
+›
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 48 to the 15 allowed.(Îì¦øÿÿÿÿ8°œæşó1J$5e583ee4-fbdd-49ae-a40e-cedeb3654de8
+n	java:S106§"+Replace this use of System.out by a logger.(à– ô8ºœæşó1J$fab5641a-7f5f-4040-a106-5f66dcf3d8e5
+s	java:S106«"+Replace this use of System.out by a logger.(˜¿éøÿÿÿÿ8ºœæşó1J$22af86c2-3586-48b0-8e14-96342054277c
+n	java:S106¯"+Replace this use of System.out by a logger.(³ë…¨8ºœæşó1J$5481820e-2264-4746-b4a7-09cfbca75d05
+s	java:S106Å"+Replace this use of System.out by a logger.(Š‘‹ıÿÿÿÿ8ºœæşó1J$e7947aea-dc8e-483c-8faf-4064d0513b87
+º
+java:S1130ë"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(º™Ú78Äœæşó1J$dafc3653-0860-4252-86d5-acec1d921a90
+š
+java:S1149û"VReplace the synchronized class "Hashtable" by an unsynchronized one such as "HashMap".(Ÿ„½¿8Îœæşó1J$1406f4fa-1cf0-4a37-929d-a26ae28fa6cf
+¢
+java:S2142ˆ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(¬Êã®8Ñœæşó1J$ffb258f9-9145-4b19-b2ef-1ee15f1d9ce0
+n	java:S106‰"+Replace this use of System.out by a logger.(›ç¨É8Óœæşó1J$c8cd9b40-0602-4249-ba24-0a29d35c04c3
+q
+java:S1068")Remove this unused "pasos" private field.(å¼¾·øÿÿÿÿ8Ùœæşó1J$4927a17e-a7e5-4666-81b5-cf0ddf88fc19
+q
+java:S1068&".Remove this unused "VETA_CALLE" private field.(ç¯„8Ùœæşó1J$a37b6e6c-2f2a-4c26-9f5a-dc18410d791d
+w
+java:S10681"/Remove this unused "ejecutarLog" private field.(ıÙ× ûÿÿÿÿ8Ûœæşó1J$9cdefe96-f892-43bf-950c-1a5c510d987c
+w
+java:S10687"5Remove this unused "salidaExtractores" private field.(§ŸÄ98Ûœæşó1J$50ed8c31-59ce-4dac-8792-24206c2fe269
+r
+java:S10688"0Remove this unused "salidaTrenes" private field.(ÜİŠG8Ûœæşó1J$1f613ef3-7b96-4160-98d5-f66b5b8f3e39
+y
+java:S1144Ú"0Remove this unused private "sacarMinero" method.(¾Ó¾Ëùÿÿÿÿ8Ûœæşó1J$0b515c8a-b185-452e-aa6b-3caeb565a44a

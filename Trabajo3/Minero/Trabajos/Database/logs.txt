@@ -1,0 +1,1 @@
+Time_stamp,id_robot,Avenue,Street,Beepers,accion

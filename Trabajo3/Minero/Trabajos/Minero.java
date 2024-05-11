@@ -1,3 +1,4 @@
+
 import kareltherobot.*;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -6,6 +7,9 @@ import java.util.Hashtable;
 
 //public class Minero extends Robot implements Directions
 public class Minero extends AugmentedRobot implements Directions {
+	// Database
+	private static DBMS database = new DBMS();
+
 	// Object attributes
 	private int tipoRobot;
 	private int pasos;
@@ -14,6 +18,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	private int avenidaActual;
 	private int calleActual;
 	private int id;
+
 	// Constants
 	private static final int AVENIDA_ESPERA_EXT = 3;
 	private static final int AVENIDA_ESPERA_TREN = 12;
@@ -160,6 +165,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		int nuevaCalle = determineNuevaCalle();
 		int nuevaAvenida = determineNuevaAvenida();
 		ejecutarLog = (debugHabilitado) ? logMensaje("Me muevo en la mina") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		move();
 		calleActual = nuevaCalle;
 		avenidaActual = nuevaAvenida;
@@ -188,6 +194,7 @@ public class Minero extends AugmentedRobot implements Directions {
 				if (!inicioTransporte) {
 					try {
 						ejecutarLog = (debugHabilitado) ? logMensaje("En punto de espera por beepers") : false;
+						database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "En punto de espera por beepers");
 						sem_extraccion.acquire();
 					} catch (InterruptedException exc) {
 						System.out.println(exc);
@@ -213,6 +220,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		if (tipoRobot == TIPO_TREN) {
 			try {
 				ejecutarLog = (debugHabilitado) ? logMensaje("Esperando por la salida de todos los mineros") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Esperando por la salida de todos los mineros");
 				sem_trenes.acquire();
 			} catch (InterruptedException exc) {
 				System.out.println(exc);
@@ -221,12 +229,14 @@ public class Minero extends AugmentedRobot implements Directions {
 		if (tipoRobot == TIPO_EXTRACTOR) {
 			try {
 				ejecutarLog = (debugHabilitado) ? logMensaje("Esperando por la salida de los mineros y trenes") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Esperando por la salida de los mineros y trenes");
 				sem_extractor.acquire();
 			} catch (InterruptedException exc) {
 				System.out.println(exc);
 			}
 		}
 		ejecutarLog = (debugHabilitado) ? logMensaje("Empiezo ejecucion") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Empiezo ejecución");
 		turnLeft();
 		irAlMuro();
 		turnLeft();
@@ -270,6 +280,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		if (tipoRobot == TIPO_EXTRACTOR) {
 			try {
 				ejecutarLog = (debugHabilitado) ? logMensaje("Espero si puedo entrar a la mina") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Espero si puedo entrar a la mina");
 				sem_extIngreso.acquire();
 			} catch (InterruptedException exc) {
 				System.out.println(exc);
@@ -281,6 +292,8 @@ public class Minero extends AugmentedRobot implements Directions {
 		turnRight();
 		irAlPuntoDeEsperaExtraccion();
 		ejecutarLog = (debugHabilitado) ? logMensaje("En punto de espera de extractor") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "En punto de espera de extractor");
+
 	}
 
 	// Miners moves until finds Avenue 13 (VETA_AVENIDA).
@@ -288,6 +301,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// the waiting point.
 	private void ingresoMinero() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Buscando el inicio de la veta") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (avenidaActual < VETA_AVENIDA)
 			mover();
 		if (encontroVeta) {
@@ -315,6 +329,7 @@ public class Minero extends AugmentedRobot implements Directions {
 				ejecutarLog = (debugHabilitado)
 						? logMensaje("Espero que hayan " + BEEPERS_TREN + " beepers para recogerlos.")
 						: false;
+						database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				sem_trenInicioProceso.acquire();
 			} catch (InterruptedException exc) {
 				System.out.println(exc);
@@ -327,6 +342,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// trip
 	private void ingresoExtractor() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Voy al punto de recogida") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		mover();
 		mover();
 	}
@@ -340,6 +356,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// All robots goes thru this method.
 	private void procesar() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Inicio proceso") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		switch (tipoRobot) {
 			case TIPO_MINERO:
 				procesarMinero();
@@ -359,12 +376,14 @@ public class Minero extends AugmentedRobot implements Directions {
 				break;
 		}
 		ejecutarLog = (debugHabilitado) ? logMensaje("Termino proceso") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 	}
 
 	// Extractor moves beepers from the delivery point to the warehouses.
 	private void irAlasBodegas() {
 		// Go out from the mine to the Avenue 2 Street 7
 		ejecutarLog = (debugHabilitado) ? logMensaje("Llevo beepers a las bodegas.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		salirMina();
 		// From there, moves out and go to the warehouses that starts at Avenue 7 Street
 		// 7.
@@ -372,6 +391,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		turnRight();
 		irAlMuro();
 		ejecutarLog = (debugHabilitado) ? logMensaje("Dejo entrar al extractor que viene de la casa") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		sem_extIngreso.release();
 		turnRight();
 		mover();
@@ -382,6 +402,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Drops the beepers until it doesn't have more on the bag.
 		// If the warehouse get to it's limit, move to the next.
 		ejecutarLog = (debugHabilitado) ? logMensaje("Dejo los beepers que tenga en la bodega en uso.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (anyBeepersInBeeperBag()) {
 			putBeeper();
 			arr_bodegas[bodegaEnUso]++;
@@ -407,6 +428,7 @@ public class Minero extends AugmentedRobot implements Directions {
 				// If there's still beepers in the mine, go back to get them from the Trains
 				// drop point.
 				ejecutarLog = (debugHabilitado) ? logMensaje("Reingreso a la mina") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				mover();
 				turnLeft();
 				mover();
@@ -434,6 +456,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		int beepers = 0;
 		// Picks the beepers from the Train Delivery point
 		ejecutarLog = (debugHabilitado) ? logMensaje("Tomando beepers del punto de extracción") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (nextToABeeper() && beepers < BEEPERS_EXTRACTOR) {
 			pickBeeper();
 			beepers++;
@@ -443,6 +466,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		if (minaVacia && beepers == 0) {
 			extraccionCompleta = true;
 			ejecutarLog = (debugHabilitado) ? logMensaje("Extraccion completa. Todos regresan a casa.") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			while (sem_mineros.availablePermits() <= (cantidadMineros - 1))
 				sem_mineros.release();
 			while (sem_trenSalida.availablePermits() <= (cantidadTrenes - 1))
@@ -458,6 +482,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		int beepers = 0;
 		// Pickup the amount of beepers that the train can manage
 		ejecutarLog = (debugHabilitado) ? logMensaje("Tomando beepers del punto de delivery de la veta") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (nextToABeeper() && beepers < BEEPERS_TREN) {
 			pickBeeper();
 			beepers++;
@@ -476,11 +501,13 @@ public class Minero extends AugmentedRobot implements Directions {
 		}
 		// Delivers all beepers that it has in the bag...
 		ejecutarLog = (debugHabilitado) ? logMensaje("Dejando beepers") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		for (int i = beepers; i > 0; i--)
 			putBeeper();
 		// ... and goes back to the vein delivery point
 		turnLeft();
 		ejecutarLog = (debugHabilitado) ? logMensaje("Regreso al punto de espera de la veta") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		pasosEntradaComunesMineroTren();
 		ingresoTren();
 	}
@@ -489,6 +516,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// extractors delivery point at Avenue 3 Street 1
 	private void irAlPuntoDeEntrega() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Voy al punto de entrega a los extractores") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		irAlMuro();
 		turnRight();
 		irAlMuro();
@@ -501,8 +529,8 @@ public class Minero extends AugmentedRobot implements Directions {
 			while (calleActual > (CALLE_ESPERA_EXT + 1))
 				mover();
 			if (minaVacia && !extraccionCompleta && tipoRobot == TIPO_TREN) {
-				ejecutarLog = (debugHabilitado) ? logMensaje("Mina vacia - Esperando que los extractores terminen.")
-						: false;
+				ejecutarLog = (debugHabilitado) ? logMensaje("Mina vacia - Esperando que los extractores terminen.") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				try {
 					sem_trenSalida.acquire();
 				} catch (InterruptedException exc) {
@@ -550,6 +578,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			}
 			// Go back to the vein delivery point
 			ejecutarLog = (debugHabilitado) ? logMensaje("Salir de la veta") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			turnAround();
 			while (avenidaActual > VETA_ESPERA_AVENIDA)
 				moverEnMina();
@@ -558,6 +587,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			if (minaVacia && !extraccionCompleta) {
 				// So, miners go locked
 				ejecutarLog = (debugHabilitado) ? logMensaje("Si. Me bloqueo hasta que terminen de extraer") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				try {
 					sem_mineros.acquire();
 				} catch (InterruptedException exc) {
@@ -585,6 +615,7 @@ public class Minero extends AugmentedRobot implements Directions {
 				minaVacia = true;
 			}
 			ejecutarLog = (debugHabilitado) ? logMensaje("Descargar") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			// Unload beepers in the vein delivery point
 			descargar();
 			ejecutarLog = (debugHabilitado)
@@ -594,6 +625,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			if (!minaVacia || (minaVacia && !extraccionCompleta)) {
 				// ... I'll go to the vein waiting point
 				ejecutarLog = (debugHabilitado) ? logMensaje("Voy a la espera") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				turnLeft();
 				mover();
 				turnLeft();
@@ -606,6 +638,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Mina vacia. Estoy en calle 10 - avenida 14?") : false;
 		if (calleActual == VETA_ESPERA_CALLE && avenidaActual == VETA_ESPERA_AVENIDA) {
 			ejecutarLog = (debugHabilitado) ? logMensaje("Si, me bloqueo hasta que pueda salir.") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			mover();
 			turnLeft();
 			try {
@@ -624,6 +657,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	private void recoger(int numero) {
 		int i = 0;
 		ejecutarLog = (debugHabilitado) ? logMensaje("Recojo beepers en la veta") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (i < numero) {
 			if (nextToABeeper()) {
 				pickBeeper();
@@ -640,6 +674,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// dropped, release the trains from the waiting point
 	private void descargar() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Descargando en el punto de espera de la veta.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		while (anyBeepersInBeeperBag()) {
 			putBeeper();
 			beepersExtraidos++;
@@ -648,6 +683,7 @@ public class Minero extends AugmentedRobot implements Directions {
 				? logMensaje("Termine descarga. Si hay más de " + BEEPERS_TREN
 						+ " beepers en el punto de espera, suelto un tren.")
 				: false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		if (beepersExtraidos >= BEEPERS_TREN)
 			sem_trenInicioProceso.release();
 	}
@@ -664,6 +700,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			case 3:
 				extraccionCompleta = true;
 				ejecutarLog = (debugHabilitado) ? logMensaje("Libero robots y voy a casa.") : false;
+				database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 				while (sem_mineros.availablePermits() <= (cantidadMineros - 1))
 					sem_mineros.release();
 				while (sem_trenSalida.availablePermits() <= (cantidadTrenes - 1))
@@ -681,6 +718,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// the Mine
 	private void salirMina() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Salgo a la puerta de la mina.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		irAlMuro();
 		turnRight();
 		irAlMuro();
@@ -690,6 +728,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Extractor in mine release the lock for the other
 		if (tipoRobot == TIPO_EXTRACTOR && extraccionCompleta) {
 			ejecutarLog = (debugHabilitado) ? logMensaje("Libero extractor que está en bodega.") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			sem_extIngreso.release();
 		}
 	}
@@ -702,6 +741,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			salirMina();
 		// All robots go to the Initial Street + 1
 		ejecutarLog = (debugHabilitado) ? logMensaje("Buscando mi casa.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		for (int i = calleActual; i <= calleInicial; i++)
 			mover();
 		turnRight();
@@ -713,12 +753,14 @@ public class Minero extends AugmentedRobot implements Directions {
 		mover();
 		turnAround();
 		ejecutarLog = (debugHabilitado) ? logMensaje("Hora de dormir. Dulces sueños.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		turnOff();
 	}
 
 	// Moves to the Train dropoff point when exit.
 	private void pasosSalidaMineroTren() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Voy al punto de entrega al extractor.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		irAlPuntoDeEntrega();
 		turnRight();
 	}
@@ -727,6 +769,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	private void sacarMinero() {
 		if (!facingWest()) {
 			ejecutarLog = (debugHabilitado) ? logMensaje("Salgo del punto de espera.") : false;
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 			mover();
 			turnLeft();
 		}
@@ -737,6 +780,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// All robots does this 3 steps
 	private void ejecutarMina() {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Empiezo proceso.") : false;
+		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		ingresoAlaMina();
 		procesar();
 		salirDeLaMina();
@@ -853,6 +897,15 @@ public class Minero extends AugmentedRobot implements Directions {
 		Minero.sem_trenes = new Semaphore(0);
 		Minero.sem_trenInicioProceso = new Semaphore(0);
 		Minero.sem_trenSalida = new Semaphore(0);
+		database.recibirDatos(4, Integer.toString(AVENIDA_ESPERA_EXT)
+		+ "," + Integer.toString(AVENIDA_ESPERA_TREN) + "," + Integer.toString(AVENIDA_INICIAL)
+		+ "," + Integer.toString(AVENIDA_INICIAL) + "," + Integer.toString(CALLE_EXTRACTOR) + "," + Integer.toString(CALLE_MINERO)
+		+ "," + Integer.toString(CALLE_TREN) + "," + Integer.toString(CALLE_ESPERA_EXT) + "," + Integer.toString(BEEPERS_POR_BODEGA)
+		+ "," + Integer.toString(BEEPERS_EXTRACTOR) + "," + Integer.toString(BEEPERS_MINERO) + "," + Integer.toString(BEEPERS_TREN)
+		+ "," + Integer.toString(DEFAULT_ROBOTS) + "," + Integer.toString(NUMERO_BODEGAS) + "," + Integer.toString(TIPO_EXTRACTOR)
+		+ "," + Integer.toString(TIPO_MINERO) + "," + Integer.toString(TIPO_TREN) + "," + Integer.toString(VETA_AVENIDA)
+		+ "," + Integer.toString(VETA_AVENIDA) + "," + Integer.toString(VETA_CALLE) + "," + Integer.toString(VETA_ESPERA_AVENIDA)
+		+ "," + Integer.toString(VETA_ESPERA_CALLE));
 	}
 
 	// Setup Karel World
@@ -865,6 +918,8 @@ public class Minero extends AugmentedRobot implements Directions {
 
 	// Main method
 	public static void main(String[] args) throws InterruptedException {
+		System.out.println("Iniciando base de datos");
+		// database = new DBMS();
 		asignarVariablesEstaticas();
 		validarArgumentos(args);
 		setupWorld("Mina.kwld");
@@ -872,12 +927,15 @@ public class Minero extends AugmentedRobot implements Directions {
 		crearRobots(TIPO_MINERO);
 		crearRobots(TIPO_TREN);
 		crearRobots(TIPO_EXTRACTOR);
-		// Create instance of BDMS??
-
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
 			objThreads.get(i).start();
+
 	}
+
+	/*
+	 * code done for students below
+	 */
 }
 
 class Posiciones {

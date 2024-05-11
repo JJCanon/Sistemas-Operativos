@@ -1,5 +1,5 @@
 
-/*
+/* 
  * se debe crear funciones para crear el archivo en caso de que no exista
  * se debe crear funciones para leer el archivo
  * se debe crear funciones para agregar un nuevo registro
@@ -13,14 +13,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 //Class
-public class staticVariables {
+public class programState {
     // atributos
-    static String pathFile = "Database/staticVariables.txt";
+    static String pathFile = "Database/programState.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
-            System.out.println("El archivo staticVariables.txt ya existe");
+            System.out.println("El archivo programState.txt ya existe");
             return;
         } else {
             try {
@@ -30,6 +31,7 @@ public class staticVariables {
                     return;
                 } else
                     System.out.println("No se pudo crear el archivo");
+
             } catch (IOException e) {
                 System.out.println("Ocurrió un error: " + e.getMessage());
             }
@@ -47,16 +49,19 @@ public class staticVariables {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Time_Stamp,Avenida_Espera_Ext,Avenida_Espera_Tren,Avenida_Inicial," +
-                    "Calle_Extractor,Calle_Minero,Calle_Tren,Calle_Espera_Ext,Beepers_Por_Bodega," +
-                    "Beepers_Extractor,Beepers_Minero,Beepers_Tren,Default_Robots,Numero_Bodegas," +
-                    "Tipo_Extractor,Tipo_Minero,Tipo_Tren,Veta_Avenida,Veta_Calle,Veta_Espera_Avenida" +
-                    "Veta_Espera_Calle\n"); // añadir
-                                            // headers
-                                            // de
-                                            // las
-                                            // variables
-            // estaticas
+            fileWriter.write("Time_stamp,State\n");
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public static int writeInformation(String info) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile, true);
+            fileWriter.write(info);
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -66,18 +71,20 @@ public class staticVariables {
     }
 
     public static void ReceiveMessage(String Datos) {
+
     }
 
-     public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
+            System.out.println("Empieza lectura de programState");
             FileReader fileReader = new FileReader(pathFile);
-            int valor= fileReader.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
+            int valor = fileReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
                 valor = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }

@@ -1,25 +1,28 @@
+
 /*
- * se debe crear la funcion para crear un nuevo archivo .log en caso de que no exista
- * se debe crear la funcion para escribir en el archivo
- * se debe crear la funcion para leer el archivo
- * se debe crear la funcion para eliminar datos del archivo
- */
+* se debe crear funciones para crear el archivo en caso de que no exista
+* se debe crear funciones para leer el archivo
+* se debe crear funciones para agregar un nuevo registro
+* se debe crear funciones para eliminar un registro
+* se debe crear funciones para modificar un registro
+*/
 
 //Librerías
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileReader;
 
 //Class
-public class logs {
-    // atributos 
-    static String pathFile = "Database/logs.txt";
+public class robots {
+    // atributos
+    static String pathFile = "Database/robots.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
         if (buscarArchivo(robotsFile) == 1) {
-            System.out.println("El archivo logs.txt ya existe");
+            System.out.println("El archivo robots.txt ya existe");
             return;
         } else {
             try {
@@ -46,7 +49,19 @@ public class logs {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
+            fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual\n");
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public static int writeInformation(String info) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile, true);
+            fileWriter.write(info);
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -56,19 +71,20 @@ public class logs {
     }
 
     public static void ReceiveMessage(String Datos) {
-        
+
     }
 
-    public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
+            System.out.println("Empieza lectura de robots");
             FileReader fileReader = new FileReader(pathFile);
-            int lineExist = fileReader.read();
-            while(lineExist!=-1){
-                System.out.print((char)lineExist);
-                lineExist = fileReader.read();
+            int valor = fileReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
+                valor = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }
