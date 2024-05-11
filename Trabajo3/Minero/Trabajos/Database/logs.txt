@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Time_stamp,id_robot,Avenue,Street,Beepers,accion
 24/05/11 14:18:56,0,38,16,0,Me muevo a la mina 
 24/05/11 14:18:56,1,29,14,0,Me muevo a la mina 
@@ -120,3 +121,11 @@ Time_stamp,id_robot,Avenue,Street,Beepers,accion
 24/05/11 14:22:17,1,37,8,80,Me muevo a la mina 
 24/05/11 14:22:17,0,33,7,80,Me muevo a la mina 
 24/05/11 14:22:18,1,37,7,77,Me muevo a la mina 
+=======
+Time_stamp,id_robot,tipo_robot,Avenue,Street,Beepers,Accion
+24/05/11 14:13:00,1,19,12,0,Me muevo a la mina
+24/05/11 14:13:00,1,29,14,0,Me muevo a la mina
+24/05/11 14:13:00,0,28,14,0,Me muevo a la mina
+24/05/11 14:13:00,0,18,12,0,Me muevo a la mina
+24/05/11 14:13:00,0,38,16,0,Me muevo a la mina24/05/11 14:13:00,1,19,12,0,Empiezo ejecución24/05/11 14:13:00,1,39,16,0,Me muevo a la mina24/05/11 14:13:00,0,38,16,0,Esperando por la salida de los mineros y trenes24/05/11 14:13:00,1,39,16,0,Esperando por la salida de los mineros y trenes24/05/11 14:13:00,1,29,14,0,Esperando por la salida de todos los mineros24/05/11 14:13:00,0,28,14,0,Esperando por la salida de todos los mineros24/05/11 14:13:00,0,18,12,0,Empiezo ejecución24/05/11 14:13:10,1,29,14,0,Empiezo ejecución24/05/11 14:13:10,0,28,14,0,Empiezo ejecución24/05/11 14:13:46,0,38,16,0,Empiezo ejecución24/05/11 14:13:46,1,39,16,0,Empiezo ejecución24/05/11 14:13:48,0,11,1,0,En punto de espera de extractor24/05/11 14:14:05,1,11,1,0,En punto de espera de extractor24/05/11 14:14:59,0,21,1,0,En punto de espera de extractor24/05/11 14:15:14,1,21,1,0,En punto de espera de extractor24/05/11 14:15:15,0,31,8,0,Espero si puedo entrar a la mina24/05/11 14:15:21,0,18,11,0,Me muevo a la mina
+>>>>>>> f3f17de9908cd7152952c1345782a52767d8165f
