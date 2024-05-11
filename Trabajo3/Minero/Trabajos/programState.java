@@ -58,6 +58,18 @@ public class programState {
         return 0;
     }
 
+    public static int writeInformation(String info) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile, true);
+            fileWriter.write(info);
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
+        }
+        return 0;
+    }
+
     public static void ReceiveMessage(String Datos) {
 
     }
