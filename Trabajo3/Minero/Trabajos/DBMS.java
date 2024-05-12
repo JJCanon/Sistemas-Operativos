@@ -52,19 +52,22 @@ public class DBMS implements API {
         variablesEstaticas.start();
         procesador.start();
 
-        Thread hiloVerificador = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    verificarHilos();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        /*
+         * Thread hiloVerificador = new Thread(new Runnable() {
+         * 
+         * @Override
+         * public void run() {
+         * while (true) {
+         * verificarHilos();
+         * try {
+         * Thread.sleep(1000);
+         * } catch (InterruptedException e) {
+         * e.printStackTrace();
+         * }
+         * }
+         * }
+         * });
+         */
     }
 
     @Override
@@ -94,18 +97,6 @@ public class DBMS implements API {
             System.out.println("informacion recibida: " + informationComplete);
         else
             System.out.println("Hubo algun error");
-    }
-
-    public void leerCola() {
-        boolean datoExist = false;
-        if (!datosRecibidos.isEmpty()) {
-            String dato = datosRecibidos.poll();
-            datoExist = true;
-        }
-        if (datoExist) {
-            // enviar datos
-        }
-
     }
 
     public void procesarInformacion(int typeInformation, String information) {
@@ -156,6 +147,13 @@ public class DBMS implements API {
         }
     }
 
+    public void exportData() {
+        logs.exportData();
+        robot.exportData();
+        estadoPrograma.exportData();
+        variablesEstaticas.exportData();
+
+    }
 }
 
 class DBMSThread extends Thread {
@@ -253,18 +251,23 @@ class DBMSThread extends Thread {
         return 0;
     }
 
-    public String exportData() {
+    public void exportData() {
+        System.out.println("Exportando Datos.....");
         switch (valor) {
             case 1:
-                return robots.exportData();
+                robots.exportData();
+                break;
             case 2:
-                return logs.exportData();
+                logs.exportData();
+                break;
             case 3:
-                return programState.exportData();
+                programState.exportData();
+                break;
             case 4:
-                return staticVariables.exportData();
+                staticVariables.exportData();
+                break;
             default:
-                return null;
+                break;
         }
     }
 }
