@@ -1,1 +1,7 @@
-Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual
+Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual,Calle_Actual
+24/05/11 20:35:37,1,0,True,0,8,12,8,12 
+24/05/11 20:35:38,1,1,True,0,9,12,9,12 
+24/05/11 20:35:38,2,0,True,0,8,14,8,14 
+24/05/11 20:35:38,2,1,True,0,9,14,9,14 
+24/05/11 20:35:38,3,0,True,0,8,16,8,16 
+24/05/11 20:35:38,3,1,True,0,9,16,9,16 

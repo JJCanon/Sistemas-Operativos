@@ -49,7 +49,7 @@ public class robots {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual\n");
+            fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual,Calle_Actual\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {

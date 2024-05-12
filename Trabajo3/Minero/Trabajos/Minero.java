@@ -96,6 +96,10 @@ public class Minero extends AugmentedRobot implements Directions {
 		objPosiciones.ocuparPosicion(posicion);
 		// Add robot thread to the World.
 		World.setupThread(this);
+		database.recibirDatos(1, Integer.toString(tipoRobot) + "," + Integer.toString(id) + ","  + "True" + "," +
+		Integer.toString(pasos) + "," + Integer.toString(avenidaInicial) + "," + Integer.toString(calleInicial) + "," + Integer.toString(avenidaActual) + "," + 
+		Integer.toString(calleActual));
+
 	}
 
 	// Runnable method that starts the thread
@@ -755,6 +759,9 @@ public class Minero extends AugmentedRobot implements Directions {
 		ejecutarLog = (debugHabilitado) ? logMensaje("Hora de dormir. Dulces sueños.") : false;
 		database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) + "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Me muevo a la mina");
 		turnOff();
+		database.recibirDatos(1, Integer.toString(tipoRobot) + "," + Integer.toString(id) + ","  + "False" + "," +
+		Integer.toString(pasos) + "," + Integer.toString(avenidaInicial) + "," + Integer.toString(calleInicial) + "," + Integer.toString(avenidaActual) + "," + 
+		Integer.toString(calleActual));
 	}
 
 	// Moves to the Train dropoff point when exit.
@@ -817,6 +824,7 @@ public class Minero extends AugmentedRobot implements Directions {
 			robot = new Minero(calle, i, North, 0, colorRobot, tipoRobot, i - AVENIDA_INICIAL);
 			Minero.objRobots.add(robot);
 			Minero.objThreads.add(new Thread(robot));
+
 		}
 	}
 
@@ -930,6 +938,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
 			objThreads.get(i).start();
+			
 
 	}
 
