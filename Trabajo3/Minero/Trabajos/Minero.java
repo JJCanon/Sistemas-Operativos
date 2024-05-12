@@ -146,6 +146,8 @@ public class Minero extends AugmentedRobot implements Directions {
 		try {
 			// When position is free, uses sem_move to lock all robots that tries to move.
 			sem_move.acquire();
+			database.recibirDatos(2, Integer.toString(id) + "," + Integer.toString(tipoRobot) + Integer.toString(avenidaActual) +
+					 "," + Integer.toString(calleActual) + "," + Integer.toString(beepersExtraidos) + "," + "Semáforo Move adquirido");
 			ejecutarLog = (debugHabilitado) ? logMensaje("Me muevo") : false;
 			move();
 			posicion = Integer.toString(calleActual) + " - " + Integer.toString(avenidaActual);
