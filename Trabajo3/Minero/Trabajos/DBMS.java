@@ -156,6 +156,13 @@ public class DBMS implements API {
         }
     }
 
+    public void exportData(){
+        logs.exportData();
+        robot.exportData();
+        estadoPrograma.exportData();
+        variablesEstaticas.exportData();
+
+    }
 }
 
 class DBMSThread extends Thread {
@@ -253,21 +260,26 @@ class DBMSThread extends Thread {
         return 0;
     }
 
-    public String exportData() {
+    public void exportData() {
+        System.out.println("Exportando Datos.....");
         switch (valor) {
             case 1:
-                return robots.exportData();
+            robots.exportData();
+            break;
             case 2:
-                return logs.exportData();
+            logs.exportData();
+            break;
             case 3:
-                return programState.exportData();
+            programState.exportData();
+            break;
             case 4:
-                return staticVariables.exportData();
+            staticVariables.exportData();
+            break;
             default:
-                return null;
+            break;
+        }
         }
     }
-}
 
 class Procesador extends Thread {
     final Semaphore semaforoCola = DBMS.semaforoCola;
