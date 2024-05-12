@@ -52,19 +52,22 @@ public class DBMS implements API {
         variablesEstaticas.start();
         procesador.start();
 
-        Thread hiloVerificador = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    verificarHilos();
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+        /*
+         * Thread hiloVerificador = new Thread(new Runnable() {
+         * 
+         * @Override
+         * public void run() {
+         * while (true) {
+         * verificarHilos();
+         * try {
+         * Thread.sleep(1000);
+         * } catch (InterruptedException e) {
+         * e.printStackTrace();
+         * }
+         * }
+         * }
+         * });
+         */
     }
 
     @Override
@@ -94,18 +97,6 @@ public class DBMS implements API {
             System.out.println("informacion recibida: " + informationComplete);
         else
             System.out.println("Hubo algun error");
-    }
-
-    public void leerCola() {
-        boolean datoExist = false;
-        if (!datosRecibidos.isEmpty()) {
-            String dato = datosRecibidos.poll();
-            datoExist = true;
-        }
-        if (datoExist) {
-            // enviar datos
-        }
-
     }
 
     public void procesarInformacion(int typeInformation, String information) {
@@ -156,7 +147,7 @@ public class DBMS implements API {
         }
     }
 
-    public void exportData(){
+    public void exportData() {
         logs.exportData();
         robot.exportData();
         estadoPrograma.exportData();
@@ -264,22 +255,22 @@ class DBMSThread extends Thread {
         System.out.println("Exportando Datos.....");
         switch (valor) {
             case 1:
-            robots.exportData();
-            break;
+                robots.exportData();
+                break;
             case 2:
-            logs.exportData();
-            break;
+                logs.exportData();
+                break;
             case 3:
-            programState.exportData();
-            break;
+                programState.exportData();
+                break;
             case 4:
-            staticVariables.exportData();
-            break;
+                staticVariables.exportData();
+                break;
             default:
-            break;
-        }
+                break;
         }
     }
+}
 
 class Procesador extends Thread {
     final Semaphore semaforoCola = DBMS.semaforoCola;
