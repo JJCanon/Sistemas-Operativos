@@ -154,6 +154,9 @@ public class Minero extends AugmentedRobot implements Directions {
 			objPosiciones.retirarPosicion(posicion);
 			calleActual = nuevaCalle;
 			avenidaActual = nuevaAvenida;
+			database.recibirDatos(1, Integer.toString(tipoRobot) + "," + Integer.toString(id) + ","  + "True" + "," +
+				Integer.toString(pasos) + "," + Integer.toString(avenidaInicial) + "," + Integer.toString(calleInicial) + "," + Integer.toString(avenidaActual) + "," + 
+				Integer.toString(calleActual));
 		} catch (InterruptedException exc) {
 			System.out.println(exc);
 		}
@@ -173,6 +176,9 @@ public class Minero extends AugmentedRobot implements Directions {
 		move();
 		calleActual = nuevaCalle;
 		avenidaActual = nuevaAvenida;
+		database.recibirDatos(1, Integer.toString(tipoRobot) + "," + Integer.toString(id) + ","  + "True" + "," +
+			Integer.toString(pasos) + "," + Integer.toString(avenidaInicial) + "," + Integer.toString(calleInicial) + "," + Integer.toString(avenidaActual) + "," + 
+			Integer.toString(calleActual));
 	}
 
 	// Enter to the mine. All robots use it but do different things.
@@ -927,6 +933,7 @@ public class Minero extends AugmentedRobot implements Directions {
 	// Main method
 	public static void main(String[] args) throws InterruptedException {
 		System.out.println("Iniciando base de datos");
+		database.recibirDatos(3, "1");
 		// database = new DBMS();
 		asignarVariablesEstaticas();
 		validarArgumentos(args);
@@ -938,7 +945,7 @@ public class Minero extends AugmentedRobot implements Directions {
 		// Initialize the threads
 		for (int i = 0; i < objThreads.size(); i++)
 			objThreads.get(i).start();
-			
+			database.recibirDatos(3, "0");
 
 	}
 
