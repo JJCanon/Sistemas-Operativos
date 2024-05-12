@@ -1187,6 +1187,9 @@ public class Minero extends AugmentedRobot implements Directions {
 			objThreads.get(i).start();
 			// objThreads.get(i).join();
 		}
+		for (int i = 0; i < objThreads.size(); i++){
+			objThreads.get(i).join();
+		}
 		database.recibirDatos(3, "0");
 		database.exportData();
 
