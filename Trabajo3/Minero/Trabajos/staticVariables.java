@@ -6,7 +6,9 @@
  * se debe crear funciones para eliminar un registro
  * se debe crear funciones para modificar un registro
  */
+
 //Librerías
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -97,7 +99,32 @@ public class staticVariables {
         }
     }
 
-    public static String exportData() {
-        return null;
+    public static void exportData() {
+
+        String txtFilePath = "Database/staticVariables.txt";
+        String csvFilePath = "Database/staticVariables.csv";
+ 
+        try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
+             FileWriter fw = new FileWriter(csvFilePath)) {
+ 
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < fields.length; i++) {
+                    sb.append(fields[i].trim());
+                    if (i < fields.length - 1) {
+                        sb.append(",");
+                    }
+                }
+                fw.write(sb.toString());
+                fw.write("\n");
+            }
+ 
+            System.out.println("Conversión completada exitosamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+    
 }

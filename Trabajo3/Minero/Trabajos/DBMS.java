@@ -148,6 +148,7 @@ public class DBMS implements API {
     }
 
     public void exportData() {
+        //Exportacion de datos a CVS
         logs.exportData();
         robot.exportData();
         estadoPrograma.exportData();
@@ -253,6 +254,7 @@ class DBMSThread extends Thread {
 
     public void exportData() {
         System.out.println("Exportando Datos.....");
+
         switch (valor) {
             case 1:
                 robots.exportData();
