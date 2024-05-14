@@ -60,7 +60,7 @@ public class logs {
 
     public static int writeInformation(String info) {
         try {
-            System.out.println("datos a escribir:  " + info);
+            //System.out.println("datos a escribir:  " + info);
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
             fileWriter.write(" \r\n");
@@ -78,7 +78,7 @@ public class logs {
 
     public static void ReadFile() {
         try {
-            System.out.println("Empieza lectura de logs");
+            //System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
             int lineExist = fileReader.read();
             while (lineExist != -1) {

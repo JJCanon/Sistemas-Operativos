@@ -94,13 +94,13 @@ public class DBMS implements API {
         }
         // System.out.println("informacion recibida: " + informationComplete);
         if (guardado)
-            System.out.println("informacion recibida: " + informationComplete);
+            //System.out.println("informacion recibida: " + informationComplete);
         else
             System.out.println("Hubo algun error");
     }
 
     public void procesarInformacion(int typeInformation, String information) {
-        System.out.println(typeInformation + " " + information);
+        //System.out.println(typeInformation + " " + information);
         switch (typeInformation) {
             case 1:// Enviar a Robots
                 robot.escribirArchivo(typeInformation, information);
@@ -183,7 +183,7 @@ class DBMSThread extends Thread {
                 staticVariables.crearArchivo();
                 break;
             default:
-                System.out.println("valor errado");
+                //System.out.println("valor errado");
                 break;
         }
         return 0;
@@ -204,7 +204,7 @@ class DBMSThread extends Thread {
                 staticVariables.writeInformation(info);
                 break;
             default:
-                System.out.println("valor errado");
+                //System.out.println("valor errado");
                 break;
         }
         return 0;
@@ -225,7 +225,7 @@ class DBMSThread extends Thread {
                 staticVariables.ReceiveMessage(Datos);
                 break;
             default:
-                System.out.println("valor errado");
+                //System.out.println("valor errado");
                 return 1;
         }
         return 0;
