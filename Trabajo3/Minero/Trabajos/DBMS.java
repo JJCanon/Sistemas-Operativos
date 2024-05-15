@@ -51,23 +51,20 @@ public class DBMS implements API {
         estadoPrograma.start();
         variablesEstaticas.start();
         procesador.start();
-
-        /*
-         * Thread hiloVerificador = new Thread(new Runnable() {
-         * 
-         * @Override
-         * public void run() {
-         * while (true) {
-         * verificarHilos();
-         * try {
-         * Thread.sleep(1000);
-         * } catch (InterruptedException e) {
-         * e.printStackTrace();
-         * }
-         * }
-         * }
-         * });
-         */
+        Thread hiloVerificador = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    verificarHilos();
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        hiloVerificador.start();
     }
 
     @Override
@@ -94,13 +91,14 @@ public class DBMS implements API {
         }
         // System.out.println("informacion recibida: " + informationComplete);
         if (guardado)
-            //System.out.println("informacion recibida: " + informationComplete);
+            // System.out.println("informacion recibida: " + informationComplete);
+            guardado = guardado;
         else
             System.out.println("Hubo algun error");
     }
 
     public void procesarInformacion(int typeInformation, String information) {
-        //System.out.println(typeInformation + " " + information);
+        // System.out.println(typeInformation + " " + information);
         switch (typeInformation) {
             case 1:// Enviar a Robots
                 robot.escribirArchivo(typeInformation, information);
@@ -122,25 +120,33 @@ public class DBMS implements API {
 
     public void verificarHilos() {
         // Verificar el hilo Robot
-        if (!robot.isAlive()) {
-            System.out.println("El hilo robot ha fallado. Relanzando...");
+        try {
+            robot.estoyVivo();
+        } catch (Exception e) {
+            System.out.println("El hilo robots ha fallado. Relanzando...");
             robot = new DBMSThread(1);
             robot.start();
         }
         // Verificar el hilo Logs
-        if (!logs.isAlive()) {
+        try {
+            robot.estoyVivo();
+        } catch (Exception e) {
             System.out.println("El hilo logs ha fallado. Relanzando...");
             logs = new DBMSThread(2);
             logs.start();
         }
         // Verificar el hilo Program State
-        if (!estadoPrograma.isAlive()) {
+        try {
+            estadoPrograma.estoyVivo();
+        } catch (Exception e) {
             System.out.println("El hilo estadoPrograma ha fallado. Relanzando...");
             estadoPrograma = new DBMSThread(3);
             estadoPrograma.start();
         }
         // Verificar el hilo Static Variables
-        if (!variablesEstaticas.isAlive()) {
+        try {
+            variablesEstaticas.estoyVivo();
+        } catch (Exception e) {
             System.out.println("El hilo variablesEstaticas ha fallado. Relanzando...");
             variablesEstaticas = new DBMSThread(4);
             variablesEstaticas.start();
@@ -148,7 +154,7 @@ public class DBMS implements API {
     }
 
     public void exportData() {
-        //Exportacion de datos a CVS
+        // Exportacion de datos a CVS
         logs.exportData();
         robot.exportData();
         estadoPrograma.exportData();
@@ -184,7 +190,7 @@ class DBMSThread extends Thread {
                 staticVariables.crearArchivo();
                 break;
             default:
-                //System.out.println("valor errado");
+                // System.out.println("valor errado");
                 break;
         }
         return 0;
@@ -205,7 +211,7 @@ class DBMSThread extends Thread {
                 staticVariables.writeInformation(info);
                 break;
             default:
-                //System.out.println("valor errado");
+                // System.out.println("valor errado");
                 break;
         }
         return 0;
@@ -226,7 +232,7 @@ class DBMSThread extends Thread {
                 staticVariables.ReceiveMessage(Datos);
                 break;
             default:
-                //System.out.println("valor errado");
+                // System.out.println("valor errado");
                 return 1;
         }
         return 0;
@@ -272,6 +278,10 @@ class DBMSThread extends Thread {
                 break;
         }
     }
+
+    public boolean estoyVivo() {
+        return true;
+    }
 }
 
 class Procesador extends Thread {
@@ -290,7 +300,7 @@ class Procesador extends Thread {
         }
     }
 
-    private void leerDatos() {
+    public void leerDatos() {
         String data = null;
         boolean dato = false;
         try {

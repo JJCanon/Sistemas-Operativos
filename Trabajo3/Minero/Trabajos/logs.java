@@ -60,7 +60,7 @@ public class logs {
 
     public static int writeInformation(String info) {
         try {
-            //System.out.println("datos a escribir:  " + info);
+            // System.out.println("datos a escribir: " + info);
             FileWriter fileWriter = new FileWriter(pathFile, true);
             fileWriter.write(info);
             fileWriter.write(" \r\n");
@@ -78,7 +78,7 @@ public class logs {
 
     public static void ReadFile() {
         try {
-            //System.out.println("Empieza lectura de logs");
+            // System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
             int lineExist = fileReader.read();
             while (lineExist != -1) {
@@ -94,10 +94,10 @@ public class logs {
     public static void exportData() {
         String txtFilePath = "Database/logs.txt";
         String csvFilePath = "Database/logs.csv";
- 
+
         try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
-             FileWriter fw = new FileWriter(csvFilePath)) {
- 
+                FileWriter fw = new FileWriter(csvFilePath)) {
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -111,7 +111,7 @@ public class logs {
                 fw.write(sb.toString());
                 fw.write("\n");
             }
- 
+
             System.out.println("Conversión completada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();

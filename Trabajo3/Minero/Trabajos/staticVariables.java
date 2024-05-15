@@ -86,7 +86,7 @@ public class staticVariables {
 
     public static void ReadFile() {
         try {
-            //System.out.println("Empieza lectura de staticVariables");
+            // System.out.println("Empieza lectura de staticVariables");
             FileReader fileReader = new FileReader(pathFile);
             int valor = fileReader.read();
             while (valor != -1) {
@@ -103,10 +103,10 @@ public class staticVariables {
 
         String txtFilePath = "Database/staticVariables.txt";
         String csvFilePath = "Database/staticVariables.csv";
- 
+
         try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
-             FileWriter fw = new FileWriter(csvFilePath)) {
- 
+                FileWriter fw = new FileWriter(csvFilePath)) {
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -120,11 +120,10 @@ public class staticVariables {
                 fw.write(sb.toString());
                 fw.write("\n");
             }
- 
+
             System.out.println("Conversión completada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    
 }

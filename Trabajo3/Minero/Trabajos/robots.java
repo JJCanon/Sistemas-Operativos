@@ -50,7 +50,8 @@ public class robots {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual,Calle_Actual\n");
+            fileWriter.write(
+                    "Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual,Calle_Actual\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -78,7 +79,7 @@ public class robots {
 
     public static void ReadFile() {
         try {
-            //System.out.println("Empieza lectura de robots");
+            // System.out.println("Empieza lectura de robots");
             FileReader fileReader = new FileReader(pathFile);
             int valor = fileReader.read();
             while (valor != -1) {
@@ -95,10 +96,10 @@ public class robots {
 
         String txtFilePath = "Database/robots.txt";
         String csvFilePath = "Database/robots.csv";
- 
+
         try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
-             FileWriter fw = new FileWriter(csvFilePath)) {
- 
+                FileWriter fw = new FileWriter(csvFilePath)) {
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -112,7 +113,7 @@ public class robots {
                 fw.write(sb.toString());
                 fw.write("\n");
             }
- 
+
             System.out.println("Conversión completada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
