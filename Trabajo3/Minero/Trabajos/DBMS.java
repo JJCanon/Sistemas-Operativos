@@ -129,7 +129,7 @@ public class DBMS implements API {
         }
         // Verificar el hilo Logs
         try {
-            robot.estoyVivo();
+            logs.estoyVivo();
         } catch (Exception e) {
             System.out.println("El hilo logs ha fallado. Relanzando...");
             logs = new DBMSThread(2);
