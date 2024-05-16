@@ -92,10 +92,9 @@ public class logs {
     }
 
     public static void exportData() {
-        String txtFilePath = "Database/logs.txt";
-        String csvFilePath = "Database/logs.csv";
+        String csvFilePath = "ExportData/logs.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
                 FileWriter fw = new FileWriter(csvFilePath)) {
 
             String line;

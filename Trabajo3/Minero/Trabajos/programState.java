@@ -93,10 +93,9 @@ public class programState {
     }
 
     public static void exportData() {
-        String txtFilePath = "Database/programState.txt";
-        String csvFilePath = "Database/programState.csv";
+        String csvFilePath = "ExportData/programState.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
                 FileWriter fw = new FileWriter(csvFilePath)) {
 
             String line;

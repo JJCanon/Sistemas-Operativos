@@ -101,10 +101,9 @@ public class staticVariables {
 
     public static void exportData() {
 
-        String txtFilePath = "Database/staticVariables.txt";
-        String csvFilePath = "Database/staticVariables.csv";
+        String csvFilePath = "ExportData/staticVariables.csv";
 
-        try (BufferedReader br = new BufferedReader(new FileReader(txtFilePath));
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
                 FileWriter fw = new FileWriter(csvFilePath)) {
 
             String line;
