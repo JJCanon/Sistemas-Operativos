@@ -91,12 +91,13 @@ public class logs {
         }
     }
 
-    public static void exportData() {
-        String csvFilePath = "ExportData/logs.csv";
-
+   public static void exportData() {
+ 
+    String csvPathFile = "ExportData/logs.csv";
+ 
         try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
-                FileWriter fw = new FileWriter(csvFilePath)) {
-
+             FileWriter fw = new FileWriter(csvPathFile)) {
+ 
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -110,7 +111,7 @@ public class logs {
                 fw.write(sb.toString());
                 fw.write("\n");
             }
-
+ 
             System.out.println("Conversión completada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();

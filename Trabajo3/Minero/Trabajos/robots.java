@@ -94,11 +94,11 @@ public class robots {
 
     public static void exportData() {
 
-        String csvFilePath = "ExportData/robots.csv";
-
+    String csvPathFile = "ExportData/robots.csv";
+ 
         try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
-                FileWriter fw = new FileWriter(csvFilePath)) {
-
+             FileWriter fw = new FileWriter(csvPathFile)) {
+ 
             String line;
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -112,7 +112,7 @@ public class robots {
                 fw.write(sb.toString());
                 fw.write("\n");
             }
-
+ 
             System.out.println("Conversión completada exitosamente.");
         } catch (IOException e) {
             e.printStackTrace();
