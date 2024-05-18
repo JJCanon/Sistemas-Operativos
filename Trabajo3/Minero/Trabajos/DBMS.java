@@ -154,7 +154,13 @@ public class DBMS implements API {
     }
 
     public void exportData() {
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         // Exportacion de datos a CVS
+
         logs.exportData();
         robot.exportData();
         estadoPrograma.exportData();
