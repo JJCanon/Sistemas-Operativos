@@ -1,3 +1,4 @@
+
 /*
  * se debe crear la funcion para crear un nuevo archivo .log en caso de que no exista
  * se debe crear la funcion para escribir en el archivo
@@ -6,15 +7,17 @@
  */
 
 //Librerías
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.FileReader;
 
 //Class
 public class logs {
-    // atributos 
+    // atributos
     static String pathFile = "Database/logs.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
@@ -46,7 +49,21 @@ public class logs {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Time_stamp,id_robot,Avenue,Street,Beepers\n");
+            fileWriter.write("Time_stamp,id_robot,tipo_robot,Avenue,Street,Beepers,Accion\n");
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public static int writeInformation(String info) {
+        try {
+            // System.out.println("datos a escribir: " + info);
+            FileWriter fileWriter = new FileWriter(pathFile, true);
+            fileWriter.write(info);
+            fileWriter.write(" \r\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -56,24 +73,48 @@ public class logs {
     }
 
     public static void ReceiveMessage(String Datos) {
-        
+
     }
 
-    public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
+            // System.out.println("Empieza lectura de logs");
             FileReader fileReader = new FileReader(pathFile);
             int lineExist = fileReader.read();
-            while(lineExist!=-1){
-                System.out.print((char)lineExist);
+            while (lineExist != -1) {
+                System.out.print((char) lineExist);
                 lineExist = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }
 
-    public static String searchData(String query) {
-        return null;
+   public static void exportData() {
+ 
+    String csvPathFile = "ExportData/logs.csv";
+ 
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
+             FileWriter fw = new FileWriter(csvPathFile)) {
+ 
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < fields.length; i++) {
+                    sb.append(fields[i].trim());
+                    if (i < fields.length - 1) {
+                        sb.append(",");
+                    }
+                }
+                fw.write(sb.toString());
+                fw.write("\n");
+            }
+ 
+            System.out.println("Conversión completada exitosamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

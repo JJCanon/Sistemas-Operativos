@@ -1,0 +1,28 @@
+
+f	java:S117:"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Ôå
+b	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(úïì½
+0
+java:S1220""Move this file to a named package.
+c
+java:S2095A"HUse try-with-resources or close this "FileReader" in a "finally" clause.(Ÿà‡¡ûÿÿÿÿ
+c
+java:S20950"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(ƒÅ¨¬üÿÿÿÿ
+—
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯Ôå
+P
+java:S1118":Add a private constructor to hide the implicit public one.(úïì½
+1
+java:S3626"Remove this redundant jump.(ûÁİ…
+1
+java:S3626"Remove this redundant jump.(ûÁİ…
+E	java:S106"+Replace this use of System.out by a logger.(Ğ½Æöûÿÿÿÿ
+@	java:S106"+Replace this use of System.out by a logger.(ŸİÊµ
+?	java:S106!"+Replace this use of System.out by a logger.(­ÉÂ
+E	java:S1065"+Replace this use of System.out by a logger.(¶î³şÿÿÿÿ
+c	java:S100:"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯Ôå
+c	java:S100>"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹‹‹Ì
+E	java:S106@"+Replace this use of System.out by a logger.(£ƒÚÙüÿÿÿÿ
+E	java:S106D"+Replace this use of System.out by a logger.(Í‘‰óüÿÿÿÿ
+E	java:S106I"+Replace this use of System.out by a logger.(”¶êúüÿÿÿÿ
+G
+java:S1172M",Remove this unused method parameter "query".(Ö·šıÿÿÿÿ

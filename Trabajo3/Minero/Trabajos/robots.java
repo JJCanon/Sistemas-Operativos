@@ -1,3 +1,4 @@
+
 /*
 * se debe crear funciones para crear el archivo en caso de que no exista
 * se debe crear funciones para leer el archivo
@@ -7,6 +8,7 @@
 */
 
 //Librerías
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,6 +18,7 @@ import java.io.IOException;
 public class robots {
     // atributos
     static String pathFile = "Database/robots.txt";
+
     // funcion para crear el archivo robots.txt
     public static void crearArchivo() {
         File robotsFile = new File(pathFile);
@@ -47,7 +50,21 @@ public class robots {
     private static int writeHeader() {
         try {
             FileWriter fileWriter = new FileWriter(pathFile);
-            fileWriter.write("Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual\n");
+            fileWriter.write(
+                    "Tipo_Robot,id_robot,encendido,Pasos,Avenida_Inicial,Calle_Inicial,Avenida_Actual,Calle_Actual\n");
+            fileWriter.close();
+            return 1;
+        } catch (IOException e) {
+            System.out.println("Ocurrio un error al escribir en el archivo: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    public static int writeInformation(String info) {
+        try {
+            FileWriter fileWriter = new FileWriter(pathFile, true);
+            fileWriter.write(info);
+            fileWriter.write(" \r\n");
             fileWriter.close();
             return 1;
         } catch (IOException e) {
@@ -60,21 +77,45 @@ public class robots {
 
     }
 
-     public static void ReadFile(){
-        try{
+    public static void ReadFile() {
+        try {
+            // System.out.println("Empieza lectura de robots");
             FileReader fileReader = new FileReader(pathFile);
-            int valor= fileReader.read();
-            while(valor!=-1){
-                System.out.print((char)valor);
+            int valor = fileReader.read();
+            while (valor != -1) {
+                System.out.print((char) valor);
                 valor = fileReader.read();
             }
             fileReader.close();
-            }catch(IOException e){
+        } catch (IOException e) {
             System.out.println("Ha ocurrido un error al leer el archivo: " + e.getMessage());
         }
     }
 
-    public static String searchData(String query) {
-        return null;
+    public static void exportData() {
+
+    String csvPathFile = "ExportData/robots.csv";
+ 
+        try (BufferedReader br = new BufferedReader(new FileReader(pathFile));
+             FileWriter fw = new FileWriter(csvPathFile)) {
+ 
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < fields.length; i++) {
+                    sb.append(fields[i].trim());
+                    if (i < fields.length - 1) {
+                        sb.append(",");
+                    }
+                }
+                fw.write(sb.toString());
+                fw.write("\n");
+            }
+ 
+            System.out.println("Conversión completada exitosamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
